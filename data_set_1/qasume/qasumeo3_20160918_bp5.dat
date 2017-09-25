@@ -1,0 +1,13 @@
+%QASUME ozone retrieval from direct irradiance
+%18 9 2016 Julian Groebner
+%Using standard US atmosphere afglus
+%Using ozone x-sections bp5
+%Using Effective ozone temperature T=228.0 K
+2016 09 18 08 30 01 282.0  1.7
+2016 09 18 08 45 01 282.6  1.3
+2016 09 18 09 00 01 280.3  1.3
+2016 09 18 09 15 01 280.9  1.3
+2016 09 18 09 30 01 281.5  1.5
+2016 09 18 09 45 01 282.5  1.4
+2016 09 18 10 00 01 285.2  2.0
+2016 09 18 10 15 01 284.2  2.6

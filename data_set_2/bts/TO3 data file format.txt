@@ -1,0 +1,16 @@
+TO3 file format
+
+file name: TOC_BTSYYYYMMDD.txt
+YYYY = year
+MM = month
+DD = day
+
+file header:
+product = O3 column [DU]
+Date = DD.MM.YYYY
+DOY = day of year
+
+data:
+DD.MM.YYYY hh:mm:ss	nnn
+DD.MM.YYYY hh:mm:ss = Date time of spectral measurement data set
+nnn = O3 column [DU]	nan (not a number) => no O3 column value available for this data set

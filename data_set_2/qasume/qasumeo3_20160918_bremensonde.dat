@@ -1,0 +1,13 @@
+%QASUME ozone retrieval from direct irradiance
+%18 9 2016 Julian Groebner
+%Using Ozonesonde ../ozonsonde/ozonesonde_16092111.24Z.csv
+%Effective ozone temperature  228 K
+%Effective ozone height   25 km 
+%Using ozone x-sections bremen
+2016 09 18 08 30 01 278.9  1.3
+2016 09 18 08 45 01 279.3  1.3
+2016 09 18 09 00 01 277.0  1.5
+2016 09 18 09 15 01 277.5  1.3
+2016 09 18 09 30 01 278.0  1.7
+2016 09 18 09 45 01 278.9  1.9
+2016 09 18 10 00 01 281.6  2.3

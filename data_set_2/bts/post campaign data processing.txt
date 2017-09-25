@@ -1,0 +1,33 @@
+post campaign data processing
+
+The original measurement data from the campaign has been used to perform some minor post processing
+
+1. data sets
+Only data between 16.09. and 28.09. (DOI 262-272) has been reanalyzed.
+Data from DOI 260 & 261 have not been changed since there is no additional infoprmation about raw data available.
+
+Although it has been distinguished between direct and global solar measurements and solar bandpass (BPC) and out of range (OoR) measurements, 
+the way the data is treated remains the same.
+
+2. wavelength calibration
+The original wavelength calibration of the instrument is used. Although it is known that there is a wavelength offset of -0.1 nm, 
+wich is slighty drifting during the campaign, the data have primarily not been corrected for.
+Thus,during further calculations, the wavelength shift has to be analyzed and taken into account.
+
+3. spectral calibration
+The instrument has been recalibrated taking several calibration measurements into account. 
+These measurements against standard lamps have been carried out shortly before, during and after the campaign.
+The data have been corrected for the average correction factor found during the calibrations. 
+No significant differences between calibration methods could be observed when taking the pre-processed data or the raw counts into account.
+
+4. nonlinearity corrections
+It could be shown that for very low signals below 1000 Counts, the systems shows a pixel-dependent nonlinearity.
+Some pixels do not show any nonlinearity while the neighbouring pixels deviate up to 60% from linear behaviour.
+Thus it would be necessary to correct for nonlinearity at very low signals.
+With the data taken during the campaign a subsequent lienarity correction is nearly impossible. Too much information about dark signal and raw counts is lost. Especially for the solar bandpass corrected measurements where several bandpasses are joint together, the information of the real raw counts that should be corrected for is lost.
+Therefore the correction have been applied mainly to some datasets with OoR correction. These datasets are marked with "lc" (linearity correction)in the filename and the measurement series of this day is stored in separated folders named "nonlinearity correction".
+For the calculation of TO3 values however, only uncorrected data have been used as the nonlinearity correction seems to be overestimated in the short wavelength range.
+
+5. TO3 calculation
+Information of the TO3 calculation performed at PTB will be given in detail by Stefan Riechelmann.
+The TOC values are given for every single spectral dataset. For calculation of average ozone layer values it is recommended to calculate a floating average. An example is given in the figures stored in the TO3 folder.

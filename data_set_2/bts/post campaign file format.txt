@@ -1,0 +1,29 @@
+filename:	DOYhhmmssxyyyzz.dat
+DOY = day of year
+hhmmss = hour minute second
+x = d/g 	direct/global
+yyy = OoR/BPC	Out of range correction/solar bandpass correction
+zz = lc		nonlinearity correction if applied in this dataset
+
+fileheader:	
+instrument		instrument name
+date			measurement date
+DOY			day of year
+measurement start	end of last measurement => measurement start time
+measurement end		end of this measurment 
+config. type		configuration 	STT	=	stray light tube => direct
+					s. BP SLC=	solar bandpass straylightcorrection
+					OoR SLC	=	Out of range stray light correction
+integration time / ms	integration time / ms 	for 	OoR
+			measurement duration / ms for 	BPC 
+averages		number of samples
+nonlinearity correction	whenever a correction is applied, 
+			the wavelength range where corrections are carried out is listed
+			else it is marked with "none"
+Data:
+WL_nm			wavelength / nm
+E_BTS2048		spectral irradiance / W/(m²nm)
+
+spectral range:		285.09 nm - 420.02 nm
+data points (lines):	1029
+		
