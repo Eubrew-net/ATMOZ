@@ -30,7 +30,7 @@ t=t(month(fecha)==9,:);
 t.Date_str=t.Var1;
 t_dep=t(t.Var13==0,:);
 t_dep=t_dep(t_dep.Var14==0,:);
-t_dep=t_dep(t_dep.Var15==0,:);
+
 
 
 
@@ -40,9 +40,6 @@ t_dep.O3=t_dep.Var8;
 t_dep.O3_STD=t_dep.Var9;
 t_dep.AIRM=t_dep.Var12;
 t_dep.Time=datetime(datestr(t_dep.Date));
-t_dep=t_dep(t_dep.Var9<0.3,:);
-
-
 
 t_set_2{n_inst}=t_dep(:,{'Time','Date','O3','O3_STD','AIRM'});
 writetable(t_dep,'Atmoz_o3_set2.xls','Sheet','P121');

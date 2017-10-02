@@ -1,7 +1,7 @@
 fpath='data_set_2/phaethon'
 %l=dir(fullfile(fpath,'*.dat'))
 
-t=readtable(fullfile(fpath,'Phaethon_Izana_Bremen(233K).txt'));
+t=readtable(fullfile(fpath,'Phaethon_Izana_Bremen(228K).txt'));
 t(:,end)=[];
 t.Properties.VariableNames=varname(mmcellstr('Doy, Decimal_doy, Decimal_year, time(UT), sza, AMF, Differential_Slant_column_density, Total_ozone_column(TOC), error_TOC',','));
 fecha=t.time_UT_/24+datenum(2016,1,0)+t.Doy;
