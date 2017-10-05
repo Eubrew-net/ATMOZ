@@ -1,5 +1,7 @@
 fpath='data_set_2/P121'
-l=dir(fullfile(fpath,'Pandora121s1*.txt'))
+%V1
+%Pandora121s1_IZO_L2Tot_roue0p1-4.txt
+l=dir(fullfile(fpath,'Pandora121s1_IZO_L2Tot_roue1p1-4.txt'))
 t=readtable(fullfile(fpath,l.name),'HeaderLines',63);
 fecha=datetime(t.Var1,'InputFormat','yyyyMMdd''T''HHmmss''Z''' );
 t.Date=datenum(fecha);
@@ -32,6 +34,13 @@ t_dep=t(t.Var13==0,:);
 t_dep=t_dep(t_dep.Var14==0,:);
 t_dep=t_dep(t_dep.Var15==0,:);
 
+%
+% WRMS < 1.e-3 filter. (Normalized rms of spectral fitting residuals
+%  weighted with measured uncertainty)
+% his parameter can be found in column 23 in the original data file.
+t_dep=t_dep(t_dep.Var23<1e-3,:);
+
+
 
 
 
@@ -43,10 +52,13 @@ t_dep.Time=datetime(datestr(t_dep.Date));
 t_dep=t_dep(t_dep.Var9<0.3,:);
 
 
-
+try
 t_set_2{n_inst}=t_dep(:,{'Time','Date','O3','O3_STD','AIRM'});
 writetable(t_dep,'Atmoz_o3_set2.xls','Sheet','P121');
-
+catch
+    warning('no global varaible set')
+end
+    
 
 
 
