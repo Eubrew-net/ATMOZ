@@ -2,7 +2,7 @@ clear all
 close all
 
 date_time= @(x) datetime(x,'ConvertFrom','datenum')
-addpath(genpath(fullfile('~','CODE','rbcce.aemet.es','iberonesia','matlab')));
+addpath(genpath(fullfile('D:','CODE','rbcce.aemet.es','iberonesia','matlab')));
 plt= {'o','+','*','h','x','s','d','v','>','<','p','+','x','*','x','s'};
 colo=num2cell(parula(16),2);
 x1=plt(1:15)';
@@ -138,6 +138,9 @@ end
  fechah=th{:,1:4:end};
  o3h=th{:,2:4:end};
  refh=o3h(:,2:4); refh=nanmean(refh,2);
+h_set2.fecha=fechah;
+h_set2.o3h=o3h;
+h_set2.refh=refh;
 
  figure
 ha = tight_subplot(4,4,[.05 .05],[.02 .02],[.1 .1]);
@@ -158,6 +161,12 @@ end
 figure
 hr=100*(o3h-refh)./refh;
 [mh,sh]=grpstats(hr,hour(th.Time));
+
+h_set2.mh=mh;
+h_set2.sh=sh;
+h_set2.th=th;
+
+save h_set2 h_set2
 
 he=errorbar(repmat(1:24,16,1)',mh,sh);
 set(he(1:2:end),'LineWidth',2)

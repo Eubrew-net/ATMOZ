@@ -6,7 +6,9 @@ dobson=[];
 for i=1:length(l)
    t=readtable(fullfile(fpath,l(i).name),'filetype','text');
    tim=3:4:19;
-   tq=t; tq{:,[1,2,tim]}=num2cell(NaN);
+   tq=t(:,1:22); tq{:,[1,2,tim]}=num2cell(NaN);
+   %ts=vartype('numeric');
+   %dob=t(:,ts);
    dob=cell2mat(table2cell(tq));
    for i=tim
      tx=([t{:,1},t{:,i}]);
@@ -15,7 +17,7 @@ for i=1:length(l)
    end
    dob(:,1)=datenum(t{:,15},'dd.mm.yyyy HH:MM:SS'); %AD
    dob(:,2)=[];
-   dob(:,end)=[];
+   if size(dob,2)==23 dob(:,end)=[]; end
    dobson=[dobson;dob];
 end
    

@@ -4,7 +4,7 @@ l=dir('data_set_1')
 date_time= @(x) datetime(x,'ConvertFrom','datenum')
 addpath(genpath(fullfile('~','CODE','rbcce.aemet.es','iberonesia','matlab')));
 plt= {'o','+','*','h','x','s','d','v','>','<','p','+','x','*','x','s'};
-colo=num2cell(parula(16),2)
+colo=num2cell(colorcube(16),2)
 x1=plt(1:15)';
 %%
 l=dir('data_set_1')
@@ -160,7 +160,13 @@ end
 
  th.ref=refh;
  writetable(timetable2table(tx),'ATMOZ_SYCN__DATASET_1.xls','Sheet','hour');
-%%
+
+h_set1.fecha=fechah;
+h_set1.o3h=o3h;
+h_set1.refh=refh;
+ 
+ 
+ %%
  figure
 ha = tight_subplot(4,4,[.05 .05],[.02 .02],[.1 .1]);
 for i=1:16
@@ -181,6 +187,13 @@ figure
 suptitle('ATMOZ  IZO set 1 comparison')
 hr=100*(o3h-refh)./refh;
 [mh,sh,nh,hn]=grpstats(hr,hour(th.Time));
+
+h_set1.mh=mh;
+h_set1.sh=sh;
+h_set1.th=th;
+save h_set1 h_set1
+
+
 writetable(array2table(mh),'ATMOZ_SYCN__DATASET_1.xls','Sheet','hourly means');
 
 he=errorbar(repmat(1:24,16,1)',mh,sh);
@@ -200,6 +213,20 @@ title('ATMOZ Campaing hourly ratio ');
 xlabel('Hour');
 grid 
 %%
+
+load h_set2
+figure
+hold on;bh1=boxplot(100*(h_set2.o3h-h_set2.refh)./h_set2.refh,'plotstyle','compact','color','r')
+hold on;bh2=boxplot(100*(h_set1.o3h-h_set1.refh)./h_set1.refh,'labels',inst,'plotstyle','compact','color','b')
+legend('data set 1','data set 2','location','SouthEast')
+
+legend([bh1(1),bh2(1)],{'Data Set 1','Data Set 2'})
+grid
+hline([-1,0,1])
+title('ATMOZ Ratio to Reference ')
+
+
+
 %%
 figure
 hr=100*(o3h-refh)./refh;
