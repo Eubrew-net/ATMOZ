@@ -10,7 +10,7 @@ clc;
 warning off;
 
 disp('--------------------------------------------------------------------------')
-disp('                 Welcome to the ATMOZ uncertainty code (v2.0)             ')
+disp('                 Welcome to the ATMOZ uncertainty code (v3.0)             ')
 disp('          Dr. El Gawhary O., Dr. Parra-Rojas F.C. and Redondas A.         ')
 disp('                               (2017)                                     ')
 disp('--------------------------------------------------------------------------')
@@ -239,7 +239,7 @@ end
 for k = 2:length(BH)
 	A1(k) = cell2num(BH{1,k}(14))*10; % Ozone absorption coefficient (atm cm)^-1
 	etc1(k) = cell2num(BH{1,k}(17)); % Extraterrestrial constant (counts/s)
-	t_h(k) = cell2num(BH{1,k}(2)); % continuous date index based in Matlab datenum
+	t_h(k) = cell2num(BH{1,k}(2)); % % continuous date index based in Matlab datenum
 end
 
 % ozone absorption coefficients
@@ -250,11 +250,11 @@ etc = etc1(1,2)*ones(1,length(Z_deg)); % Extraterrestrial constant for all the t
 
 w = [0.0 -1.0 0.5 2.2 -1.7]; % statistical weights for earch wavelength
 BE = [4807 4620 4410 4220 4040]; % Rayleight coefficients for each wavelength (atm^-1)
-B = sum(w.*BE)*ones(1,length(Z_deg)); % weighted Rayleight coefficient for all the times (=1) (atm^-1) 
+B = sum(w.*BE)*ones(1,length(Z_deg)); % weighted Rayleight coefficient for all the times (=1) (atm^-1)
 
 % ------------------ Definitions of some parameters ------------------------------------------------
 
-P0 = 1013; % standard pressure (mbars)
+P0 = 1013.25; % standard pressure (mbars)
 
 R = 6371.229e3; % Earth's radius (m)
 
@@ -580,10 +580,10 @@ urel_ff = 0.01;
 meas = ms9-air_m.*B.*pre/1013; % counts/s
 u_meas = urel_ff*meas; % counts/s
 
-% Fix relative uncertainty of the ETC (counts/s)
+% Fix relative uncertainty of the ETC (% counts/s)
 u_etc_f = 5*ones(1,length(Z_deg));
 
-% Relative uncertainty of the ETC (counts/s)
+% Relative uncertainty of the ETC (% counts/s)
 u_etc = [5:1:10];
 
 % Fix relative uncertainty (percent/100) and uncertainty of the ozone absorption coefficient
