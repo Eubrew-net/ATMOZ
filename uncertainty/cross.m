@@ -90,7 +90,7 @@ for nb=1:size(dsp_summ,1)
 			o3x(nb,ns,nr)=trapz(x,cs.*y)/trapz(x,y);
 		end
     end
-    o3a(nb,1:1000)=-O3W*squeeze(o3x(nb,:,1:1000))/log(10);
+    o3a(nb,1:1000)=-O3W*10*squeeze(o3x(nb,:,1:1000))/log(10);
 %        so2(nb,nt,nf)=-SO2W*squeeze(o3x(nb,nt,nf,:))/log(10);
 end
 disp('t');
