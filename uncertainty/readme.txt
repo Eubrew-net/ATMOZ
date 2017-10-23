@@ -1,3 +1,5 @@
-ATMOZ uncertainty code v3.0
+ATMOZ uncertainty code v4.0
 
-- Change P0 = 1013 mbars by P0 = 1013.25 mbars
+- Include instrummental corrections (dark, dead time, temperature, filters)
+- Extract values from Config by Date Function (A, etc, dead time,...)
+- Extract raw counts from Direct Sun Function
