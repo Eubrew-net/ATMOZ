@@ -1,4 +1,3 @@
-ATMOZ uncertainty code v2.0
+ATMOZ uncertainty code v3.0
 
-- New method to calculate the air mass
-- New method to calculate the ozone uncertainty
+- Change P0 = 1013 mbars by P0 = 1013.25 mbars
