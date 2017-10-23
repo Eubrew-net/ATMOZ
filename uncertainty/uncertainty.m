@@ -10,7 +10,7 @@ clc;
 warning off;
 
 disp('--------------------------------------------------------------------------')
-disp('                 Welcome to the ATMOZ uncertainty code (v6.0)             ')
+disp('                 Welcome to the ATMOZ uncertainty code (v7.0)             ')
 disp('          Dr. El Gawhary O., Dr. Parra-Rojas F.C. and Redondas A.         ')
 disp('                               (2017)                                     ')
 disp('--------------------------------------------------------------------------')
@@ -221,56 +221,91 @@ url_func='/data/get/O3L1'; % ozone L1.0 url
 url_head='/data/get/ConfigbyDate'; % Config by Date url
 url_ds='/data/get/DS'; % Direct Sun url
 
+%%
 % ----------------------------O3 Level 1 values------------------------------------------
-for i=1:length(period)
-	dates(i,:)
-	url_str=[url_base,url_func,'?brewerid=',brewer_str,'&date=',dates(i,:),'&enddate=',dates_f(i,:)]
-	curl_str=['curl -s --connect-timeout 120 "',url_str,'"'];
-	[status,data_json]=system(curl_str);
-	O3L1=loadjson(data_json);
+
+url_o3l1=['"',url_base,url_func,'?brewerid=',brewer_str,'&date=',dates,'&enddate=',dates_f,'&format=text"']
+o3l1 = download(url_o3l1);
+%%
+Omega = o3l1{12}'; % Calculated Ozone value with Standard algorithm + attenuation filter correction (DU)
+t_j = o3l1{7}'; % continuous date index based in Matlab datenum
+pre = o3l1{18}'; % Medium Pressure of the Brewer Location (mbar)
+temp = o3l1{10}'; % Instrument temperature (ºC)
+lon = o3l1{17}'; % Longitude of the Brewer Location (deg)
+lat = o3l1{16}'; % Latitude of the Brewer Location (deg)
+ms9_db = o3l1{20}'; % MS9, Second double ratio
+
+%%
+% this is a temporal artifact to avoid negative values in O3
+for i = 1:length(t_j)
+	if Omega(i) < 0
+		Omega(i) = 0.1;
+	end
 end
 
-for j = 2:length(O3L1)
-	Omega(j-1) = cell2num(O3L1{1,j}(10)); % Calculated Ozone value with Standard algorithm + attenuation filter correction (DU)
-	t_j(j-1) = cell2num(O3L1{1,j}(5)); % continuous date index based in Matlab datenum
-	pre(j-1) = cell2num(O3L1{1,j}(16)); % Medium Pressure of the Brewer Location (mbar)
-	temp(j-1) = cell2num(O3L1{1,j}(8)); % Instrument temperature (ºC)
-	lon(j-1) = cell2num(O3L1{1,j}(15)); % Longitude of the Brewer Location (deg)
-	lat(j-1) = cell2num(O3L1{1,j}(14)); % Latitude of the Brewer Location (deg)
-	ms9_db(j-1) = cell2num(O3L1{1,j}(18)); % MS9, Second double ratio
-	
-	f3(j-1) = cell2num(O3L1{1,j}(23)); % corrected measurement of lambda3 (counts/s)
-end
-
+f3 = o3l1{24}; % corrected measurement of lambda3 (counts/s)
+%%
 % ----------------------------------Config by Date values-----------------------------------
 dateFormat=16;
 
-for i=1:length(period)
-	dates(i,:)
-	url_str=[url_base,url_head,'?brewerid=',brewer_str,'&date=',dates(i,:),'&enddate=',dates_f(i,:)]
-	curl_str=['curl -s --connect-timeout 120 "',url_str,'"'];
-	[status,data_json]=system(curl_str);
-	CbD=loadjson(data_json);
+% [a1 a2 a3 a4] correspond to the Brewers 17, 157, 183, 185 respectively
+A1_b = [0.3416 0.3395 0.341 0.342]*10; % Ozone absorption coefficient (atm cm)^-1
+etc_b = [3350 1615 1630 1575];  %extraterrestrial constant obtained by Langley extrapolations (185) or transfer (others)
+dt_b = [3.6 2.6 2.3 2.9]*1e-8; % deadtime of the PMT (ns)
+nfil0_b = [0 0 0 0]; % the attenuation value of the neutral-density filter (with no filter) 
+nfil1_b = [4390 4300 4350 4370]; % the attenuation value of the neutral-density filter 1
+nfil2_b = [8780 9320 10250 10250]; % the attenuation value of the neutral-density filter 2
+nfil3_b = [14295 13860 14100 14150]; % the attenuation value of the neutral-density filter 3
+nfil4_b = [20000 21660 21500 21800]; % the attenuation value of the neutral-density filter 4
+nfil5_b = [25000 25000 25800 26400]; % the attenuation value of the neutral-density filter 5
+
+if brewer_num == 17
+	A1 = A1_b(1);
+	etc1 = etc_b(1);
+	dt = dt_b(1);
+	nfil0 = nfil0_b(1);
+	nfil1 = nfil1_b(1);
+	nfil2 = nfil2_b(1);
+	nfil3 = nfil3_b(1);
+	nfil4 = nfil4_b(1);
+	nfil5 = nfil5_b(1);
+elseif brewer_num == 157
+	A1 = A1_b(2);
+	etc1 = etc_b(2);
+	dt = dt_b(2);
+	nfil0 = nfil0_b(2);
+	nfil1 = nfil1_b(2);
+	nfil2 = nfil2_b(2);
+	nfil3 = nfil3_b(2);
+	nfil4 = nfil4_b(2);
+	nfil5 = nfil5_b(2);
+elseif brewer_num == 183
+	A1 = A1_b(3);
+	etc1 = etc_b(3);
+	dt = dt_b(3);
+	nfil0 = nfil0_b(3);
+	nfil1 = nfil1_b(3);
+	nfil2 = nfil2_b(3);
+	nfil3 = nfil3_b(3);
+	nfil4 = nfil4_b(3);
+	nfil5 = nfil5_b(3);
+else
+	A1 = A1_b(4);
+	etc1 = etc_b(4);
+	dt = dt_b(4);
+	nfil0 = nfil0_b(4);
+	nfil1 = nfil1_b(4);
+	nfil2 = nfil2_b(4);
+	nfil3 = nfil3_b(4);
+	nfil4 = nfil4_b(4);
+	nfil5 = nfil5_b(4);
 end
 
-for k = 2:length(CbD)
-	A1(k) = cell2num(CbD{1,k}(12))*10; % Ozone absorption coefficient (atm cm)^-1
-	etc1(k) = cell2num(CbD{1,k}(15)); % extraterrestrial constant obtained by Langley extrapolations (185) or transfer (others)
-	t_h(k) = cell2num(CbD{1,k}(3)); % date of the configuration
-	dt(k) = cell2num(CbD{1,k}(17)); % deadtime of the PMT (ns)
-	nfil0(k) = cell2num(CbD{1,k}(21)); % the attenuation value of the neutral-density filter (with no filter) 
-	nfil1(k) = cell2num(CbD{1,k}(22)); % the attenuation value of the neutral-density filter 1
-	nfil2(k) = cell2num(CbD{1,k}(23)); % the attenuation value of the neutral-density filter 2
-	nfil3(k) = cell2num(CbD{1,k}(24)); % the attenuation value of the neutral-density filter 3
-	nfil4(k) = cell2num(CbD{1,k}(25)); % the attenuation value of the neutral-density filter 4
-	nfil5(k) = cell2num(CbD{1,k}(26)); % the attenuation value of the neutral-density filter 5
-end
+% ozone absorption coefficients in an array of the data size
+A = A1*ones(1,length(t_j));
 
-% ozone absorption coefficients in an array of the data size (atm cm)^-1
-A = A1(1,2)*ones(1,length(t_j));
-
-% Extraterrestrial constant ratio in an array of the data size (counts/s)
-etc = etc1(1,2)*ones(1,length(t_j));
+% Extraterrestrial constant ratio in an array of the data size
+etc = etc1*ones(1,length(t_j));
 
 % Brewer weighting coefficients at the different wavelengths
 w = [0.0 -1.0 0.5 2.2 -1.7];
@@ -278,29 +313,21 @@ w = [0.0 -1.0 0.5 2.2 -1.7];
 % Rayleigh scattering coefficients at the different wavelenghts (atm^-1)
 BE = [4870 4620 4410 4220 4040];
 
-% Rayleigh scattering coefficients in an array of the data size (=1) (atm)^-1
+% Rayleigh scattering coefficients in an array of the data size (=1)
 B = sum(w.*BE)*ones(1,length(t_j));
 
 % ----------------------------- Direct Sun ---------------------------------------------------------
+url_direct=['"',url_base,url_ds,'?brewerid=',brewer_str,'&date=',dates,'&enddate=',dates_f,'&format=text"']
+DS = download(url_direct);
 
-for i=1:length(period)
-	dates(i,:)
-	url_str=[url_base,url_ds,'?brewerid=',brewer_str,'&date=',dates(i,:),'&enddate=',dates_f(i,:)]
-	curl_str=['curl -s --connect-timeout 120 "',url_str,'"'];
-	[status,data_json]=system(curl_str);
-	DS=loadjson(data_json);
-end
-
-for k = 2:length(DS)
-	ccl(k-1) = cell2num(DS{1,k}(9)); % number of the slit mask cycles
-	dark(k-1) = cell2num(DS{1,k}(11)); % raw counts of the dark
-	rc1(k-1) = cell2num(DS{1,k}(12)); % raw counts of the incident light at 306.6 nm
-	rc2(k-1) = cell2num(DS{1,k}(13)); % raw counts of the incident light at 310.1 nm
-	rc3(k-1) = cell2num(DS{1,k}(14)); % raw counts of the incident light at 313.5 nm
-	rc4(k-1) = cell2num(DS{1,k}(15)); % raw counts of the incident light at 316.8 nm
-	rc5(k-1) = cell2num(DS{1,k}(16)); % raw counts of the incident light at 320.1 nm
-	nfilpos(k-1) = cell2num(DS{1,k}(4)); % position of the neutral-density filter (0, 64, 128, 192, 256, 320)
-end
+ccl = DS{12}; % number of the slit mask cycles
+dark = DS{14}; % raw counts of the dark
+rc1 = DS{15}; % raw counts of the incident light at 306.6 nm
+rc2 = DS{16}; % raw counts of the incident light at 310.1 nm
+rc3 = DS{17}; % raw counts of the incident light at 313.5 nm
+rc4 = DS{18}; % raw counts of the incident light at 316.8 nm
+rc5 = DS{19}; % raw counts of the incident light at 320.1 nm
+nfilpos = DS{7}; % position of the neutral-density filter (0, 64, 128, 192, 256, 320)
 
 % ratio of the raw counts. It is only a test. It's no real!!
 xx_r = -rc2 + 0.5*rc3 + 2.2*rc4 - 1.7*rc5;
@@ -345,20 +372,27 @@ f3_d = f3_c - dark_c;
 f4_d = f4_c - dark_c;
 f5_d = f5_c - dark_c;
 
+%%
 % filter for small values of the counts
 for i=1:length(t_j)
 	if f1_d(i) < 2.0
 		f1_d(i) = 2.0;
-	elseif f2_d(i) < 2.0
+    end
+	if f2_d(i) < 2.0
 		f2_d(i) = 2.0;
-	elseif f3_d(i) < 2.0
+    end
+	if f3_d(i) < 2.0
 		f3_d(i) = 2.0;
-	elseif f4_d(i) < 2.0
+    end
+	if f4_d(i) < 2.0
 		f4_d(i) = 2.0;
-	elseif f5_d(i) < 2.0
+    end
+	if f5_d(i) < 2.0
 		f5_d(i) = 2.0;
 	end
 end
+
+%% 
 
 % expanded uncertainty of the measurements including the dark corrention
 u2_1_d = u2_1_c + u2_d;
@@ -392,11 +426,11 @@ for i = 1:length(t_j)
 	f4_ct(1) = f4_d(i);
 	f5_ct(1) = f5_d(i);
 	for j=2:10
-		f1_ct(j)=f1_d(i).*exp(f1_ct(j-1)*dt(2));
-		f2_ct(j)=f2_d(i).*exp(f2_ct(j-1)*dt(2));
-		f3_ct(j)=f3_d(i).*exp(f3_ct(j-1)*dt(2));
-		f4_ct(j)=f4_d(i).*exp(f4_ct(j-1)*dt(2));
-		f5_ct(j)=f5_d(i).*exp(f5_ct(j-1)*dt(2));
+		f1_ct(j)=f1_d(i).*exp(f1_ct(j-1)*dt);
+		f2_ct(j)=f2_d(i).*exp(f2_ct(j-1)*dt);
+		f3_ct(j)=f3_d(i).*exp(f3_ct(j-1)*dt);
+		f4_ct(j)=f4_d(i).*exp(f4_ct(j-1)*dt);
+		f5_ct(j)=f5_d(i).*exp(f5_ct(j-1)*dt);
 		
 		f1ct = f1_ct(j);
 		f2ct = f2_ct(j);
@@ -407,11 +441,11 @@ for i = 1:length(t_j)
 	end
 
 % expanded uncertainty of the measures including the deadtime correction
-	u2_f1_3(i) = ((exp(dt(2)*f1ct)./(1-dt(2)*f1ct)).^2).*u2_1_d(i) + (f1ct.^4)*udt^2;
-	u2_f2_3(i) = ((exp(dt(2)*f2ct)./(1-dt(2)*f2ct)).^2).*u2_2_d(i) + (f2ct.^4)*udt^2;
-	u2_f3_3(i) = ((exp(dt(2)*f3ct)./(1-dt(2)*f3ct)).^2).*u2_3_d(i) + (f3ct.^4)*udt^2;
-	u2_f4_3(i) = ((exp(dt(2)*f4ct)./(1-dt(2)*f4ct)).^2).*u2_4_d(i) + (f4ct.^4)*udt^2;
-	u2_f5_3(i) = ((exp(dt(2)*f5ct)./(1-dt(2)*f5ct)).^2).*u2_5_d(i) + (f5ct.^4)*udt^2;
+	u2_f1_3(i) = ((exp(dt*f1ct)./(1-dt*f1ct)).^2).*u2_1_d(i) + (f1ct.^4)*udt^2;
+	u2_f2_3(i) = ((exp(dt*f2ct)./(1-dt*f2ct)).^2).*u2_2_d(i) + (f2ct.^4)*udt^2;
+	u2_f3_3(i) = ((exp(dt*f3ct)./(1-dt*f3ct)).^2).*u2_3_d(i) + (f3ct.^4)*udt^2;
+	u2_f4_3(i) = ((exp(dt*f4ct)./(1-dt*f4ct)).^2).*u2_4_d(i) + (f4ct.^4)*udt^2;
+	u2_f5_3(i) = ((exp(dt*f5ct)./(1-dt*f5ct)).^2).*u2_5_d(i) + (f5ct.^4)*udt^2;
 
 % change to logarithmic space of the measurements	 
 	f1_ct_1(i) = 10000*log10(f1ct);
@@ -420,7 +454,7 @@ for i = 1:length(t_j)
 	f4_ct_1(i) = 10000*log10(f4ct);
 	f5_ct_1(i) = 10000*log10(f5ct);
 
-% change to logarithmic space of the uncertainties (wrong)
+% change to logarithmic space of the uncertainties	(wrong)
 	u2_f1dt(i) = 10000*log10(u2_f1_3(i));
 	u2_f2dt(i) = 10000*log10(u2_f2_3(i));
 	u2_f3dt(i) = 10000*log10(u2_f3_3(i));
@@ -487,41 +521,41 @@ u2_xx_temp = u2_f2t + (0.5^2)*u2_f3t + (2.2^2)*u2_f4t + (1.7^2)*u2_f5t;
 % neutral filter corrections depending of the filter position
 for i = 1:length(t_j)
 	if nfilpos(i)./64 == 0
-		f1_nd(i) = f1_temp(i) + nfil0(2);
-		f2_nd(i) = f2_temp(i) + nfil0(2);
-		f3_nd(i) = f3_temp(i) + nfil0(2);
-		f4_nd(i) = f4_temp(i) + nfil0(2);
-		f5_nd(i) = f5_temp(i) + nfil0(2);
+		f1_nd(i) = f1_temp(i) + nfil0;
+		f2_nd(i) = f2_temp(i) + nfil0;
+		f3_nd(i) = f3_temp(i) + nfil0;
+		f4_nd(i) = f4_temp(i) + nfil0;
+		f5_nd(i) = f5_temp(i) + nfil0;
 	elseif nfilpos(i)./64 == 1
-		f1_nd(i) = f1_temp(i) + nfil1(2);
-		f2_nd(i) = f2_temp(i) + nfil1(2);
-		f3_nd(i) = f3_temp(i) + nfil1(2);
-		f4_nd(i) = f4_temp(i) + nfil1(2);
-		f5_nd(i) = f5_temp(i) + nfil1(2);
+		f1_nd(i) = f1_temp(i) + nfil1;
+		f2_nd(i) = f2_temp(i) + nfil1;
+		f3_nd(i) = f3_temp(i) + nfil1;
+		f4_nd(i) = f4_temp(i) + nfil1;
+		f5_nd(i) = f5_temp(i) + nfil1;
 	elseif nfilpos(i)./64 == 2
-		f1_nd(i) = f1_temp(i) + nfil2(2);
-		f2_nd(i) = f2_temp(i) + nfil2(2);
-		f3_nd(i) = f3_temp(i) + nfil2(2);
-		f4_nd(i) = f4_temp(i) + nfil2(2);
-		f5_nd(i) = f5_temp(i) + nfil2(2);
+		f1_nd(i) = f1_temp(i) + nfil2;
+		f2_nd(i) = f2_temp(i) + nfil2;
+		f3_nd(i) = f3_temp(i) + nfil2;
+		f4_nd(i) = f4_temp(i) + nfil2;
+		f5_nd(i) = f5_temp(i) + nfil2;
 	elseif nfilpos(i)./64 == 3
-		f1_nd(i) = f1_temp(i) + nfil3(2);
-		f2_nd(i) = f2_temp(i) + nfil3(2);
-		f3_nd(i) = f3_temp(i) + nfil3(2);
-		f4_nd(i) = f4_temp(i) + nfil3(2);
-		f5_nd(i) = f5_temp(i) + nfil3(2);
+		f1_nd(i) = f1_temp(i) + nfil3;
+		f2_nd(i) = f2_temp(i) + nfil3;
+		f3_nd(i) = f3_temp(i) + nfil3;
+		f4_nd(i) = f4_temp(i) + nfil3;
+		f5_nd(i) = f5_temp(i) + nfil3;
 	elseif nfilpos(i)./64 == 4
-		f1_nd(i) = f1_temp(i) + nfil4(2);
-		f2_nd(i) = f2_temp(i) + nfil4(2);
-		f3_nd(i) = f3_temp(i) + nfil4(2);
-		f4_nd(i) = f4_temp(i) + nfil4(2);
-		f5_nd(i) = f5_temp(i) + nfil4(2);
+		f1_nd(i) = f1_temp(i) + nfil4;
+		f2_nd(i) = f2_temp(i) + nfil4;
+		f3_nd(i) = f3_temp(i) + nfil4;
+		f4_nd(i) = f4_temp(i) + nfil4;
+		f5_nd(i) = f5_temp(i) + nfil4;
 	elseif nfilpos(i)./64 == 5
-		f1_nd(i) = f1_temp(i) + nfil5(2);
-		f2_nd(i) = f2_temp(i) + nfil5(2);
-		f3_nd(i) = f3_temp(i) + nfil5(2);
-		f4_nd(i) = f4_temp(i) + nfil5(2);
-		f5_nd(i) = f5_temp(i) + nfil5(2);
+		f1_nd(i) = f1_temp(i) + nfil5;
+		f2_nd(i) = f2_temp(i) + nfil5;
+		f3_nd(i) = f3_temp(i) + nfil5;
+		f4_nd(i) = f4_temp(i) + nfil5;
+		f5_nd(i) = f5_temp(i) + nfil5;
 	end
 end
 
@@ -531,7 +565,7 @@ xx_nf = -f2_nd + 0.5*f3_nd + 2.2*f4_nd - 1.7*f5_nd;
 % uncertainty of the measurements. We consider that the neutral filters uncertainty don't affect 
 %u2_ms9_r = u2_xx_temp;
 u2_xx_temp1 = -u2_f2t + (0.5)*u2_f3t + (2.2)*u2_f4t - (1.7)*u2_f5t; % it's not correct
-u2_ms9_r = u2_xx_temp1;
+u2_ms9_r = u2_xx_temp;
 %%
 % ------------------ Definitions of some parameters ------------------------------------------------
 
@@ -540,6 +574,7 @@ P0 = 1013.25; % standard pressure (mbars)
 R = 6371.229e3; % Earth's radius (m)
 
 r = 2370.0; % heigth of Izaña station (m)
+
 
 %-------------------------------- SZA uncertaiinty---------------------------------------------------
 %                             through astronomical formulas
@@ -638,16 +673,17 @@ sza_med=[];
 mu_med=[];
 m_med=[];
 u2_xx_med=[];
-
+u_xx_sta=[];
 for i=0:1:(size(xx_nf,2)/5)-1
     ser=mean(xx_nf(1,1+5*i:5+5*i)); % mean of MS9 (each 5 measurements)
 	stan_m=std(xx_nf(1,1+5*i:5+5*i)); % uncertainty
-
+	
 	sza_m = mean(sza(1,1+5*i:5+5*i)); % mean of SZA (each 5 measurements)
 	mu_m = median(mu(1,1+5*i:5+5*i)); % median of ozone optical mass
 	m_m = median(m(1,1+5*i:5+5*i)); % median of Rayleigh optical mass 
-	
+    
 	u2_xx_m = (1/5)*mean(u2_ms9_r(1,1+5*i:5+5*i)); % uncertainty of the mean of MS9
+	u_xx_std = std(u2_ms9_r(1,1+5*i:5+5*i));
     
 	media=[media;ser];
 	standard=[standard;stan_m];
@@ -656,15 +692,50 @@ for i=0:1:(size(xx_nf,2)/5)-1
 	m_med=[m_med;m_m];
 	
 	u2_xx_med=[u2_xx_med;u2_xx_m];
+	u_xx_sta=[u_xx_sta;u_xx_std];
 end
-
 o3_5 = media';
 u2_5 = (standard').^2;
 sza_5 = sza_med';
 mu_5 = mu_med';
 m_5 = m_med';
 u2_xx_5 = u2_xx_med';
+u_xx_5_std = u_xx_sta';
 
+% -----------------------------------------Rayleigh------------------------------------------------------------
+% u_pre = 15;
+ f1_r = f1_nd + BE(1)*m.*pre/1013.15;
+ f2_r = f2_nd + BE(2)*m.*pre/1013.15;
+ f3_r = f3_nd + BE(3)*m.*pre/1013.15;
+ f4_r = f4_nd + BE(4)*m.*pre/1013.15;
+ f5_r = f5_nd + BE(5)*m.*pre/1013.15;
+
+% u2_f1r = u2_f1t + ((BE(1)*pre/1013.15).^2).*u_am_r.^2 + ((BE(1)*air_m/1013.15).^2).*u_pre.^2;
+% u2_f2r = u2_f2t + ((BE(2)*pre/1013.15).^2).*u_am_r.^2 + ((BE(2)*air_m/1013.15).^2).*u_pre.^2;
+% u2_f3r = u2_f3t + ((BE(3)*pre/1013.15).^2).*u_am_r.^2 + ((BE(3)*air_m/1013.15).^2).*u_pre.^2;
+% u2_f4r = u2_f4t + ((BE(4)*pre/1013.15).^2).*u_am_r.^2 + ((BE(4)*air_m/1013.15).^2).*u_pre.^2;
+% u2_f5r = u2_f5t + ((BE(5)*pre/1013.15).^2).*u_am_r.^2 + ((BE(5)*air_m/1013.15).^2).*u_pre.^2;
+
+% % single ratios
+ MS4 = f4_r - f1_r;
+ MS5 = f4_r - f2_r;
+ MS6 = f4_r - f3_r;
+ MS7 = f5_r - f4_r;
+
+% u2_ms4 = u2_f4r + u2_f1r;
+% u2_ms5 = u2_f4r + u2_f2r;
+% u2_ms6 = u2_f4r + u2_f3r;
+% u2_ms7 = u2_f5r + u2_f4r;
+
+% % double ratios
+
+% MS8 = MS4 - 3.2*MS7;
+ MS9 = MS5 - 0.5*MS6 - 1.7*MS7;
+
+% u2_ms8 = u2_ms4 + (3.2^2)*u2_ms7;
+% u2_ms9 = u2_ms5 + (0.5^2)*u2_ms6 + (1.7^2)*u2_ms7;
+
+% MS9 ratio without Rayleigh correction
 MS9_r = xx_nf;
 
 
@@ -887,26 +958,30 @@ ylabel('Correlation')
 
 %%
 % MS9 with Rayleigh correction
-meas = N_meas; % counts/s
-o3_meas = (meas-m.*pre.*B/1013.15)./(A.*mu); % counts/s
+meas = N_meas;
+o3_meas = (meas-m.*pre.*B/1013.15)./(A.*mu);
 
 % O3 without Rayleigh correction
-o3_meas_r = meas./(A.*mu); % counts/s
+o3_meas_r = meas./(A.*mu);
 %%
 
 % uncertainty of the measurements
-u_meas = sqrt(u2_ms9_r); % counts/s
+u_meas = sqrt(u2_ms9_r);
 
 % Uncertainty of the ETC (counts/s)
 u_etc_f = 5*ones(1,length(t_j));
 
 % Uncertainty of the ozone absorption coefficient (Bootstraping Method)
 
-u_A = cross(brewer_str); % (atm cm)^-1
+if brewer_num == 17
+	u_A = 1e-3;
+else
+	u_A = cross(brewer_str);
+end
 
 % Fix relative uncertainty (percent/100) and uncertainty of the Rayleigh coefficient
 urel_B = 0.01;
-u_B = urel_B*B; % (atm)^-1
+u_B = urel_B*B;
 
 %%
 % Uncertainty of ozone with fixed uncertainties
