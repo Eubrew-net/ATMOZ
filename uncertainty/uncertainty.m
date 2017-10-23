@@ -10,7 +10,7 @@ clc;
 warning off;
 
 disp('--------------------------------------------------------------------------')
-disp('                 Welcome to the ATMOZ uncertainty code (v7.0)             ')
+disp('                 Welcome to the ATMOZ uncertainty code (v9.0)             ')
 disp('          Dr. El Gawhary O., Dr. Parra-Rojas F.C. and Redondas A.         ')
 disp('                               (2017)                                     ')
 disp('--------------------------------------------------------------------------')
@@ -20,141 +20,6 @@ brewer_num = input('Enter the number of the Brewer: ');
 brewer_str = num2str(brewer_num);
 disp(' ')
 switch brewer_str 
-	case '214'
-		disp('      -You are in Sodankyla-       ')
-		disp('Lat:67.3675, Lon=-26.633, Alt:100.0 m')
-	case '37'
-		disp('      -You are in Sodankyla-       ')
-		disp('Lat:67.3675, Lon=-26.633, Alt:100.0 m')
-	case '6'
-		disp('      -You are in Vindeln-       ')
-		disp('Lat:64.244, Lon=-19.767, Alt:225.0 m')
-	case '107'
-		disp('      -You are in Jokioinen-       ')
-		disp('Lat:60.814, Lon=-23.499, Alt:106.0 m')
-	case '202'
-		disp('      -You are in Sondrestrom-       ')
-		disp('Lat:66.996, Lon=50.6214, Alt:150.0 m')
-	case '53'
-		disp('      -You are in Sondrestrom-       ')
-		disp('Lat:66.996, Lon=50.6214, Alt:150.0 m')
-	case '171'
-		disp('      -You are in Fairbanks-       ')
-		disp('Lat:64.819, Lon=147.869, Alt:138.0 m')
-	case '128'
-		disp('     -You are in Norrkoping-       ')
-		disp('Lat:58.58, Lon=-16.15, Alt:43.0 m')
-	case '228'
-		disp('      -You are in Copenhagen-       ')
-		disp('Lat:55.7185, Lon=-12.569, Alt:90.0 m')
-	case '82'
-		disp('      -You are in Copenhagen-       ')
-		disp('Lat:55.7185, Lon=-12.569, Alt:90.0 m')
-	case '44'
-		disp('      -You are in Obninsk-       ')
-		disp('Lat:55.099, Lon=-36.6066, Alt:100.0 m')
-	case '43'
-		disp('      -You are in Kislovodsk-       ')
-		disp('Lat:43.733, Lon=-42.661, Alt:2070.0 m')
-	case '188'
-		disp('      -You are in Ankara-       ')
-		disp('Lat:39.95, Lon=-32.88, Alt:913.0 m')
-	case '86'
-		disp('      -You are in Thessaloniki-      ')
-		disp('Lat:40.634, Lon=-22.956, Alt:60.0 m')
-	case '5'
-		disp('      -You are in Thessaloniki-      ')
-		disp('Lat:40.634, Lon=-22.956, Alt:60.0 m')
-	case '207'
-		disp('      -You are in Warsaw-       ')
-		disp('Lat:52.246, Lon=-20.94, Alt:120.0 m')
-	case '225'
-		disp('   -You are in Poprad-Ganovce-       ')
-		disp('Lat:49.03, Lon=-20.32, Alt:706.0 m')
-	case '97'
-		disp('   -You are in Poprad-Ganovce-       ')
-		disp('Lat:49.03, Lon=-20.32, Alt:706.0 m')
-	case '152'
-		disp('  -You are in Budapest (Lorinc)-   ')
-		disp('Lat:47.43, Lon=-19.18, Alt:139.0 m')
-	case '184'
-		disp('      -You are in Hradec Kralove-       ')
-		disp('Lat:50.1772, Lon=-15.8386, Alt:285.0 m')
-	case '98'
-		disp('      -You are in Hradec Kralove-       ')
-		disp('Lat:50.1772, Lon=-15.8386, Alt:285.0 m')
-	case '118'
-		disp('      -You are in Lidenberg-       ')
-		disp('Lat:52.21, Lon=-14.12, Alt:112.0 m')
-	case '78'
-		disp('      -You are in Lidenberg-       ')
-		disp('Lat:52.21, Lon=-14.12, Alt:112.0 m')
-	case '30'
-		disp('      -You are in Lidenberg-       ')
-		disp('Lat:52.21, Lon=-14.12, Alt:112.0 m')
-	case '67'
-		disp('      -You are in Rome-       ')
-		disp('Lat:41.9, Lon=-12.5, Alt:75.0 m')
-	case '10'
-		disp('  -You are in Hohenpeissenberg-       ')
-		disp('Lat:47.8, Lon=-11.01, Alt:985.0 m')
-	case '156'
-		disp('       -You are in Arosa-       ')
-		disp('Lat:46.78, Lon=-9.67, Alt:1840.0 m')
-	case '163'
-		disp('       -You are in Davos-       ')
-		disp('Lat:46.8, Lon=-9.83, Alt:1560.0 m')
-	case '72'
-		disp('       -You are in Davos-       ')
-		disp('Lat:46.8, Lon=-9.83, Alt:1560.0 m')
-	case '66'
-		disp('        -You are in Aosta-       ')
-		disp('Lat:45.7422, Lon=-7.357, Alt:569.0 m')
-	case '201'
-		disp('      -You are in Tamanrasset-       ')
-		disp('Lat:22.79, Lon=-5.529, Alt:1320.0 m')
-	case '178'
-		disp('        -You are in Uccle-       ')
-		disp('Lat:50.799, Lon=-4.357, Alt:100.0 m')
-	case '16'
-		disp('        -You are in Uccle-       ')
-		disp('Lat:50.799, Lon=-4.357, Alt:100.0 m')
-	case '117'
-		disp('      -You are in Murcia-       ')
-		disp('Lat:38.0, Lon=1.17, Alt:69.0 m')
-	case '166'
-		disp('      -You are in Zaragoza-       ')
-		disp('Lat:41.63, Lon=0.914, Alt:250.0 m')
-	case '75'
-		disp('      -You are in Reading-       ')
-		disp('Lat:51.44, Lon=0.94, Alt:61.0 m')
-	case '126'
-		disp('   -You are in Manchester-       ')
-		disp('Lat:53.47, Lon=2.23, Alt:76.0 m')
-	case '172'
-		disp('   -You are in Manchester-       ')
-		disp('Lat:53.47, Lon=2.23, Alt:76.0 m')
-	case '186'
-		disp('  -You are in Madrid (Barajas)-   ')
-		disp('Lat:40.45, Lon=3.72, Alt:680.0 m')
-	case '70'
-		disp('  -You are in Madrid (Barajas)-   ')
-		disp('Lat:40.45, Lon=3.72, Alt:680.0 m')
-	case '150'
-		disp('  -You are in El Arenosillo-    ')
-		disp('Lat:37.1, Lon=6.73, Alt:41.0 m')
-	case '151'
-		disp('     -You are in La Coruna-       ')
-		disp('Lat:43.33, Lon=8.47, Alt:62.0 m')
-	case '88'
-		disp('   -You are in Valentia-       ')
-		disp('Lat:51.938, Lon=10.25, Alt:14.0 m')
-	case '227'
-		disp('   -You are in Valentia-       ')
-		disp('Lat:51.938, Lon=10.25, Alt:14.0 m')
-	case '33'
-		disp('   -You are in Santa Cruz de Tenerife-   ')
-		disp('    Lat:28.47, Lon=16.25, Alt:52.0 m')
 	case '157'
 		disp('        -You are in Izana-       ')
 		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
@@ -164,27 +29,6 @@ switch brewer_str
 	case '185'
 		disp('        -You are in Izana-       ')
 		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '48'
-		disp('        -You are in Funchal-       ')
-		disp('Lat:32.644, Lon=16.887, Alt:0.0 m')
-	case '155'
-		disp('        -You are in Carrasco International Airport-       ')
-		disp('            Lat:-34.86, Lon=56.0, Alt:90.0 m')
-	case '229'
-		disp('        -You are in Rio Gallegos-       ')
-		disp('     Lat:-51.6, Lon=69.32, Alt:5.0 m')
-	case '180'
-		disp('     -You are in Punta Arenas-       ')
-		disp('Lat:-53.137, Lon=70.88, Alt:22.0 m')
-	case '218'
-		disp('       -You are in Izobamba-       ')
-		disp('Lat:-0.366, Lon=78.55, Alt:3058.0 m')
-	case '179'
-		disp('        -You are in Hobart-       ')
-		disp('Lat:-42.904, Lon=-147.327, Alt:20.0 m')
-	case '232'
-		disp('        -You are in Singapore-       ')
-		disp('Lat:1.368, Lon=-103.982, Alt:14.0 m')
 	case '17'
 		disp('        -You are in Canada-       ')
 		disp('Lat:---, Lon=---, Alt:--- m')
@@ -201,7 +45,7 @@ disp('----------------------')
 yyyy=input('Enter the year: ');
 mm=input('Enter the month: ');
 dd=input('Enter the day: ');
-period = (datenum(yyyy,mm,dd)); % matlab time
+period = datenum(yyyy,mm,dd); % matlab time
 dates=datestr(period,'yyyy-mm-dd');
 
 disp(' ')
@@ -212,7 +56,7 @@ disp('------------------')
 yyyy_f=input('Enter the year: ');
 mm_f=input('Enter the month: ');
 dd_f=input('Enter the day: ');
-period_f = (datenum(yyyy_f,mm_f,dd_f)); % matlab time
+period_f = datenum(yyyy_f,mm_f,dd_f); % matlab time
 dates_f=datestr(period_f,'yyyy-mm-dd');
 
 % database urls
@@ -220,6 +64,7 @@ url_base='fparra:m23275108M@rbcce.aemet.es/eubrewnet'; % base url
 url_func='/data/get/O3L1'; % ozone L1.0 url
 url_head='/data/get/ConfigbyDate'; % Config by Date url
 url_ds='/data/get/DS'; % Direct Sun url
+url_dss='/data/get/DSS'; % Direct Sun Summary url
 
 %%
 % ----------------------------O3 Level 1 values------------------------------------------
@@ -230,7 +75,7 @@ o3l1 = download(url_o3l1);
 Omega = o3l1{12}'; % Calculated Ozone value with Standard algorithm + attenuation filter correction (DU)
 t_j = o3l1{7}'; % continuous date index based in Matlab datenum
 pre = o3l1{18}'; % Medium Pressure of the Brewer Location (mbar)
-temp = o3l1{10}'; % Instrument temperature (ÂºC)
+temp = o3l1{10}'; % Instrument temperature (ºC)
 lon = o3l1{17}'; % Longitude of the Brewer Location (deg)
 lat = o3l1{16}'; % Latitude of the Brewer Location (deg)
 ms9_db = o3l1{20}'; % MS9, Second double ratio
@@ -243,14 +88,14 @@ for i = 1:length(t_j)
 	end
 end
 
-f3 = o3l1{24}; % corrected measurement of lambda3 (counts/s)
+f3 = o3l1{24}'; % corrected measurement of lambda3 (counts/s)
 %%
 % ----------------------------------Config by Date values-----------------------------------
 dateFormat=16;
 
 % [a1 a2 a3 a4] correspond to the Brewers 17, 157, 183, 185 respectively
 A1_b = [0.3416 0.3395 0.341 0.342]*10; % Ozone absorption coefficient (atm cm)^-1
-etc_b = [3350 1615 1630 1575];  %extraterrestrial constant obtained by Langley extrapolations (185) or transfer (others)
+etc_b = [3350 1615 1630 1575]; %extraterrestrial constant obtained by Langley extrapolations (185) or transfer (others)
 dt_b = [3.6 2.6 2.3 2.9]*1e-8; % deadtime of the PMT (ns)
 nfil0_b = [0 0 0 0]; % the attenuation value of the neutral-density filter (with no filter) 
 nfil1_b = [4390 4300 4350 4370]; % the attenuation value of the neutral-density filter 1
@@ -301,11 +146,11 @@ else
 	nfil5 = nfil5_b(4);
 end
 
-% ozone absorption coefficients in an array of the data size
-A = A1*ones(1,length(t_j));
+% ozone absorption coefficients in an array of the data size (Summary)
+A = A1*ones(1,length(t_j)/5);
 
-% Extraterrestrial constant ratio in an array of the data size
-etc = etc1*ones(1,length(t_j));
+% Extraterrestrial constant ratio in an array of the data size (Summary)
+etc = etc1*ones(1,length(t_j)/5);
 
 % Brewer weighting coefficients at the different wavelengths
 w = [0.0 -1.0 0.5 2.2 -1.7];
@@ -313,8 +158,8 @@ w = [0.0 -1.0 0.5 2.2 -1.7];
 % Rayleigh scattering coefficients at the different wavelenghts (atm^-1)
 BE = [4870 4620 4410 4220 4040];
 
-% Rayleigh scattering coefficients in an array of the data size (=1)
-B = sum(w.*BE)*ones(1,length(t_j));
+% Rayleigh scattering coefficients in an array of the data size (=1) (Summary)
+B = sum(w.*BE)*ones(1,length(t_j)/5);
 
 % ----------------------------- Direct Sun ---------------------------------------------------------
 url_direct=['"',url_base,url_ds,'?brewerid=',brewer_str,'&date=',dates,'&enddate=',dates_f,'&format=text"']
@@ -328,6 +173,12 @@ rc3 = DS{17}; % raw counts of the incident light at 313.5 nm
 rc4 = DS{18}; % raw counts of the incident light at 316.8 nm
 rc5 = DS{19}; % raw counts of the incident light at 320.1 nm
 nfilpos = DS{7}; % position of the neutral-density filter (0, 64, 128, 192, 256, 320)
+
+% ----------------------------- Direct Sun Summary ---------------------------------------------------------
+url_direct=['"',url_base,url_dss,'?brewerid=',brewer_str,'&date=',dates,'&enddate=',dates_f,'&format=text"']
+DSS = download(url_direct);
+
+Omega_5_dss=DSS{17}'; % Calculated Ozone value with Standard algorithm + attenuation filter correction from Symmary (DU)
 
 % ratio of the raw counts. It is only a test. It's no real!!
 xx_r = -rc2 + 0.5*rc3 + 2.2*rc4 - 1.7*rc5;
@@ -354,11 +205,6 @@ u2_3_c = 2*(rc3 + dark)./(it.*ccl);
 u2_4_c = 2*(rc4 + dark)./(it.*ccl);
 u2_5_c = 2*(rc5 + dark)./(it.*ccl);
 
-% ratio of the counts. It is only a test. It's no real!!
-xx_c = -f2_c + 0.5*f3_c + 2.2*f4_c - 1.7*f5_c;
-
-% uncertainty of the ratio of the counts. It is only a test. It's no real!!
-u2_xx_c = u2_2_c + (0.5^2)*u2_3_c + (2.2^2)*u2_4_c + (1.7^2)*u2_5_c;
 %%
 % ----------------- Dark count correction --------------------------------------------------------
 
@@ -401,11 +247,6 @@ u2_3_d = u2_3_c + u2_d;
 u2_4_d = u2_4_c + u2_d;
 u2_5_d = u2_5_c + u2_d;
 
-% ratio of the counts. It is only a test. It's no real!!
-xx_d = -f2_d + 0.5*f3_d + 2.2*f4_d - 1.7*f5_d;
-
-% uncertainty of the ratio of the counts. It is only a test. It's no real!!
-u2_xx_d = u2_2_d + (0.5^2)*u2_3_d + (2.2^2)*u2_4_d + (1.7^2)*u2_5_d;
 
 % -------------------------dead time correction---------------------------------------
 %%
@@ -432,48 +273,44 @@ for i = 1:length(t_j)
 		f4_ct(j)=f4_d(i).*exp(f4_ct(j-1)*dt);
 		f5_ct(j)=f5_d(i).*exp(f5_ct(j-1)*dt);
 		
-		f1ct = f1_ct(j);
-		f2ct = f2_ct(j);
-		f3ct = f3_ct(j);
-		f4ct = f4_ct(j);
-		f5ct = f5_ct(j);
+		f1ct(i) = f1_ct(j);
+		f2ct(i) = f2_ct(j);
+		f3ct(i) = f3_ct(j);
+		f4ct(i) = f4_ct(j);
+		f5ct(i) = f5_ct(j);
 			
 	end
 
 % expanded uncertainty of the measures including the deadtime correction
-	u2_f1_3(i) = ((exp(dt*f1ct)./(1-dt*f1ct)).^2).*u2_1_d(i) + (f1ct.^4)*udt^2;
-	u2_f2_3(i) = ((exp(dt*f2ct)./(1-dt*f2ct)).^2).*u2_2_d(i) + (f2ct.^4)*udt^2;
-	u2_f3_3(i) = ((exp(dt*f3ct)./(1-dt*f3ct)).^2).*u2_3_d(i) + (f3ct.^4)*udt^2;
-	u2_f4_3(i) = ((exp(dt*f4ct)./(1-dt*f4ct)).^2).*u2_4_d(i) + (f4ct.^4)*udt^2;
-	u2_f5_3(i) = ((exp(dt*f5ct)./(1-dt*f5ct)).^2).*u2_5_d(i) + (f5ct.^4)*udt^2;
+	u2_f1_3(i) = ((exp(dt*f1ct(i))./(1-dt*f1ct(i))).^2).*u2_1_d(i) + (f1ct(i).^4)*udt^2;
+	u2_f2_3(i) = ((exp(dt*f2ct(i))./(1-dt*f2ct(i))).^2).*u2_2_d(i) + (f2ct(i).^4)*udt^2;
+	u2_f3_3(i) = ((exp(dt*f3ct(i))./(1-dt*f3ct(i))).^2).*u2_3_d(i) + (f3ct(i).^4)*udt^2;
+	u2_f4_3(i) = ((exp(dt*f4ct(i))./(1-dt*f4ct(i))).^2).*u2_4_d(i) + (f4ct(i).^4)*udt^2;
+	u2_f5_3(i) = ((exp(dt*f5ct(i))./(1-dt*f5ct(i))).^2).*u2_5_d(i) + (f5ct(i).^4)*udt^2;
 
 % change to logarithmic space of the measurements	 
-	f1_ct_1(i) = 10000*log10(f1ct);
-	f2_ct_1(i) = 10000*log10(f2ct);
-	f3_ct_1(i) = 10000*log10(f3ct);
-	f4_ct_1(i) = 10000*log10(f4ct);
-	f5_ct_1(i) = 10000*log10(f5ct);
-
-% change to logarithmic space of the uncertainties	(wrong)
-	u2_f1dt(i) = 10000*log10(u2_f1_3(i));
-	u2_f2dt(i) = 10000*log10(u2_f2_3(i));
-	u2_f3dt(i) = 10000*log10(u2_f3_3(i));
-	u2_f4dt(i) = 10000*log10(u2_f4_3(i));
-	u2_f5dt(i) = 10000*log10(u2_f5_3(i));
+	f1_ct_1(i) = 10000*log10(f1ct(i));
+	f2_ct_1(i) = 10000*log10(f2ct(i));
+	f3_ct_1(i) = 10000*log10(f3ct(i));
+	f4_ct_1(i) = 10000*log10(f4ct(i));
+	f5_ct_1(i) = 10000*log10(f5ct(i));
 	
 end
 
-% ratio of the counts. It is only a test. It's no real!!
-xx_dt = -f2_ct_1 + 0.5*f3_ct_1 + 2.2*f4_ct_1 - 1.7*f5_ct_1;
+% uncertainty in log space
+u2_f1log = (10000*(sqrt(u2_f1_3)./(f1ct*log(10)))).^2;
+u2_f2log = (10000*(sqrt(u2_f2_3)./(f2ct*log(10)))).^2;
+u2_f3log = (10000*(sqrt(u2_f3_3)./(f3ct*log(10)))).^2;
+u2_f4log = (10000*(sqrt(u2_f4_3)./(f4ct*log(10)))).^2;
+u2_f5log = (10000*(sqrt(u2_f5_3)./(f5ct*log(10)))).^2;
 
-% uncertainty of the ratio of the counts. It is only a test. It's no real!!
-u2_xx_dt = u2_f2dt + (0.5^2)*u2_f3dt + (2.2^2)*u2_f4dt + (1.7^2)*u2_f5dt;
-
+% provisional uncertainty
+u_rel_dt = sqrt((sqrt(u2_f2log)./f2_ct_1).^2 + ((0.5)*sqrt(u2_f3log)./f3_ct_1).^2 + ((2.2)*sqrt(u2_f4log)./f4_ct_1).^2 + ((1.7)*sqrt(u2_f5log)./f5_ct_1).^2);
 
 %%
 % -----------------------------Temperature correction--------------------------------------------
 
-% uncertainty of the PMT temperature (the resolution of the PMT is 1ÂºC)
+% uncertainty of the PMT temperature (the resolution of the PMT is 1ºC)
 u_temp = 1/sqrt(3); 
 
 % temperature coefficients and its uncertainties of the IZO2016 campaign
@@ -504,17 +341,15 @@ f4_temp = f4_ct_1 + temp.*TC4;
 f5_temp = f5_ct_1 + temp.*TC5;
 
 % expanded uncertainty of the measurements including the temperature correction
-u2_f1t = u2_f1dt + (TC1*u_temp).^2 + (temp*utc1).^2;
-u2_f2t = u2_f2dt + (TC2*u_temp).^2 + (temp*utc2).^2;
-u2_f3t = u2_f3dt + (TC3*u_temp).^2 + (temp*utc3).^2;
-u2_f4t = u2_f4dt + (TC4*u_temp).^2 + (temp*utc4).^2;
-u2_f5t = u2_f5dt + (TC5*u_temp).^2 + (temp*utc5).^2;
+u2_f1t = u2_f1log + (TC1*u_temp).^2 + (temp*utc1).^2;
+u2_f2t = u2_f2log + (TC2*u_temp).^2 + (temp*utc2).^2;
+u2_f3t = u2_f3log + (TC3*u_temp).^2 + (temp*utc3).^2;
+u2_f4t = u2_f4log + (TC4*u_temp).^2 + (temp*utc4).^2;
+u2_f5t = u2_f5log + (TC5*u_temp).^2 + (temp*utc5).^2;
 
-% ratio of the counts. It is only a test. It's no real!!
-xx_temp = -f2_temp + 0.5*f3_temp + 2.2*f4_temp - 1.7*f5_temp;
+% provisional uncertainty
+u_rel_temp = sqrt((sqrt(u2_f2t)./f2_temp).^2 + ((0.5)*sqrt(u2_f3t)./f3_temp).^2 + ((2.2)*sqrt(u2_f4t)./f4_temp).^2 + ((1.7)*sqrt(u2_f5t)./f5_temp).^2);
 
-% uncertainty of the ratio of the counts. It is only a test. It's no real!!
-u2_xx_temp = u2_f2t + (0.5^2)*u2_f3t + (2.2^2)*u2_f4t + (1.7^2)*u2_f5t;
 %%
 % ------------------------------ Neutral Filters correction -------------------------------------
 
@@ -559,21 +394,24 @@ for i = 1:length(t_j)
 	end
 end
 
-% ratio of the counts.
-xx_nf = -f2_nd + 0.5*f3_nd + 2.2*f4_nd - 1.7*f5_nd;
+% double ratio
+xx_nf = -f2_nd + 0.5*f3_nd + 2.2*f4_nd - 1.7*f5_nd; 
 
 % uncertainty of the measurements. We consider that the neutral filters uncertainty don't affect 
-%u2_ms9_r = u2_xx_temp;
-u2_xx_temp1 = -u2_f2t + (0.5)*u2_f3t + (2.2)*u2_f4t - (1.7)*u2_f5t; % it's not correct
-u2_ms9_r = u2_xx_temp;
+u_rel_ms9 = sqrt((sqrt(u2_f2t)./f2_nd).^2 + ((0.5)*sqrt(u2_f3t)./f3_nd).^2 + ((2.2)*sqrt(u2_f4t)./f4_nd).^2 + ((1.7)*sqrt(u2_f5t)./f5_nd).^2);
+
+u2_ms9_r = (u_rel_ms9.*xx_nf).^2;
+
+save('17.mat','Omega','ccl','dark','lat','lon','nfilpos','pre','rc1','rc2','rc3','rc4','rc5','t_j','temp')
+
 %%
 % ------------------ Definitions of some parameters ------------------------------------------------
 
-P0 = 1013.25; % standard pressure (mbars)
+Pstan = 1013.25; % standard pressure (mbars)
 
 R = 6371.229e3; % Earth's radius (m)
 
-r = 2370.0; % heigth of IzaÃ±a station (m)
+r = 2370.0; % heigth of Izaña station (m)
 
 
 %-------------------------------- SZA uncertaiinty---------------------------------------------------
@@ -632,7 +470,7 @@ u_heff_r = 2e2; % uncertainty of the Rayleigh effective altitude (m)
 
 % Rayleigh air mass and uncertainty
 sx_r = (R/(R+heff_r))*sin(sza*p0);
-m = sec(asin(sx_r));
+m = sec(asin(sx_r)); % air mass
 
 u2_m = ((sx_r.^2)/((1-sx_r.^2).^3)).*(((R^2)/((R+heff_r)^4)).*((sin(sza*p0)).^2)*(u_heff_r^2) + ((R^2)/((R+heff_r)^2)).*((cos(sza*p0)).^2).*(u2_sza));
 urel_m = 100*sqrt(u2_m)./m;
@@ -647,11 +485,16 @@ grid on
 
 % ---------------------------ozone airmass uncertainty----------------------------------------------
 heff_o = 22e3; % Ozone effective altitude (m)
-u_heff_o = 2e3; % uncertainty of the ozone effective altitude (m)
+u_heff_o3 = 2e3; % uncertainty of the ozone effective altitude (m)
+
+u_heff_clim = 1.5e3; % uncertainty of the ozone effective altitude through climatology
+
+% combined uncertainty
+u_heff_o = sqrt(u_heff_o3^2 + u_heff_clim^2);
 
 % Ozone air mass and uncertainty
 sx_o = (R/(R+heff_o))*sin(sza*p0);
-mu = sec(asin(sx_o));
+mu = sec(asin(sx_o)); % air mass
 
 u2_mu=((sx_o.^2)/((1-sx_o.^2).^3)).*(((R^2)/((R+heff_o)^4)).*((sin(sza*p0)).^2)*(u_heff_o^2) + ((R^2)/((R+heff_o)^2)).*((cos(sza*p0)).^2).*(u2_sza));
 urel_mu = 100*sqrt(u2_mu)./mu;
@@ -664,104 +507,123 @@ xlabel('Ozone air mass')
 ylabel('Relative uncertainty, %')
 grid on
 
+% ----------------------------- wavelength error associated to the measurement -------------------------------
+% obtained from dispresion
+
+[wv,c,b_wv] = tblread('ms9_wv_test.csv',',');
+brw_num_wv = str2num(b_wv);
+
+ind_wv = find(brw_num_wv==brw_str);
+k_wv = wv(ind,1); % Wavelength variation (percent)
+u_k = wv(ind,2); % uncertainty in wavelength (percent)
+
+% wavelength correction and uncertainty
+MS9_wv = xx_nf*(1+k_wv/100);
+u2_wv = ((1+k_wv/100)^2).*u2_ms9_r + ((xx_nf/100).^2).*u_k^2;
+
 %%
 % ----------------------------- mean of five measurements -----------------------------------------------------
 
-media=[];
+media_ms9=[];
 standard=[];
-sza_med=[];
-mu_med=[];
-m_med=[];
 u2_xx_med=[];
 u_xx_sta=[];
+
+sza_med=[];
+
+mu_med=[];
+u2_mu_med=[];
+
+m_med=[];
+u2_m_med=[];
+
+t_j_med=[];
+
+Omega_med=[];
+
 for i=0:1:(size(xx_nf,2)/5)-1
-    ser=mean(xx_nf(1,1+5*i:5+5*i)); % mean of MS9 (each 5 measurements)
-	stan_m=std(xx_nf(1,1+5*i:5+5*i)); % uncertainty
-	
-	sza_m = mean(sza(1,1+5*i:5+5*i)); % mean of SZA (each 5 measurements)
-	mu_m = median(mu(1,1+5*i:5+5*i)); % median of ozone optical mass
-	m_m = median(m(1,1+5*i:5+5*i)); % median of Rayleigh optical mass 
-    
-	u2_xx_m = (1/5)*mean(u2_ms9_r(1,1+5*i:5+5*i)); % uncertainty of the mean of MS9
-	u_xx_std = std(u2_ms9_r(1,1+5*i:5+5*i));
-    
-	media=[media;ser];
-	standard=[standard;stan_m];
-	sza_med=[sza_med;sza_m];
-	mu_med=[mu_med;mu_m];
-	m_med=[m_med;m_m];
-	
+    ms9_m=mean(MS9_wv(1,1+5*i:5+5*i)); % mean of MS9 (each 5 measurements)
+	stan_m=std(MS9_wv(1,1+5*i:5+5*i)); % uncertainty
+	u2_xx_m = (1/5)*mean(u2_wv(1,1+5*i:5+5*i)); % uncertainty of the mean of MS9
+	u_xx_std = std(u2_wv(1,1+5*i:5+5*i));
+	media_ms9=[media_ms9;ms9_m];
+	standard=[standard;stan_m];	
 	u2_xx_med=[u2_xx_med;u2_xx_m];
 	u_xx_sta=[u_xx_sta;u_xx_std];
+	
+	Omega_m=mean(Omega(1,1+5*i:5+5*i)); % mean of ozone each 5 measurements
+	Omega_med=[Omega_med;Omega_m];
+	
+	sza_m = mean(sza(1,1+5*i:5+5*i)); % mean of SZA (each 5 measurements)
+	
+	mu_m = median(mu(1,1+5*i:5+5*i)); % median of ozone optical mass
+	mu_med=[mu_med;mu_m]; 
+	u2_mu_m = median(u2_mu(1,1+5*i:5+5*i));
+	u2_mu_med = [u2_mu_med;u2_mu_m];
+		
+	t_j_m = median(mu(1,1+5*i:5+5*i)); % median of time each five measurements
+	t_j_med = [t_j_med;t_j_m];
+	
+	m_m = median(m(1,1+5*i:5+5*i)); % median of Rayleigh optical mass
+	m_med=[m_med;m_m];
+	u2_m_m = median(u2_m(1,1+5*i:5+5*i));
+    u2_m_med = [u2_m_med;u2_m_m];
+	
+	sza_med=[sza_med;sza_m];
 end
-o3_5 = media';
+ms9_5 = media_ms9';
 u2_5 = (standard').^2;
-sza_5 = sza_med';
-mu_5 = mu_med';
-m_5 = m_med';
 u2_xx_5 = u2_xx_med';
 u_xx_5_std = u_xx_sta';
 
-% -----------------------------------------Rayleigh------------------------------------------------------------
-% u_pre = 15;
- f1_r = f1_nd + BE(1)*m.*pre/1013.15;
- f2_r = f2_nd + BE(2)*m.*pre/1013.15;
- f3_r = f3_nd + BE(3)*m.*pre/1013.15;
- f4_r = f4_nd + BE(4)*m.*pre/1013.15;
- f5_r = f5_nd + BE(5)*m.*pre/1013.15;
+Omega_5 = Omega_med';
 
-% u2_f1r = u2_f1t + ((BE(1)*pre/1013.15).^2).*u_am_r.^2 + ((BE(1)*air_m/1013.15).^2).*u_pre.^2;
-% u2_f2r = u2_f2t + ((BE(2)*pre/1013.15).^2).*u_am_r.^2 + ((BE(2)*air_m/1013.15).^2).*u_pre.^2;
-% u2_f3r = u2_f3t + ((BE(3)*pre/1013.15).^2).*u_am_r.^2 + ((BE(3)*air_m/1013.15).^2).*u_pre.^2;
-% u2_f4r = u2_f4t + ((BE(4)*pre/1013.15).^2).*u_am_r.^2 + ((BE(4)*air_m/1013.15).^2).*u_pre.^2;
-% u2_f5r = u2_f5t + ((BE(5)*pre/1013.15).^2).*u_am_r.^2 + ((BE(5)*air_m/1013.15).^2).*u_pre.^2;
+sza_5 = sza_med';
 
-% % single ratios
- MS4 = f4_r - f1_r;
- MS5 = f4_r - f2_r;
- MS6 = f4_r - f3_r;
- MS7 = f5_r - f4_r;
+mu_5 = mu_med';
+u2_mu_5 = u2_mu_med';
 
-% u2_ms4 = u2_f4r + u2_f1r;
-% u2_ms5 = u2_f4r + u2_f2r;
-% u2_ms6 = u2_f4r + u2_f3r;
-% u2_ms7 = u2_f5r + u2_f4r;
+m_5 = m_med';
+u2_m_5 = u2_m_med';
 
-% % double ratios
+t_j_5 = t_j_med';
 
-% MS8 = MS4 - 3.2*MS7;
- MS9 = MS5 - 0.5*MS6 - 1.7*MS7;
+pre_5 = mean(pre)*ones(1,length(t_j)/5);
 
-% u2_ms8 = u2_ms4 + (3.2^2)*u2_ms7;
-% u2_ms9 = u2_ms5 + (0.5^2)*u2_ms6 + (1.7^2)*u2_ms7;
-
-% MS9 ratio without Rayleigh correction
-MS9_r = xx_nf;
-
+% MS9
+MS9_r = ms9_5;
 
 %----------------------------cross correlation matrix calculation (Omar)----------------------------------------------
 
 % Measurements substracting the ETC
-N_meas = (MS9_r-etc)+1; 
+N_meas = (MS9_r)+1; 
 
-
-A_nominal = zeros(1,length(sza));
-Omega_nominal = zeros(1,length(sza));
-mu_nominal = zeros(1,length(sza));
-B_nominal = zeros(1,length(sza));
+A_nominal = zeros(1,length(sza)/5);
+Omega_nominal = zeros(1,length(sza)/5);
+mu_nominal = zeros(1,length(sza)/5);
+B_nominal = zeros(1,length(sza)/5);
+m_nominal = zeros(1,length(sza)/5);
+pre_nominal = zeros(1,length(sza)/5);
+etc_nominal = zeros(1,length(sza)/5);
 %%
-for p=1:length(sza)
+for r=1:length(sza)/5
                     %% Nominal values parameters
                     
-                    fprintf('status computation = %2.1f  \n',(p/length(sza))*100);
+                    fprintf('status computation = %2.1f  \n',(r/length(sza)/5)*100);
 
-                    A_nominal(p) = A(p);
+                    A_nominal(r) = A(r);
 
-                    Omega_nominal(p) = Omega(p);
+                    Omega_nominal(r) = Omega_5(r);
 
-                    mu_nominal(p) = mu(p);
+                    mu_nominal(r) = mu_5(r);
 
-                    B_nominal(p) = B(p);
+                    B_nominal(r) = B(r);
+					
+					m_nominal(r) = m_5(r);
+					
+					pre_nominal(r) = pre_5(r);
+					
+					etc_nominal(r) = etc(r);
 
 
                     %% Here Levenberg algorithm would start.
@@ -781,14 +643,14 @@ for p=1:length(sza)
                     % -------------------------------------------------------------------------
                     % sigma is the noise level. It will be assumed to be the same in every
                     % pixel
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                     sigma = 1e-4;
                    
                     % Now we generate the first chi2
 
-                    [chi2_min, N] = generate_chi2(N_meas(p),sigma,A_nominal(p),Omega_nominal(p),mu_nominal(p), B_nominal(p));
+                    [chi2_min, N] = generate_chi2(N_meas(r),sigma,A_nominal(r),Omega_nominal(r),mu_nominal(r), B_nominal(r), m_nominal(r),pre_nominal(r),etc_nominal(r));
 
-                    [alpha,beta] = compute_jacobian(N, N_meas(p), A_nominal(p),Omega_nominal(p),mu_nominal(p), B_nominal(p),sigma);
+                    [alpha,beta] = compute_jacobian(N, N_meas(r), A_nominal(r),Omega_nominal(r),mu_nominal(r), B_nominal(r),m_nominal(r),pre_nominal(r),etc_nominal(r),sigma);
 
 
                     %% Compute Jacobian and beta vector necessary for the iterative algorithm
@@ -798,12 +660,15 @@ for p=1:length(sza)
                     while (count~=2) 
 
                             % Compute the alpha_prime which is required in the algorithm
-                            % basis in 5 dimensions
+                            % basis in 6 dimensions
 
-                            alpha_prime = [alpha(1,1)*(1+l) alpha(1,2) alpha(1,3) alpha(1,4);...
-                                            alpha(2,1) alpha(2,2)*(1+l) alpha(2,3) alpha(2,4);...
-                                            alpha(3,1) alpha(3,2) alpha(3,3)*(1+l) alpha(3,4);...
-                                            alpha(4,1) alpha(4,2) alpha(4,3) alpha(4,4)*(1+l)];
+                            alpha_prime = [alpha(1,1)*(1+l) alpha(1,2) alpha(1,3) alpha(1,4) alpha(1,5) alpha(1,6) alpha(1,7);...
+                                            alpha(2,1) alpha(2,2)*(1+l) alpha(2,3) alpha(2,4) alpha(2,5) alpha(2,6) alpha(2,7);...
+                                            alpha(3,1) alpha(3,2) alpha(3,3)*(1+l) alpha(3,4) alpha(3,5) alpha(3,6) alpha(3,7);...
+                                            alpha(4,1) alpha(4,2) alpha(4,3) alpha(4,4)*(1+l) alpha(4,5) alpha(4,6) alpha(4,7);...
+											alpha(5,1) alpha(5,2) alpha(5,3) alpha(5,4) alpha(5,5)*(1+l) alpha(5,6) alpha(5,7);...
+											alpha(6,1) alpha(6,2) alpha(6,3) alpha(6,4) alpha(6,5) alpha(6,6)*(1+l) alpha(6,7);
+											alpha(7,1) alpha(7,2) alpha(7,3) alpha(7,4) alpha(7,5) alpha(7,6) alpha(7,7)*(1+l)];
 
                             % Then we compute the parameters variations
 
@@ -811,17 +676,23 @@ for p=1:length(sza)
 
                             %Compute the new parameters
 
-                            A_nominal_new(p) = A_nominal(p)  + delta_param(1);
+                            A_nominal_new(r) = A_nominal(r)  + delta_param(1);
 
-                            Omega_nominal_new(p)  = Omega_nominal(p)  + delta_param(2);
+                            Omega_nominal_new(r)  = Omega_nominal(r)  + delta_param(2);
 
-                            mu_nominal_new(p)  = mu_nominal(p)  + delta_param(3);
+                            mu_nominal_new(r)  = mu_nominal(r)  + delta_param(3);
 
-                            B_nominal_new(p)  = B_nominal(p)  + delta_param(4);
+                            B_nominal_new(r)  = B_nominal(r)  + delta_param(4);
+							
+							m_nominal_new(r)  = m_nominal(r)  + delta_param(5);
+							
+							pre_nominal_new(r)  = pre_nominal(r)  + delta_param(6);
+							
+							etc_nominal_new(r)  = etc_nominal(r)  + delta_param(7);
 
                             % Compute the new chi2
 
-                            [chi2_new, N] = generate_chi2(N_meas(p),sigma,A_nominal_new(p) ,Omega_nominal_new(p) ,mu_nominal_new(p) , B_nominal_new(p));
+                            [chi2_new, N] = generate_chi2(N_meas(r),sigma,A_nominal_new(r),Omega_nominal_new(r),mu_nominal_new(r),B_nominal_new(r),m_nominal_new(r),pre_nominal_new(r),etc_nominal_new(r));
 
                             diff_chi2 = (chi2_new-chi2_min);
 
@@ -829,15 +700,21 @@ for p=1:length(sza)
 
 								l = l/10
 
-                                A_nominal(p)  = A_nominal_new(p); 
+                                A_nominal(r)  = A_nominal_new(r); 
 
-                                Omega_nominal(p)  = Omega_nominal_new(p); 
+                                Omega_nominal(r)  = Omega_nominal_new(r); 
 
-                                mu_nominal(p)  = mu_nominal_new(p); 
+                                mu_nominal(r)  = mu_nominal_new(r); 
 
-                                B_nominal(p)  = B_nominal_new(p); 
+                                B_nominal(r)  = B_nominal_new(r); 
+								
+								m_nominal(r)  = m_nominal_new(r);
+								
+								pre_nominal(r)  = pre_nominal_new(r);
+								
+								etc_nominal(r)  = etc_nominal_new(r);
 
-                                [alpha, beta] = compute_jacobian(N, N_meas(p), A_nominal(p) ,Omega_nominal(p) ,mu_nominal(p) , B_nominal(p) , sigma);
+                                [alpha, beta] = compute_jacobian(N,N_meas(r),A_nominal(r),Omega_nominal(r),mu_nominal(r),B_nominal(r),m_nominal(r),pre_nominal(r), etc_nominal(r),sigma);
 
                                 chi2_aux = chi2_min;
 
@@ -869,48 +746,96 @@ for p=1:length(sza)
                     l = 0;
 
 
-                    alpha_prime = [alpha(1,1)*(1+l) alpha(1,2) alpha(1,3) alpha(1,4);...
-                                            alpha(2,1) alpha(2,2)*(1+l) alpha(2,3) alpha(2,4);...
-                                            alpha(3,1) alpha(3,2) alpha(3,3)*(1+l) alpha(3,4);...
-                                            alpha(4,1) alpha(4,2) alpha(4,3) alpha(4,4)*(1+l)];
+                    alpha_prime = [alpha(1,1)*(1+l) alpha(1,2) alpha(1,3) alpha(1,4) alpha(1,5) alpha(1,6) alpha(1,7);...
+                                            alpha(2,1) alpha(2,2)*(1+l) alpha(2,3) alpha(2,4) alpha(2,5) alpha(2,6) alpha(2,7);...
+                                            alpha(3,1) alpha(3,2) alpha(3,3)*(1+l) alpha(3,4) alpha(3,5) alpha(3,6) alpha(3,7);...
+                                            alpha(4,1) alpha(4,2) alpha(4,3) alpha(4,4)*(1+l) alpha(4,5) alpha(4,6) alpha(4,7);...
+											alpha(5,1) alpha(5,2) alpha(5,3) alpha(5,4) alpha(5,5)*(1+l) alpha(5,6) alpha(5,7);...
+											alpha(6,1) alpha(6,2) alpha(6,3) alpha(6,4) alpha(6,5) alpha(6,6)*(1+l) alpha(6,7);...
+											alpha(7,1) alpha(7,2) alpha(7,3) alpha(7,4) alpha(7,5) alpha(7,6) alpha(7,7)*(1+l)];
                     
                     
-                    alpha_prime_corrected = alpha_prime+0.3.*eye(4,4);
+                    alpha_prime_corrected = alpha_prime+0.3.*eye(7,7);
                     
                     C  = inv(alpha_prime_corrected);
                     
-                    uncert_A(p)  = sigma.*sqrt(abs(C(1,1)));
+                    uncert_A(r)  = sigma.*sqrt(abs(C(1,1)));
 
-                    uncert_Omega(p)  = sigma.*sqrt(abs(C(2,2)));
+                    uncert_Omega(r)  = sigma.*sqrt(abs(C(2,2)));
 
-                    uncert_mu(p)  = sigma.*sqrt(abs(C(3,3)));
+                    uncert_mu(r)  = sigma.*sqrt(abs(C(3,3)));
 
-                    uncert_B(p)  = sigma.*sqrt(abs(C(4,4)));
+                    uncert_B(r)  = sigma.*sqrt(abs(C(4,4)));
+					
+					uncert_m(r)  = sigma.*sqrt(abs(C(5,5)));
+					
+					uncert_pre(r)  = sigma.*sqrt(abs(C(6,6)));
+					
+					uncert_etc(r)  =sigma.*sqrt(abs(C(7,7)));
                      
                      
 
-                    rho(p,1,1) = C(1,1)/(sqrt(abs(C(1,1)*C(1,1))));
-                    rho(p,1,2) = C(1,2)/(sqrt(abs(C(1,1)*C(2,2))));
-                    rho(p,1,3) = C(1,3)/(sqrt(abs(C(1,1)*C(3,3))));
-                    rho(p,1,4) = C(1,4)/(sqrt(abs(C(1,1)*C(4,4))));
-                    rho(p,2,1) = C(2,1)/(sqrt(abs(C(2,2)*C(1,1))));
-                    rho(p,2,2) = C(2,2)/(sqrt(abs(C(2,2)*C(2,2))));
-                    rho(p,2,3) = C(2,3)/(sqrt(abs(C(2,2)*C(3,3))));
-                    rho(p,2,4) = C(1,1)/(sqrt(abs(C(1,1)*C(1,1))));
-                    rho(p,3,1) = C(3,1)/(sqrt(abs(C(3,3)*C(1,1))));
-                    rho(p,3,2) = C(3,2)/(sqrt(abs(C(3,3)*C(2,2))));
-                    rho(p,3,3) = C(3,3)/(sqrt(abs(C(3,3)*C(3,3))));
-                    rho(p,3,4) = C(3,4)/(sqrt(abs(C(3,3)*C(4,4))));
-                    rho(p,4,1) = C(4,1)/(sqrt(abs(C(4,4)*C(1,1))));
-                    rho(p,4,2) = C(4,2)/(sqrt(abs(C(4,4)*C(2,2))));
-                    rho(p,4,3) = C(4,3)/(sqrt(abs(C(4,4)*C(3,3))));
-                    rho(p,4,4) = C(4,4)/(sqrt(abs(C(4,4)*C(4,4))));
+                    rho(r,1,1) = C(1,1)/(sqrt(abs(C(1,1)*C(1,1))));
+                    rho(r,1,2) = C(1,2)/(sqrt(abs(C(1,1)*C(2,2))));
+                    rho(r,1,3) = C(1,3)/(sqrt(abs(C(1,1)*C(3,3))));
+                    rho(r,1,4) = C(1,4)/(sqrt(abs(C(1,1)*C(4,4))));
+					rho(r,1,5) = C(1,5)/(sqrt(abs(C(1,1)*C(5,5))));
+					rho(r,1,6) = C(1,6)/(sqrt(abs(C(1,1)*C(6,6))));
+					rho(r,1,7) = C(1,7)/(sqrt(abs(C(1,1)*C(7,7))));
+					
+                    rho(r,2,1) = C(2,1)/(sqrt(abs(C(2,2)*C(1,1))));
+                    rho(r,2,2) = C(2,2)/(sqrt(abs(C(2,2)*C(2,2))));
+                    rho(r,2,3) = C(2,3)/(sqrt(abs(C(2,2)*C(3,3))));
+                    rho(r,2,4) = C(2,4)/(sqrt(abs(C(2,2)*C(4,4))));
+					rho(r,2,5) = C(2,5)/(sqrt(abs(C(2,2)*C(5,5))));
+					rho(r,2,6) = C(2,6)/(sqrt(abs(C(2,2)*C(6,6))));
+					rho(r,2,7) = C(2,7)/(sqrt(abs(C(2,2)*C(7,7))));
+                    
+					rho(r,3,1) = C(3,1)/(sqrt(abs(C(3,3)*C(1,1))));
+                    rho(r,3,2) = C(3,2)/(sqrt(abs(C(3,3)*C(2,2))));
+                    rho(r,3,3) = C(3,3)/(sqrt(abs(C(3,3)*C(3,3))));
+                    rho(r,3,4) = C(3,4)/(sqrt(abs(C(3,3)*C(4,4))));
+					rho(r,3,5) = C(3,5)/(sqrt(abs(C(3,3)*C(5,5))));
+					rho(r,3,6) = C(3,6)/(sqrt(abs(C(3,3)*C(6,6))));
+					rho(r,3,7) = C(3,7)/(sqrt(abs(C(3,3)*C(7,7))));
+					
+					rho(r,4,1) = C(4,1)/(sqrt(abs(C(4,4)*C(1,1))));
+                    rho(r,4,2) = C(4,2)/(sqrt(abs(C(4,4)*C(2,2))));
+                    rho(r,4,3) = C(4,3)/(sqrt(abs(C(4,4)*C(3,3))));
+                    rho(r,4,4) = C(4,4)/(sqrt(abs(C(4,4)*C(4,4))));
+					rho(r,4,5) = C(4,5)/(sqrt(abs(C(4,4)*C(5,5))));
+					rho(r,4,6) = C(4,6)/(sqrt(abs(C(4,4)*C(6,6))));
+					rho(r,4,7) = C(4,7)/(sqrt(abs(C(4,4)*C(7,7))));
+					
+					rho(r,5,1) = C(5,1)/(sqrt(abs(C(5,5)*C(1,1))));
+					rho(r,5,2) = C(5,2)/(sqrt(abs(C(5,5)*C(2,2))));
+					rho(r,5,3) = C(5,3)/(sqrt(abs(C(5,5)*C(3,3))));
+					rho(r,5,4) = C(5,4)/(sqrt(abs(C(5,5)*C(4,4))));
+					rho(r,5,5) = C(5,5)/(sqrt(abs(C(5,5)*C(5,5))));
+					rho(r,5,6) = C(5,6)/(sqrt(abs(C(5,5)*C(6,6))));
+					rho(r,5,7) = C(5,7)/(sqrt(abs(C(5,5)*C(7,7))));
+					
+					rho(r,6,1) = C(6,1)/(sqrt(abs(C(6,6)*C(1,1))));
+					rho(r,6,2) = C(6,2)/(sqrt(abs(C(6,6)*C(2,2))));
+					rho(r,6,3) = C(6,3)/(sqrt(abs(C(6,6)*C(3,3))));
+					rho(r,6,4) = C(6,4)/(sqrt(abs(C(6,6)*C(4,4))));
+					rho(r,6,5) = C(6,5)/(sqrt(abs(C(6,6)*C(5,5))));
+					rho(r,6,6) = C(6,6)/(sqrt(abs(C(6,6)*C(6,6))));
+					rho(r,6,7) = C(6,7)/(sqrt(abs(C(6,6)*C(7,7))));
+					
+					rho(r,7,1) = C(7,1)/(sqrt(abs(C(7,7)*C(1,1))));
+					rho(r,7,2) = C(7,2)/(sqrt(abs(C(7,7)*C(2,2))));
+					rho(r,7,3) = C(7,3)/(sqrt(abs(C(7,7)*C(3,3))));
+					rho(r,7,4) = C(7,4)/(sqrt(abs(C(7,7)*C(4,4))));
+					rho(r,7,5) = C(7,5)/(sqrt(abs(C(7,7)*C(5,5))));
+					rho(r,7,6) = C(7,6)/(sqrt(abs(C(7,7)*C(6,6))));
+					rho(r,7,7) = C(7,7)/(sqrt(abs(C(7,7)*C(7,7))));
 
 end
 
 % Figure 4 - Cross Correlation between A and Omega
 figure(4)
-plot(t_j,rho(:,1,2));
+plot(t_j_5,rho(:,1,2));
 datetick('x',dateFormat)
 title('Correlation A-\Omega');
 xlabel('Time')
@@ -918,7 +843,7 @@ ylabel('Correlation')
 
 % Figure 5 - Cross Correlation between mu and Omega
 figure(5)
-plot(t_j,rho(:,2,3));
+plot(t_j_5,rho(:,2,3));
 datetick('x',dateFormat)
 title('Correlation Omega-\mu');
 xlabel('Time')
@@ -926,7 +851,7 @@ ylabel('Correlation')
 
 % Figure 6 - Cross Correlation between A and mu
 figure(6)
-plot(t_j,rho(:,1,3));
+plot(t_j_5,rho(:,1,3));
 datetick('x',dateFormat)
 title('Correlation \mu-A');
 xlabel('Time')
@@ -934,7 +859,7 @@ ylabel('Correlation')
 
 % Figure 7 - Cross Correlation between A and B
 figure(7)
-plot(t_j,rho(:,1,4));
+plot(t_j_5,rho(:,1,4));
 datetick('x',dateFormat)
 title('Correlation A-B');
 xlabel('Time')
@@ -942,7 +867,7 @@ ylabel('Correlation')
 
 % Figure 8 - Cross Correlation between B and Omega
 figure(8)
-plot(t_j,rho(:,2,4));
+plot(t_j_5,rho(:,2,4));
 datetick('x',dateFormat)
 title('Correlation B-\Omega');
 xlabel('Time')
@@ -950,45 +875,98 @@ ylabel('Correlation')
 
 % Figure 9 - Cross Correlation between B and mu
 figure(9)
-plot(t_j,rho(:,3,4));
+plot(t_j_5,rho(:,3,4));
 datetick('x',dateFormat)
 title('Correlation B-\mu');
 xlabel('Time')
 ylabel('Correlation')
 
-%%
+% Figure 10 - Cross Correlation between A and m
+figure(10)
+plot(t_j_5,rho(:,1,5));
+datetick('x',dateFormat)
+title('Correlation A-m');
+xlabel('Time')
+ylabel('Correlation')
+
+% Figure 11 - Cross Correlation between A and p
+figure(11)
+plot(t_j_5,rho(:,1,6));
+datetick('x',dateFormat)
+title('Correlation A-p');
+xlabel('Time')
+ylabel('Correlation')
+
+% Figure 12 - Cross Correlation between A and ETC
+figure(12)
+plot(t_j_5,rho(:,1,7));
+datetick('x',dateFormat)
+title('Correlation A-ETC');
+xlabel('Time')
+ylabel('Correlation')
+
 % MS9 with Rayleigh correction
 meas = N_meas;
-o3_meas = (meas-m.*pre.*B/1013.15)./(A.*mu);
+o3_meas = (meas-m_5.*pre_5.*B/Pstan)./(A.*mu_5);
 
 % O3 without Rayleigh correction
-o3_meas_r = meas./(A.*mu);
+o3_meas_r = meas./(A.*mu_5);
 %%
 
+% uncertainty of the pressure
+u_pre = 15.0; % mbar
+
 % uncertainty of the measurements
-u_meas = sqrt(u2_ms9_r);
+u_meas = sqrt(u2_xx_5);
 
 % Uncertainty of the ETC (counts/s)
-u_etc_f = 5*ones(1,length(t_j));
+u_etc_f = 5*ones(1,length(t_j_5));
 
-% Uncertainty of the ozone absorption coefficient (Bootstraping Method)
+% Uncertainty of the ozone absorption coefficient
+%-------------------------------------------------
 
+% from climatology
+unc_teff = 5.0;
+
+% percentage gradient for the BP and SG cross sections (Redondas A. et al., 2014)
+grad_bp = 9.3601e-2;
+grad_sg = 9.6391e-3;
+
+[u_bp,u_sg]=sigma2(brewer_str); % fuction for the cross secion uncertainty
+u_boot = cross(brewer_str); % function for the Bootstraping method uncertainty
+
+%%
+% variation of the ozone absorption coefficient with the wavelength obtained from dispersion (absolute)
 if brewer_num == 17
-	u_A = 1e-3;
+	Astep = 0.0012;
 else
-	u_A = cross(brewer_str);
+	Astep = 0.00109;
 end
+
+% uncertainty of the ozone absorption coefficient for each cross section
+u_A_bp = sqrt(u_bp^2 + u_boot^2 + (unc_teff*grad_bp*mean(A)/100)^2 + (Astep)^2);
+u_A_sg = sqrt(u_sg^2 + u_boot^2 + (unc_teff*grad_sg*mean(A)/100)^2 + (Astep)^2);
 
 % Fix relative uncertainty (percent/100) and uncertainty of the Rayleigh coefficient
 urel_B = 0.01;
 u_B = urel_B*B;
 
 %%
-% Uncertainty of ozone with fixed uncertainties
-a = (mu.*A).^2;
-b = 2*mu.*A.*(Omega.*A.*sqrt(u2_mu).*rho(:,2,3)' + mu.*Omega.*u_A.*rho(:,1,2)' + m.*(pre/1013).*u_B.*rho(:,2,4)');
-c = u2_mu.*(Omega.*A).^2 + (mu.*Omega.*u_A).^2 + (m.*(pre/1013).*u_B).^2 + 2*(Omega.^2).*A.*mu.*sqrt(u2_mu).*u_A.*rho(:,1,3)' +...
-2*Omega.*A.*m.*(pre/1013).*sqrt(u2_mu).*u_B.*rho(:,3,4)' + 2*mu.*Omega.*m.*(pre/1013).*u_A.*u_B.*rho(:,1,4)' - u2_ms9_r - u_etc_f.^2;
+% Ozone uncertainty with fixed uncertainties for BP cross section
+a = (mu_5.*A).^2;
+
+b = 2*mu_5.*A.*(Omega_5.*A.*sqrt(u2_mu_5).*rho(:,2,3)' + mu_5.*Omega_5.*u_A_bp.*rho(:,1,2)' + (pre_5/Pstan).*B.*sqrt(u2_m_5).*rho(:,1,5)' +...  
+    (m_5.*B/Pstan)*u_pre.*rho(:,2,6)' + m_5.*(pre_5/Pstan).*u_B.*rho(:,2,4)' + u_etc_f.*rho(:,2,7)');
+
+c = u2_mu_5.*(Omega_5.*A).^2 + (mu_5.*Omega_5.*u_A_bp).^2 + ((B.*pre_5/Pstan).^2).*u2_m_5 + (m_5.*(pre_5/Pstan).*u_B).^2 +...
+    ((m_5.*B./Pstan).^2).*u_pre.^2 + u_etc_f.^2 + 2*(Omega_5.^2).*A.*mu_5.*sqrt(u2_mu_5).*u_A_bp.*rho(:,1,3)' +...
+	2*Omega_5.*A.*m_5.*(pre_5/Pstan).*sqrt(u2_mu_5).*u_B.*rho(:,3,4)' + 2*mu_5.*Omega_5.*m_5.*(pre_5/Pstan).*u_A_bp.*u_B.*rho(:,1,4)'+...
+    2*(Omega_5.*A.*pre_5.*B/Pstan).*sqrt(u2_mu_5).*sqrt(u2_m_5).*rho(:,3,5)' + 2*(Omega_5.*A.*m_5.*B/Pstan).*sqrt(u2_mu_5).*u_pre.*rho(:,3,6)'+...
+    2*(mu_5.*Omega_5.*pre_5.*B./Pstan).*u_A_bp.*sqrt(u2_m_5).*rho(:,1,5)' + 2*(mu_5.*Omega_5.*m_5.*B./Pstan).*u_A_bp.*u_pre.*rho(:,1,6)' +...
+    2*(pre_5.*B.*B.*m_5./(Pstan^2)).*sqrt(u2_m_5).*u_pre.*rho(:,5,6)' + 2*(B.*m_5.*pre_5.*pre_5/(Pstan^2)).*sqrt(u2_m_5).*u_B.*rho(:,4,5)' +...
+    2*(B.*pre_5.*m_5.*m_5./(Pstan^2)).*u_pre.*u_B.*rho(:,4,6)' + 2*Omega_5.*A.*u_etc_f.*sqrt(u2_mu_5).*rho(:,3,7)'+...
+    2*mu_5.*Omega_5.*u_etc_f.*u_A_bp.*rho(:,1,7)' + 2*B.*(pre_5/Pstan).*u_etc_f.*sqrt(u2_m_5).*rho(:,5,7)'+...
+    2*(m_5.*B/Pstan).*u_etc_f.*u_pre.*rho(:,6,7)' + 2*(m_5.*pre_5/Pstan).*u_etc_f.*u_B.*rho(:,4,7)' + u2_xx_5 ;
 
 uo3_pos = abs((-b+sqrt(b.^2 - 4*a.*c))./(2*a));
 uo3_neg = abs((-b-sqrt(b.^2 - 4*a.*c))./(2*a));
@@ -1002,137 +980,68 @@ else
 	uo3 = uo3_pos;
 end
 
-% Figure 10 - Absolute ozone uncertainty
-figure(10)
-plot(Omega.*mu,uo3)
+% Figure 13 - Ozone Absolute uncertainty
+figure(13)
+plot(Omega_5.*mu_5,uo3,'+')
 title('Ozone absolute uncertainty');
 xlabel('Ozone Slant Column, DU')
 ylabel('Absolute Uncertainty, DU')
 grid on
 
-% ---------------- ozone uncertainty contributions ------------------------------------
-% -------------------------------------------------------------------------------------
-% ----------------- measurements ------------------------------------------------------
-
-u_F_rel = [0.01:0.005:0.04];
-
-for l = 1:7
-    for i = 1:length(t_j)
-        u_F_abs(l,i) = MS9_r(i)*u_F_rel(l);
-		a_f(i) = (mu(i).*A(i)).^2;
-		b_f(i) = 2*mu(i).*A(i).*(Omega(i).*A(i).*sqrt(u2_mu(i)).*rho(i,2,3)' + mu(i).*Omega(i).*u_A.*rho(i,1,2)' + m(i).*(pre(i)/1013).*u_B(i).*rho(i,2,4)');
-		c_f(l,i) = u2_mu(i).*(Omega(i).*A(i)).^2 + (mu(i).*Omega(i).*u_A).^2 + (m(i).*(pre(i)/1013).*u_B(i)).^2 + 2*(Omega(i).^2).*A(i).*mu(i).*sqrt(u2_mu(i)).*u_A.*rho(i,1,3)' +...
-		2*Omega(i).*A(i).*m(i).*(pre(i)/1013).*sqrt(u2_mu(i)).*u_B(i).*rho(i,3,4)' + 2*mu(i).*Omega(i).*m(i).*(pre(i)/1013).*u_A.*u_B(i).*rho(i,1,4)' - u_F_abs(l,i).^2 - u_etc_f(i).^2;
-    
-		uo3_f(l,i) = abs((-b_f(i)+sqrt(b_f(i).^2 - 4*a_f(i).*c_f(l,i)))./(2*a_f(i)));
-	end
-end
-
-% Figure 11 - Ozone absolute uncertainty vs. measurement uncertainty
-figure(11)
-plot(Omega.*mu,uo3_f(1:7,:))
-title('Ozone absolute uncertainty vs. measurement uncertainty');
-xlabel('Ozone Slant Column, DU')
-ylabel('Absolute Uncertainty, DU')
-legend('1%', '1.5%', '2%', '2.5%', '3%', '3.5%', '4%')
-grid on
-
-% ------------------------------- ozone absorption --------------------------------------------
-
-u_A_rel = [0.01:0.005:0.04];
-
-for l = 1:7
-    for i = 1:length(t_j)
-        u_A_abs(l,i) = A(i)*u_A_rel(l);
-		a_a(i) = (mu(i).*A(i)).^2;
-		b_a(l,i) = 2*mu(i).*A(i).*(Omega(i).*A(i).*sqrt(u2_mu(i)).*rho(i,2,3)' + mu(i).*Omega(i).*u_A_abs(l,i).*rho(i,1,2)' + m(i).*(pre(i)/1013).*u_B(i).*rho(i,2,4)');
-		c_a(l,i) = u2_mu(i).*(Omega(i).*A(i)).^2 + (mu(i).*Omega(i).*u_A_abs(l,i)).^2 + (m(i).*(pre(i)/1013).*u_B(i)).^2 + 2*(Omega(i).^2).*A(i).*mu(i).*sqrt(u2_mu(i)).*u_A_abs(l,i).*rho(i,1,3)' +...
-		2*Omega(i).*A(i).*m(i).*(pre(i)/1013).*sqrt(u2_mu(i)).*u_B(i).*rho(i,3,4)' + 2*mu(i).*Omega(i).*m(i).*(pre(i)/1013).*u_A_abs(l,i).*u_B(i).*rho(i,1,4)' - u2_ms9_r(i) - u_etc_f(i).^2;
-    
-		uo3_a(l,i) = abs((-b_a(l,i)+sqrt(b_a(l,i).^2 - 4*a_a(i).*c_a(l,i)))./(2*a_a(i)));
-	end
-end
-
-% Figure 12 - Ozone absolute uncertainty vs. absorption uncertainty
-figure(12)
-plot(Omega.*mu,uo3_a(1:7,:))
-title('Ozone absolute uncertainty vs. absorption uncertainty');
-xlabel('Ozone Slant Column, DU')
-ylabel('Absolute Uncertainty, DU')
-legend('1%', '1.5%', '2%', '2.5%', '3%', '3.5%', '4%')
-grid on
-
-% ------------------------------- Rayleigh coefficients --------------------------------------------
-
-u_B_rel = [0.01:0.005:0.04];
-
-for l = 1:7
-    for i = 1:length(t_j)
-        u_B_abs(l,i) = B(i)*u_B_rel(l);
-		a_b(i) = (mu(i).*A(i)).^2;
-		b_b(l,i) = 2*mu(i).*A(i).*(Omega(i).*A(i).*sqrt(u2_mu(i)).*rho(i,2,3)' + mu(i).*Omega(i).*u_A.*rho(i,1,2)' + m(i).*(pre(i)/1013).*u_B_abs(l,i).*rho(i,2,4)');
-		c_b(l,i) = u2_mu(i).*(Omega(i).*A(i)).^2 + (mu(i).*Omega(i).*u_A).^2 + (m(i).*(pre(i)/1013).*u_B_abs(l,i)).^2 + 2*(Omega(i).^2).*A(i).*mu(i).*sqrt(u2_mu(i)).*u_A.*rho(i,1,3)' +...
-		2*Omega(i).*A(i).*m(i).*(pre(i)/1013).*sqrt(u2_mu(i)).*u_B_abs(l,i).*rho(i,3,4)' + 2*mu(i).*Omega(i).*m(i).*(pre(i)/1013).*u_A.*u_B_abs(l,i).*rho(i,1,4)' - u2_ms9_r(i) - u_etc_f(i).^2;
-    
-		uo3_b(l,i) = abs((-b_b(l,i)+sqrt(b_b(l,i).^2 - 4*a_b(i).*c_b(l,i)))./(2*a_b(i)));
-	end
-end
-
-% Figure 13 - Ozone absolute uncertainty vs. Rayleigh uncertainty
-figure(13)
-plot(Omega.*mu,uo3_b(1:7,:))
-title('Ozone absolute uncertainty vs. Rayleigh uncertainty');
-xlabel('Ozone Slant Column, DU')
-ylabel('Absolute Uncertainty, DU')
-legend('1%', '1.5%', '2%', '2.5%', '3%', '3.5%', '4%')
-grid on
-
-% ------------------------------- ETC --------------------------------------------------
-
-u_ETC_rel = [0.01:0.005:0.04];
-
-for l = 1:7
-    for i = 1:length(t_j)
-        u_ETC_abs(l,i) = etc(i)*u_ETC_rel(l);
-		a_e(i) = (mu(i).*A(i)).^2;
-		b_e(i) = 2*mu(i).*A(i).*(Omega(i).*A(i).*sqrt(u2_mu(i)).*rho(i,2,3)' + mu(i).*Omega(i).*u_A.*rho(i,1,2)' + m(i).*(pre(i)/1013).*u_B(i).*rho(i,2,4)');
-		c_e(l,i) = u2_mu(i).*(Omega(i).*A(i)).^2 + (mu(i).*Omega(i).*u_A).^2 + (m(i).*(pre(i)/1013).*u_B(i)).^2 + 2*(Omega(i).^2).*A(i).*mu(i).*sqrt(u2_mu(i)).*u_A.*rho(i,1,3)' +...
-		2*Omega(i).*A(i).*m(i).*(pre(i)/1013).*sqrt(u2_mu(i)).*u_B(i).*rho(i,3,4)' + 2*mu(i).*Omega(i).*m(i).*(pre(i)/1013).*u_A.*u_B(i).*rho(i,1,4)' - u2_ms9_r(i)-u_ETC_abs(l,i).^2;
-    
-		uo3_e(l,i) = abs((-b_e(i)+sqrt(b_e(i).^2 - 4*a_e(i).*c_e(l,i)))./(2*a_e(i)));
-	end
-end
-
-% Figure 14 - Ozone absolute uncertainty vs. ETC uncertainty
+% Figure 14 - Ozone Relative uncertainty
 figure(14)
-plot(Omega.*mu,uo3_e(1:7,:))
-title('Ozone absolute uncertainty vs. ETC uncertainty');
-xlabel('Ozone Slant Column, DU')
-ylabel('Absolute Uncertainty, DU')
-legend('1%', '1.5%', '2%', '2.5%', '3%', '3.5%', '4%')
+plot(sza_5,100.*uo3./Omega_5,'+')
+title('Ozone relative uncertainty');
+xlabel('Solar Zenith Angle, deg')
+ylabel('Relative Uncertainty, %')
 grid on
 
-% ------------------------------- ozone air mass --------------------------------------------------
+%%
+% Ozone uncertainty with fixed uncertainties for SG cross section
+a = (mu_5.*A).^2;
 
-u_mu_rel = [0.01:0.005:0.04];
+b_sg = 2*mu_5.*A.*(Omega_5.*A.*sqrt(u2_mu_5).*rho(:,2,3)' + mu_5.*Omega_5.*u_A_sg.*rho(:,1,2)' + (pre_5/Pstan).*B.*sqrt(u2_m_5).*rho(:,1,5)' +...  
+    (m_5.*B/Pstan)*u_pre.*rho(:,2,6)' + m_5.*(pre_5/Pstan).*u_B.*rho(:,2,4)' + u_etc_f.*rho(:,2,7)');
 
-for l = 1:7
-    for i = 1:length(t_j)
-        u_mu_abs(l,i) = mu(i)*u_mu_rel(l);
-		a_mu(i) = (mu(i).*A(i)).^2;
-		b_mu(l,i) = 2*mu(i).*A(i).*(Omega(i).*A(i).*u_mu_abs(l,i).*rho(i,2,3)' + mu(i).*Omega(i).*u_A.*rho(i,1,2)' + m(i).*(pre(i)/1013).*u_B(i).*rho(i,2,4)');
-		c_mu(l,i) = (u_mu_abs(l,i).^2).*(Omega(i).*A(i)).^2 + (mu(i).*Omega(i).*u_A).^2 + (m(i).*(pre(i)/1013).*u_B(i)).^2 + 2*(Omega(i).^2).*A(i).*mu(i).*u_mu_abs(l,i).*u_A.*rho(i,1,3)' +...
-		2*Omega(i).*A(i).*m(i).*(pre(i)/1013).*u_mu_abs(l,i).*u_B(i).*rho(i,3,4)' + 2*mu(i).*Omega(i).*m(i).*(pre(i)/1013).*u_A.*u_B(i).*rho(i,1,4)' - u2_ms9_r(i) - u_etc_f(i).^2;
-    
-		uo3_mu(l,i) = abs((-b_mu(l,i)+sqrt(b_mu(l,i).^2 - 4*a_mu(i).*c_mu(l,i)))./(2*a_mu(i)));
-	end
+c_sg = u2_mu_5.*(Omega_5.*A).^2 + (mu_5.*Omega_5.*u_A_sg).^2 + ((B.*pre_5/Pstan).^2).*u2_m_5 + (m_5.*(pre_5/Pstan).*u_B).^2 +...
+    ((m_5.*B./Pstan).^2).*u_pre.^2 + u_etc_f.^2 + 2*(Omega_5.^2).*A.*mu_5.*sqrt(u2_mu_5).*u_A_sg.*rho(:,1,3)' +...
+	2*Omega_5.*A.*m_5.*(pre_5/Pstan).*sqrt(u2_mu_5).*u_B.*rho(:,3,4)' + 2*mu_5.*Omega_5.*m_5.*(pre_5/Pstan).*u_A_sg.*u_B.*rho(:,1,4)'+...
+    2*(Omega_5.*A.*pre_5.*B/Pstan).*sqrt(u2_mu_5).*sqrt(u2_m_5).*rho(:,3,5)' + 2*(Omega_5.*A.*m_5.*B/Pstan).*sqrt(u2_mu_5).*u_pre.*rho(:,3,6)'+...
+    2*(mu_5.*Omega_5.*pre_5.*B./Pstan).*u_A_sg.*sqrt(u2_m_5).*rho(:,1,5)' + 2*(mu_5.*Omega_5.*m_5.*B./Pstan).*u_A_sg.*u_pre.*rho(:,1,6)' +...
+    2*(pre_5.*B.*B.*m_5./(Pstan^2)).*sqrt(u2_m_5).*u_pre.*rho(:,5,6)' + 2*(B.*m_5.*pre_5.*pre_5/(Pstan^2)).*sqrt(u2_m_5).*u_B.*rho(:,4,5)' +...
+    2*(B.*pre_5.*m_5.*m_5./(Pstan^2)).*u_pre.*u_B.*rho(:,4,6)' + 2*Omega_5.*A.*u_etc_f.*sqrt(u2_mu_5).*rho(:,3,7)'+...
+    2*mu_5.*Omega_5.*u_etc_f.*u_A_sg.*rho(:,1,7)' + 2*B.*(pre_5/Pstan).*u_etc_f.*sqrt(u2_m_5).*rho(:,5,7)'+...
+    2*(m_5.*B/Pstan).*u_etc_f.*u_pre.*rho(:,6,7)' + 2*(m_5.*pre_5/Pstan).*u_etc_f.*u_B.*rho(:,4,7)' + u2_xx_5 ;
+
+uo3_pos_sg = abs((-b_sg+sqrt(b_sg.^2 - 4*a.*c_sg))./(2*a));
+uo3_neg_sg = abs((-b_sg-sqrt(b_sg.^2 - 4*a.*c_sg))./(2*a));
+
+% we select the lower uncertainty 
+if uo3_pos_sg > uo3_neg_sg
+	uo3_sg = uo3_neg_sg;
+elseif uo3_pos_sg < uo3_neg_sg 
+	uo3_sg = uo3_pos_sg;
+else 
+	uo3_sg = uo3_pos_sg;
 end
 
-% Figure 15 - Ozone absolute uncertainty vs. ozone air mass uncertainty
+% Figure 15 - Ozone Relative uncertainty versus BP and SG cross sections
 figure(15)
-plot(Omega.*mu,uo3_mu(1:7,:))
-title('Ozone absolute uncertainty vs. ozone air mass uncertainty');
-xlabel('Ozone Slant Column, DU')
-ylabel('Absolute Uncertainty, DU')
-legend('1%', '1.5%', '2%', '2.5%', '3%', '3.5%', '4%')
+plot(sza_5,100.*uo3./Omega_5,'+',sza_5,100.*uo3_sg./Omega_5,'+')
+title('Ozone relative uncertainty');
+xlabel('Solar Zenith Angle, deg')
+ylabel('Relative Uncertainty, %')
+legend('BP cross section','SG cross section')
 grid on
+
+% Figura 16 - Nominal Ozone
+figure(16)
+plot(sza_5,Omega_5,'+',sza_5,Omega_nominal,'+')
+title('Ozone vs. Nominal Ozone');
+xlabel('Solar Zenith Angle, deg')
+ylabel('TOC, DU')
+legend('Omega-med','Omega-nominal')
+grid on
+
+
+max(100*abs(Omega_5 - Omega_nominal)./Omega_5)
