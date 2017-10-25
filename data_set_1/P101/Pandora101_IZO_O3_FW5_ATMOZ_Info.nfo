@@ -1,0 +1,9 @@
+Original Pandonia data of the P101 for the IZO 2016 campaign dates, downloaded on 20171017.
+
+#P101 filtering for PanPS format data (P101_IZO_O3_FW5-ATMOZ.txt file), data that agree with these conditions should be filtered:
+# DQP1: Column 13 -> abs(Wavelength shift) > 0.2 [nm]
+# DQP2: Column 3  -> Stray Light, Solar zenith angle > 79.0
+# DQP3: Column 9  -> Stray Light, Air mass > 5.0
+# DQP4: Column 6  -> Scatter, wMRS:normalized root mean squares of the weighted spectral fitting residuals (wRMS) > 0.015
+# DQP5: Column 17 -> Cloud sreening: Uncertainty in the vertical column amount > 1 [DU]
+# DQP6: Column 15 -> Fitting result index: 1,2 = ok, > 2=error
