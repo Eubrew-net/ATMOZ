@@ -66,6 +66,8 @@ osc_set_1=osc;
 o3_set_1=o3;
 
  writetable(timetable2table(tx),'ATMOZ_SYCN__DATASET_1.xls','Sheet','10 min');
+ 
+save data_set_1 
 
 %%
 figure
@@ -86,7 +88,28 @@ for i=1:16
     end
     %grid on;
 end
-suptitle('ATMOZ  IZO SET 1 (reference in blue)')
+suptitle('ATMOZ  IZO SET 1 (reference in Red)')
+%%
+
+%ha = tight_subplot(4,4,[.03 .03],[.1 .1],[.1 .1]);
+
+for i=11
+    %axes(ha(i));
+    figure
+    plot(fecha,o3(:,i),':o'); hold on;
+    plot(fecha,ref,'-');
+    title(inst{i});
+    set(gca,'Xlim',[datenum(2016,9,13),datenum(2016,9,28)]);
+    datetick('keeplimits');
+%     if mod(i,4)~=1
+%          set(ha(i),'YtickLabel',[]);
+%     end
+%     if i<=12 
+%         set(ha(i),'XtickLabel',[]);
+%     end
+     grid on;
+end
+%suptitle('ATMOZ  IZO SET 1 (reference in Red)')
 %%
 figure
 ha = tight_subplot(4,4,[.05 .05],[.02 .02],[.1 .1]);
@@ -103,14 +126,14 @@ for i=1:16
 %         set(ha(i),'XtickLabel',[]);
 %     end
 end
-suptitle('ATMOZ  IZO SET 1 reference in blue')
-%%
+suptitle('ATMOZ  IZO SET 1 reference Red')
+
 %%
 figure
 boxplot(100*(o3-ref)./ref,'Labels',inst,'plotstyle','compact')
 grid
 hline([-1,1]);
-set(gca,'Ylim',[-10,7]);
+set(gca,'Ylim',[-15,7]);
 title('ATMOZ Campaing boxplot  10 min simultaneous obs ');
 suptitle('ATMOZ  IZO SET 1 ')
 ShadePlotForEmpahsis_x([-1,1],'k',0.1)
@@ -124,9 +147,9 @@ rat=(o3-ref)./ref;
 figure
 
   [tr,m_set1,set1_stat]=osctable([fecha,100*rat,ref.*m2],[400,600,1000],inst);
-  tr=t_table(tr)
+  %tr=t_table(tr)
   writetable(tr,...
-  'ATMOZ_SYCN__DATASET_q.xls','Sheet','osc table (Tsync=10 min) ',...
+  'ATMOZ_SYCN__DATASET_1.xls','Sheet','osc table (Tsync=10 min) ',...
   'WriteRowNames',true)
 grid
 hline([-1,1]);
@@ -138,7 +161,7 @@ save atmoz_set_1
 figure
 try
 load('atmoz_set_2','m_set2');
-b2=boxplot(m_set2(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','r','OutlierSize',1,'DataLim',[-10,10]);
+b2=boxplot(m_set2(:,2:end-2,1),'plotstyle','compact','Color','r','OutlierSize',1,'DataLim',[-10,10]);
 hold on
 b1=boxplot(m_set1(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','b','OutlierSize',1,'DataLim',[-10,10]);
 
@@ -198,9 +221,9 @@ writetable(array2table(mh),'ATMOZ_SYCN__DATASET_1.xls','Sheet','hourly means');
 
 he=errorbar(repmat(1:24,16,1)',mh,sh);
 %set(he(1:2:end),'LineWidth',1)
-set(he(1:4),'LineStyle',':')
-set(he(5:7),'LineWidth',3)
-set(he(10:11),'LineWidth',3)
+%set(he(1:4),'LineStyle',':')
+%set(he(5:7),'LineWidth',3)
+set(he(11),'LineWidth',4)
 
 set(he,{'Marker'},plt')
 set(he,{'Color'},colo)
@@ -212,6 +235,8 @@ legendflex(he,inst,'nrow',4)
 title('ATMOZ Campaing hourly ratio ');
 xlabel('Hour');
 grid 
+
+%% daily mean
 %%
 
 load h_set2
@@ -240,9 +265,9 @@ writetable(array2table([dj,md],...
 he=errorbar(repmat(dj',16,1)',md,sd);
 %set(he(1:2:end),'LineWidth',2)
 set(he(2:4),'LineStyle',':','LineWidth',1)
-set(he(5:7),'LineWidth',3)
-set(he(16),'LineWidth',3)
-set(he(11),'LineWidth',3)
+%set(he(5:7),'LineWidth',3)
+%set(he(16),'LineWidth',3)
+set(he(11),'LineWidth',4)
 set(he,{'Marker'},plt')
 set(he,{'Color'},colo)
  set(gca,'YLim',[-10,7])
@@ -288,12 +313,26 @@ for i=1:15
 %     end
 end
 %%
+figure
+plot(sza_dep{11}(:,1),sza_dep{11}(:,2),'.')
+hold on
+plot(za,100*(o3(:,11)-ref)./ref,'x');
+xlabel('sza')
+set(gca,'Ylim',[-10,5]);
+grid
+set(gca,'Ylim',[-5,5]); 
+title(inst{11})
+ylabel(' % ratio')
+
+
+
+%%
  x=cell2mat(sza_dep);
  y=reshape(x',7,15,[]);
  figure
  suptitle('ATMOZ  IZO set 1 comparison')
 za_=squeeze(y(1,:,:))';
- H=plot(za_(1:20:end,:),squeeze(y(2,:,1:20:end))')
+ H=plot(za_(1:20:end,:),squeeze(y(2,:,1:20:end))',':.')
   set(gca,'YLim',[-10,7])
   set(H,{'Color'},colo(1:15))
   set(gca,'YTick',-10:7)
@@ -326,7 +365,7 @@ for i=1:16
 end
 %% airmass
  figure
- suptitle('ATMOZ  IZO set 1 comparison')
+ %suptitle('ATMOZ  IZO set 1 comparison')
  osc_dep={};
 ha = tight_subplot(5,3,[.05 .05],[.05 .05],[.1 .1]);
 for i=1:15
@@ -349,6 +388,8 @@ for i=1:15
 %         set(ha(i),'XtickLabel',[]);
 %     end
 end
+
+suptitle('ATMOZ  IZO set 1 comparison')
 %%
  x=cell2mat(osc_dep);y=reshape(x',7,15,[]);
  figure
