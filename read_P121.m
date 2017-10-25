@@ -1,31 +1,31 @@
 fpath='data_set_1/P121'
-l=dir(fullfile(fpath,'P121*.txt'))
+l=dir(fullfile(fpath,'Pandora121*.dat'))
 t=readtable(fullfile(fpath,l.name));
 fecha=datetime(t.Var1,'InputFormat','yyyyMMdd''T''HHmmss''Z''' );
-% #------------------------------------------------------------------------------------------
-% #Column 1: Datetimes
-% #Column 2: SZA
-% #Column 3: AMF
-% #Column 4: P121_CF121_20160415_v2_Daumont4TGOME_225K_FW5_filter_code
-% #Column 5: P121_CF121_20160415_v2_Daumont4TGOME_225K_FW5_gas_vc
-% #Column 6: P121_CF121_20160415_v2_Daumont4TGOME_225K_FW6_filter_code
-% #Column 7: P121_CF121_20160415_v2_Daumont4TGOME_225K_FW6_gas_vc
-% #Column 8: P121_CF121_20160415_v2_Harmonics2013_227K_FW5_filter_code
-% #Column 9: P121_CF121_20160415_v2_Harmonics2013_227K_FW5_gas_vc
-% #Column 10: P121_CF121_20160415_v2_Harmonics2013_227K_FW6_filter_code
-% #Column 11: P121_CF121_20160415_v2_Harmonics2013_227K_FW6_gas_vc
-
-
-t.Properties.VariableNames={'Date','sza','airm','FW5_flag','FW5_o3','FW6_flag','FW6_o3',...
-                                                'FW5b_flag','FW5b_o3','FW6b_flag','FW6b_o3'};
+t.Properties.VariableNames={'Date','mdt','sza','saz','rms','nrms','o3','o3_u','airm','o3_flag','t_int','stray_lev','wv_shift','FW2','fit_flag','o3_eff_t','o3_eff_t_u'};
 t.Date_str=t.Date;
 t.Date=datenum(fecha);
-t_dep=t(t.FW5_flag==0,:);
+
+%% Pandonia Depuration
+% #P101 filtering for PanPS format data (P101_IZO_O3_FW5-ATMOZ.txt file), data that agree with these conditions should be filtered:
+% # DQP1: Column 13 -> abs(Wavelength shift) > 0.2 [nm]
+% # DQP2: Column 3  -> Stray Light, Solar zenith angle > 79.0
+% # DQP3: Column 9  -> Stray Light, Air mass > 5.0
+% # DQP4: Column 6  -> Scatter, wMRS:normalized root mean squares of the weighted spectral fitting residuals (wRMS) > 0.015
+% # DQP5: Column 17 -> Cloud sreening: Uncertainty in the vertical column amount > 1 [DU]
+% # DQP6: Column 15 -> Fitting result index: 1,2 = ok,  2=error
+
+t_dep=t(abs(t.wv_shift)<0.2 &  t.sza<79.0 & t.airm<5 & t.nrms<0.015 &  t.o3_u<1 & t.fit_flag<=2 ,:);
+
+
+t.Date_str=t.Date;
+t.Date=datenum(fecha);
+
 writetable(t_dep,'Atmoz_o3_set1.xls','Sheet','P121');
 
 
-t_dep.O3=t_dep.FW5_o3;
-t_dep.O3_STD=t_dep.FW5_flag;
+t_dep.O3=t_dep.o3;
+t_dep.O3_STD=t_dep.o3_u;
 t_dep.AIRM=t_dep.airm;
 t_dep.Time=datetime(datestr(t_dep.Date));
 
