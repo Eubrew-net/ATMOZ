@@ -157,7 +157,7 @@ for i=1:16
 %         set(ha(i),'XtickLabel',[]);
 %     end
 end
-%%
+%% 
 figure
 hr=100*(o3h-refh)./refh;
 [mh,sh]=grpstats(hr,hour(th.Time));
@@ -169,9 +169,10 @@ h_set2.th=th;
 save h_set2 h_set2
 
 he=errorbar(repmat(1:24,16,1)',mh,sh);
-set(he(1:2:end),'LineWidth',2)
-set(he(1:4),'LineStyle',':')
-set(he(5:7),'LineWidth',3)
+%set(he(1:2:end),'LineWidth',1)
+% pandora
+set(he(8:9),'LineStyle',':')
+set(he(8:9),'LineWidth',5)
 set(he,{'Marker'},plt')
 set(he,{'Color'},colo)
  set(gca,'YLim',[-7,7])
