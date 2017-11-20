@@ -1,12 +1,13 @@
 fpath='data_set_2/ftir'
 %l=dir(fullfile(fpath,'*.dat'))
-t=readtable(fullfile(fpath,'O3_izana_ftir_ndaccv4.dat'));
+t=readtable(fullfile(fpath,'FTIR_OTC_ATMOZ_Campaign_September 2016_all.txt'));
 
  Adob= 2.687E16 ;% mol/cm^2
  L=2.687E25; %m?3
- o3t=1E18*t.Total_Column_O3total_E18mole_cm_2_/Adob; 
+ %o3t=1E18*t.Total_Column_O3total_E18mole_cm_2_/Adob; 
+ o3t=t.Total_Column_O3total_molec_m2_/Adob/10000;
  t.O3_DU=o3t;
- t.Var10=[];
+ %t.Var10=[];
  t.date=datetime(datestr(t.date_matlab));
  writetable(t,'Atmoz_o3_set2.xls','Sheet','FTIR','WriteRowNames',true);
 %% 
