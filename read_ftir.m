@@ -1,4 +1,4 @@
-fpath='data_set_2/ftir'
+fpath='data_set_1/ftir'
 %l=dir(fullfile(fpath,'*.dat'))
 t=readtable(fullfile(fpath,'O3_izana_ftir_ndaccv4.dat'));
 
