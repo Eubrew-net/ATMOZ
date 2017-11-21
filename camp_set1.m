@@ -136,9 +136,10 @@ suptitle('ATMOZ Campaing  SET 1 boxplot  10 min simultaneous obs ');
 save atmoz_set_1
 %%
 figure
-b1=boxplot(m_set2(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','r','OutlierSize',1,'DataLim',[-10,10]);
+load('atmoz_set_2','m_set2');
+b2=boxplot(m_set2(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','r','OutlierSize',1,'DataLim',[-10,10]);
 hold on
-b2=boxplot(m_set1(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','b','OutlierSize',1,'DataLim',[-10,10]);
+b1=boxplot(m_set1(:,2:end-2,1),'plotstyle','compact','labels',inst,'Color','b','OutlierSize',1,'DataLim',[-10,10]);
 
 legend([b1(1),b2(1)],{'Data Set 1','Data Set 2'})
 grid
