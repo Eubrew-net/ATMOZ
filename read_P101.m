@@ -1,6 +1,6 @@
 fpath='data_set_1/P101'
-%l=dir(fullfile(fpath,'P101*.txt'))
-l=dir(fullfile(fpath,'P101_ATMOZ_Comparison_FWs_*.txt'))
+l=dir(fullfile(fpath,'P*.dat'))
+%l=dir(fullfile(fpath,'P101_ATMOZ_Comparison_FWs_*.txt'))
 t=readtable(fullfile(fpath,l.name));
 fecha=datetime(t.Var1,'InputFormat','yyyyMMdd''T''HHmmss''Z''' );
 t.Properties.VariableNames={'Date','mdt','sza','saz','rms','nrms','o3','o3_u','airm','o3_flag','t_int','stray_lev','wv_shift','FW2','fit_flag','o3_eff_t','o3_eff_t_u'};
