@@ -20,7 +20,7 @@ t.Date=datenum(fecha);
 t_dep=t(abs(t.wv_shift)<0.2 &  t.sza<79.0 & t.airm<5 & t.nrms<0.015 &  t.o3_u<1 & t.fit_flag<=2 ,:);
 
 
-writetable(t_dep,'Atmoz_o3_set1.xls','Sheet','P101');
+%writetable(t_dep,'Atmoz_o3_set1.xls','Sheet','P101');
 
 %% flag==0
 t_dep.O3=t_dep.o3;

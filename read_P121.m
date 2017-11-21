@@ -1,4 +1,6 @@
 fpath='data_set_1/P121'
+%l=dir(fullfile(fpath,'P121_ATMOZ.txt'))
+%l=dir(fullfile(fpath,'P121*.txt'))
 l=dir(fullfile(fpath,'Pandora121*.dat'))
 t=readtable(fullfile(fpath,l.name));
 fecha=datetime(t.Var1,'InputFormat','yyyyMMdd''T''HHmmss''Z''' );
