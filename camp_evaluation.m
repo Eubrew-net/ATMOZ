@@ -29,35 +29,89 @@ ref2=o32(:,2:4); ref2=nanmean(ref2,2);
 osc1=m2.*ref1;
 osc2=m2.*ref2;
 %% Dobson
-figure;plot(za,100*(o31(:,5:7)-o32(:,5:7))./o31(:,5:7),':.')
+f1=figure;plot(za,100*(o31(:,5:7)-o32(:,5:7))./o31(:,5:7),':.')
 grid
 legend(inst(5:7))
 title('Dobson data set 1 vs data set 2  % diff ratio to operative')
 ylabel(' (o3 set 1 - o3 set 2 )/ o3 set 1 %')
-figure
+xlabel('sza')
+set(gcf,'Tag','DobsonR')
+f2=figure
 boxplot((o31(:,5:7)-o32(:,5:7)),'labels',inst(5:7))
 grid
 ylabel('DU')
+set(gcf,'Tag','DobsonA')
 title('Dobson data set 1 - data set 2 ')
-xlabel('sza')
-%%
-figure;plot(za,100*(o31(:,2:4)-o32(:,2:4))./o31(:,2:4),':.');
+
+%% Brewer
+f1=figure;
+plot(za,100*(o31(:,1:4)-o32(:,1:4))./o31(:,1:4),':.');
 xlabel('sza')
 ylabel(' (o3 set 1 - o3 set 2 )/ o3 set 1 %')
 title('Brewer data set 1 - data set 2 ')
 grid
 legend(inst(1:4))
-title('Dobson data set 1 vs data set 2  % diff ratio to operative')
+title('Brewer data set 1 vs data set 2  % diff ratio to operative')
+set(gcf,'Tag','BrewerR')
 
-figure;boxplot((o31(:,1:4)-o32(:,1:4)),'labels',inst(1:4))
+f2=figure;boxplot((o31(:,1:4)-o32(:,1:4)),'labels',inst(1:4))
 ylabel('DU')
 title('Brewer data set 1 - data set 2 ')
 grid
-xlabel('sza')
+%xlabel('sza')
+set(gcf,'Tag','BrewerA')
+printfiles_report([f1,f2],'figures')
 print -clipboard -dbitmap
 
+%% BTS
+
+x=11:11;
+f2=figure;
+gscatter(o31(:,1),100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)));
+title(inst(x))
+%set(gca,'Xlim',[20,80])
 %%
-x=11:14;figure;plot(za,100*(o31(:,x)-o32(:,x))./o31(:,x),':.');legend(inst(x))
+for x=1:15
+[m,s]=grpstats([za,100*(o31(:,x)-o32(:,x))./o31(:,x)],fix(za/5)*5);
+subplot(5,3,x);
+gscatter(za,100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)))
+legend('off')
+%xlabel('sza')
+if mod(x,3)==1 ylabel(' (o_3 set1 - o_3 set2 )/ o_3 set1 '); end
+title([inst{x}])
+hold on;
+plot(m(:,1),m(:,2))
+grid
+%legend(inst(x))
+set(gca,'Xlim',[20,80])
+
+%title(' data set 1 vs data set 2  % diff ratio to operative')
+% yyaxis right
+% plot(za,o31(:,x),'o',za,o32(:,x),'x');
+disp(inst(x))
+try
+out=isoutlier(100*(o31(:,x)-o32(:,x))./o31(:,x),'gesd');
+catch
+    out=[];
+end
+t_out{x}=array2table([diaj(fecha(out)),za(out),o31(out,x),o32(out,x),o31(out,x)-o32(out,x),...
+    100*(o31(out,x)-o32(out,x))/mean([o31(out,x);o32(out,x)])]);
+t_out{x}
+end
+set(gcf,'Tag',['sza','_R'])
+
+%%
+f2=figure;boxplot((o31(:,x)-o32(:,x)),'labels',inst(x))
+ylabel('DU')
+title('Brewer data set 1 - data set 2 ')
+grid
+%xlabel('sza')
+set(gcf,'Tag',[inst{x},'_A'])
+printfiles_report([f1,f2],'figures')
+print -clipboard -dbitmap
+
+
+
 %%
 
 %%
