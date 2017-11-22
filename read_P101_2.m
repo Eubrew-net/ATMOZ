@@ -1,5 +1,5 @@
 fpath='data_set_2/P101'
-l=dir(fullfile(fpath,'P101*.txt'))
+l=dir(fullfile(fpath,'P101_ATMOZ_FWs_Comparison_20160901-20160930_SyncMode=Nearest_After_Floor_1*.txt'))
 t=readtable(fullfile(fpath,l.name));
 fecha=datetime(t.Var1,'InputFormat','yyyyMMdd''T''HHmmss''Z''' );
 % #------------------------------------------------------------------------------------------

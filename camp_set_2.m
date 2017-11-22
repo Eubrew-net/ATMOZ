@@ -138,6 +138,10 @@ end
  fechah=th{:,1:4:end};
  o3h=th{:,2:4:end};
  refh=o3h(:,2:4); refh=nanmean(refh,2);
+ 
+o3h_2=o3h;
+
+refh_2=refh;
 h_set2.fecha=fechah;
 h_set2.o3h=o3h;
 h_set2.refh=refh;
@@ -160,6 +164,7 @@ end
 %% 
 figure
 hr=100*(o3h-refh)./refh;
+hr2=hr;
 [mh,sh]=grpstats(hr,hour(th.Time));
 
 h_set2.mh=mh;
