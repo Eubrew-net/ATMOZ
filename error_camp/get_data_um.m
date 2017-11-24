@@ -38,7 +38,12 @@ url_direct=['"',url_base,url_ds,'?brewerid=',brewer_str,'&date=',dates,'&enddate
 DS = download(url_direct);
 %% elegimos las medidas comunes
 x=[DS{1}*10^6+DS{2}];
-y=[o3l1{2}*10^6+o3l1{3}];
+
+% cloud free conditions
+j=o3l1{13}<=2.5;
+y=[o3l1{2}(j)*10^6+o3l1{3}(j)];
+
+
 [c,ci,cj]=intersect(x,y);  % medidas comunes
 
 ds=cell2mat(DS);
@@ -47,6 +52,7 @@ DS=num2cell(ds,1);
 %ojo o3l1{31} devuelve un elemento menos
 l1=cell2mat(o3l1(1:30));    
 o3l1=num2cell(l1(cj,:),1);
+% cloud free conditions
 
 
 %%
@@ -57,14 +63,15 @@ temp = o3l1{10}'; % Instrument temperature (�C)
 lon = o3l1{17}'; % Longitude of the Brewer Location (deg)
 lat = o3l1{16}'; % Latitude of the Brewer Location (deg)
 ms9_db = o3l1{20}'; % MS9, Second double ratio
-
+sOmega=o3l1{13}';% o3 sigma
 %%
 % this is a temporal artifact to avoid negative values in O3
-for i = 1:length(t_j)
-	if Omega(i) < 0
-		Omega(i) = 0.1;
-	end
-end
+%for i = 1:length(t_j)
+%	if Omega(i) < 0
+%		Omega(i) = 0.1;
+%	end
+%end
+
 
 f3 = o3l1{24}'; % corrected measurement of lambda3 (counts/s)
 
@@ -83,8 +90,8 @@ nfilpos = DS{7}; % position of the neutral-density filter (0, 64, 128, 192, 256,
 %Omega_5_dss=DSS{17}'; % Calculated Ozone value with Standard algorithm + attenuation filter correction from Symmary (DU)
 % ratio of the raw counts. It is only a test. It's no real!!
 %xx_r = -rc2 + 0.5*rc3 + 2.2*rc4 - 1.7*rc5;
-filename_save=[brewer_str,'_are.mat'];
+filename_save=[brewer_str,'_are17.mat'];
 
 
-save(filename_save,'Omega','ccl','dark','lat','lon','nfilpos','pre','rc1','rc2','rc3','rc4','rc5','t_j','temp')
+save(filename_save,'Omega','ccl','dark','lat','lon','nfilpos','pre','rc1','rc2','rc3','rc4','rc5','t_j','temp','sOmega')
 

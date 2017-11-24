@@ -1,6 +1,5 @@
 %% This script computes the Jacobian matrix for Brewer ozone observation
 %% uncertainty on measured data irradiance.
-
 clear all;
 close all;
 clc;
@@ -11,85 +10,39 @@ disp('                     Triad Brewers and dates: 29/05/2017 -- 7/06/2017     
 disp('              Dr. Parra-Rojas F.C., Dr. El Gawhary O., Redondas A. and Egli L.       ')
 disp('                                       (2017)                                     ')
 disp('-------------------------------------------------------------------------------------')
-disp('Press any key to continue')
-pause;
-disp(' ')
 
 % Format of the date to plot
 dateFormat=16;
 
-R = load('185_are.mat');
+% Reference ¿?
+R = load('185_are17.mat');
 
 % Select the data base (1 -> Bass and Paur, 2 -> Serdyuchenko and Gorshelev)
-DS_num = input('Enter the number of the data set (1 or 2): ');
-disp(' ')
-
-[t_ref,Omega_ref,uo3_ref,mu_ref,sza_ref,ms9_ref,u2_ms9_ref] = reference(R,DS_num);
+DS_num = 1;
+%input('Enter the number of the data set (1 or 2): ');
+%disp(' ')
+file_ref='ref_are17.mat';
+if ~exist(file_ref,'file')
+  [t_ref,Omega_ref,uo3_ref,mu_ref,sza_ref,ms9_ref,u2_ms9_ref] = reference(R,DS_num);
+  save(file_ref,'t_ref','Omega_ref','uo3_ref','mu_ref','sza_ref','ms9_ref','u2_ms9_ref');
+else
+  load(file_ref,'t_ref','Omega_ref','uo3_ref','mu_ref','sza_ref','ms9_ref','u2_ms9_ref');
+end
+figure(1)
+	plot(Omega_ref.*mu_ref,uo3_ref,'+')
+	set(gca,'Ylim',[0,10])
+	title('Ozone absolute uncertainty');
+	xlabel('Ozone Slant Column, DU')
+	ylabel('Absolute Uncertainty, DU')
+	grid on
 
 % Select the Brewer number
-brewer_num = input('Enter the number of the Brewer: ');
-brewer_str = num2str(brewer_num);
-disp(' ')
-
-disp(' ')
-switch brewer_str 
-	case '5'
-		disp('        -You are in Mordor-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '126'
-		disp('        -You are in Forodwaith-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '150'
-		disp('        -You are in Valinor-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '166'
-		disp('        -You are in Rivendel-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-    case '163'
-		disp('        -You are in Rivendel-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '185'
-		disp('        -You are in Izana-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '186'
-		disp('        -You are in Khand-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '202'
-		disp('        -You are in Taur Moredain-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	case '228'
-		disp('        -You are in Menelotriand-       ')
-		disp('Lat:28.308, Lon=16.499, Alt:2370.0 m')
-	otherwise 
-		disp('-----------------------')
-		disp('There is no such Brewer')
-		disp('-----------------------')
-		return
-end
-disp(' ')
 
 % load the input of the Brewer number
-if brewer_str == '5'
-	cal = load('5_are.mat');
-elseif brewer_str == '126'
-	cal = load('126_are.mat');
-elseif brewer_str == '150'
-	cal = load('150_are.mat');
-elseif brewer_str == '163'
-	cal = load('163_are.mat');
-elseif brewer_str == '166'
-	cal = load('166_are.mat');
-elseif brewer_str == '186'
-	cal = load('186_are.mat');
-elseif brewer_str == '202'
-	cal = load('202_are.mat');
-elseif brewer_str == '228'
-	cal = load('228_are.mat');
-elseif brewer_str == '185'
 	% Figure 1 - Ozone Absolute uncertainty
 	figure(1)
 	plot(Omega_ref.*mu_ref,uo3_ref,'+')
-	set(gca,'Ylim',[0,50])
+	set(gca,'Ylim',[0,15])
 	title('Ozone absolute uncertainty');
 	xlabel('Ozone Slant Column, DU')
 	ylabel('Absolute Uncertainty, DU')
@@ -99,97 +52,66 @@ elseif brewer_str == '185'
 	figure(2)
 	plot(t_ref,100.*uo3_ref./Omega_ref,'+')
 	datetick('x',dateFormat)
-	set(gca,'Ylim',[0,20])
+	set(gca,'Ylim',[0,5])
 	title('Ozone relative uncertainty');
 	xlabel('Time')
 	ylabel('Relative Uncertainty, %')
 	grid on
 
-	% Figure 3 - Ozone Relative uncertainty versus BP and SG cross sections
+	%% Figure 3 - Ozone Relative uncertainty versus BP and SG cross sections
 	figure(3)
-	plot(t_ref,100.*2*uo3_ref./Omega_ref,'+')
-	datetick('x',dateFormat)
-	set(gca,'Ylim',[0,30])
+	
+    fecha=datetime(t_ref,'ConvertFrom','datenum'); 
+    plot(hour(fecha),2*100.0*uo3_ref./Omega_ref,'+')
+
+	set(gca,'Ylim',[0,5])
 	title('Ozone relative uncertainty (2\sigma)');
 	xlabel('Time')
 	ylabel('Relative Uncertainty, %')
 	grid on
-	
-	disp(' ')
-	disp('OVERALL OZONE UNCERTAINTY: OK!!')
-	disp(' ')
-	disp('Thanks!!')
-	return
-else
-	disp('Wrong brewer number')
-	return
-end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% this is a temporal artifact to avoid negative values in O3
-for i = 1:length(cal.t_j)
-	if cal.Omega(i) < 0
-		cal.Omega(i) = 0.1;
-	end
-end
 
-
-% ----------------------------------Config by Date values-----------------------------------
+%% ----------------------------------Config by Date values-----------------------------------
 
 % for the Brewers 5, 17, 70, 75, 117, 126, 150, 151, 163, 166, 172, 186, 202, 214 and 228 respectively
 
-A1_b = [0.3336 0.3416 0.3365 0.3398 0.338 0.34 0.3405 0.3417 0.34 0.3425 0.3415 0.3425 0.34 0.3458 0.3455]; % ozone absorption coefficient for the triad (atm cm)^-1
-etc_b = [3030 3350 2970 2955 2740 3240 1583 1428 1480 3160 1700 1575 1540 1455 1470]; % ETC for the triad (counts s^-1)
-dt_b = [3.8 3.6 4.1 3.4 2.3 3.4 3.2 2.9 3.0 2.8 3.0 2.6 2.5 2.7 2.65]*1e-8; % dead time the triad (nsec)
 
-if brewer_str == '5'
-	A1 = A1_b(1);
-	etc1 = etc_b(1);
-	dt = dt_b(1);
-elseif brewer_str == '126'
-	A1 = A1_b(6);
-	etc1 = etc_b(6);
-	dt = dt_b(6);
-elseif brewer_str == '150'
-	A1 = A1_b(7);
-	etc1 = etc_b(7);
-	dt = dt_b(7);
-elseif brewer_str == '166'
-	A1 = A1_b(10);
-	etc1 = etc_b(10);
-	dt = dt_b(10);
-elseif brewer_str == '186'
-	A1 = A1_b(12);
-	etc1 = etc_b(12);
-	dt = dt_b(12);
-elseif brewer_str == '202'
-	A1 = A1_b(13);
-	etc1 = etc_b(13);
-	dt = dt_b(13);
-elseif brewer_str == '228'
-	A1 = A1_b(15);
-	etc1 = etc_b(15);
-	dt = dt_b(15);
+%load('report_are2017.mat','cfg_ini','t_config_ini','Cal')
+%save('info_are2017.mat','cfg_ini','t_config_ini','Cal');
+load('info_are2017.mat','cfg_ini','t_config_ini','Cal')
+
+t_config_ini(6:8,:)
+A1_b= t_config_ini{6,:};
+etc_b=t_config_ini{7,:};
+dt_b= t_config_ini{8,:};
+
+%A1_b = [0.3336 0.3416 0.3365 0.3398 0.338 0.34 0.3405 0.3417 0.34 0.3425 0.3415 0.3425 0.34 0.3458 0.3455]; % ozone absorption coefficient for the triad (atm cm)^-1
+%etc_b = [3030 3350 2970 2955 2740 3240 1583 1428 1480 3160 1700 1575 1540 1455 1470]; % ETC for the triad (counts s^-1)
+%dt_b = [3.8 3.6 4.1 3.4 2.3 3.4 3.2 2.9 3.0 2.8 3.0 2.6 2.5 2.7 2.65]*1e-8; % dead time the triad (nsec)
+n_inst=16;
+t_config_ini(6:8,n_inst)
+
+file_data=sprintf('%d_are17.mat',Cal.brw(n_inst))
+if ~exist(file_data,'file')
+  get_data_um(Cal.brw(n_inst),2017,05,25,2017,06,05)
 end
-
+cal=load(file_data);
+brewer_str=Cal.brw_str{n_inst}
+brw_num = Cal.brw(n_inst)
 % ozone absorption coefficients in an array of the data size
-A = A1*ones(1,length(cal.t_j)/5);
-
-
+A = A1_b(n_inst)*ones(1,length(cal.t_j)/5);
 % Extraterrestrial constant ratio in an array of the data size
-etc = etc1*ones(1,length(cal.t_j)/5);
+etc = etc_b(n_inst)*ones(1,length(cal.t_j)/5);
+% Dead time
+dt = dt_b(n_inst);
 
 % Brewer weighting coefficients at the different wavelengths
 w = [0.0 -1.0 0.5 2.2 -1.7];
-
 % Rayleigh scattering coefficients at the different wavelenghts (atm^-1)
-if DS_num == 1
-	BE = [4870 4620 4410 4220 4040];
-elseif DS_num == 2
-	disp('still not included')
-	return
-end
-
+BE = [4870 4620 4410 4220 4040];
 % Rayleigh scattering coefficients in an array of the data size (=1)
 B = sum(w.*BE)*ones(1,length(cal.t_j)/5);
 
@@ -317,7 +239,7 @@ u_temp = 1/sqrt(3);
 % temperature coefficients and its uncertainties of the ARE2017 campaign
 [tc,v,brw] = tblread('temp_are17.csv',',');
 brw_str = str2num(brewer_str);
-brw_num = str2num(brw);
+brw_num = Cal.brw(n_inst);
 
 % temperature coefficients for each wavelenght
 ind = find(brw_num==brw_str);
@@ -952,7 +874,7 @@ end
 % percentage gradient for the BP and SG cross sections (Redondas A. et al., 2014)
 grad_bp = 9.3601e-2;
 grad_sg = 9.6391e-3;
-
+brewer_str=num2str(Cal.brw(n_inst))
 % cross section uncertainty
 [u_bp,u_sg]=sigma2_test(brewer_str);
 disp('Cross section uncertainty: OK')
@@ -1045,10 +967,10 @@ c = u2_mu_5.*(10*Omega_5.*A).^2 + (10*mu_5.*Omega_5.*u_A).^2 + ((B.*pre_5/Pstan)
 uo3_pos = abs((-b+sqrt(b.^2 - 4*a.*c))./(2*a));
 uo3_neg = abs((-b-sqrt(b.^2 - 4*a.*c))./(2*a));
 
-% we select the lower uncertainty 
-if uo3_pos > uo3_neg
+% we select the higher uncertainty 
+if uo3_pos < uo3_neg
 	uo3 = uo3_neg;
-elseif uo3_pos < uo3_neg 
+elseif uo3_pos > uo3_neg 
 	uo3 = uo3_pos;
 else 
 	uo3 = uo3_pos;

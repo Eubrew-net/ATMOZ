@@ -11,7 +11,7 @@ brewer_str = num2str(brewer_num);
 Omega = R.Omega; % Calculated Ozone value with Standard algorithm + attenuation filter correction (DU)
 t_j = R.t_j; % continuous date index based in Matlab datenum
 pre = R.pre; % Medium Pressure of the Brewer Location (mbar)
-temp = R.temp; % Instrument temperature (ºC)
+temp = R.temp; % Instrument temperature (ï¿½C)
 lon = R.lon; % Longitude of the Brewer Location (deg)
 lat = R.lat; % Latitude of the Brewer Location (deg)
 
@@ -189,7 +189,7 @@ u_rel_dt = sqrt((sqrt(u2_f2log)./f2_ct_1).^2 + ((0.5)*sqrt(u2_f3log)./f3_ct_1).^
 %%
 % -----------------------------Temperature correction--------------------------------------------
 
-% uncertainty of the PMT temperature (the resolution of the PMT is 1ºC)
+% uncertainty of the PMT temperature (the resolution of the PMT is 1ï¿½C)
 u_temp = 1/sqrt(3); 
 
 % temperature coefficients and its uncertainties of the IZO2016 campaign
@@ -294,7 +294,7 @@ Pstan = 1013.25; % standard pressure (mbars)
 
 R = 6371.229e3; % Earth's radius (m)
 
-r = 2370.0; % heigth of Izaña station (m)
+r = 2370.0; % heigth of Izaï¿½a station (m)
 
 
 %-------------------------------- SZA uncertaiinty---------------------------------------------------
@@ -776,9 +776,9 @@ uo3_pos = abs((-b+sqrt(b.^2 - 4*a.*c))./(2*a));
 uo3_neg = abs((-b-sqrt(b.^2 - 4*a.*c))./(2*a));
 
 % we select the lower uncertainty 
-if uo3_pos > uo3_neg
+if uo3_pos < uo3_neg
 	uo3 = uo3_neg;
-elseif uo3_pos < uo3_neg 
+elseif uo3_pos > uo3_neg 
 	uo3 = uo3_pos;
 else 
 	uo3 = uo3_pos;
