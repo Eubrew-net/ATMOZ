@@ -65,11 +65,62 @@ print -clipboard -dbitmap
 
 %% BTS
 
-x=11:11;
-f2=figure;
-gscatter(o31(:,1),100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)));
+%x=10:13;
+% f2=figure;
+% gscatter(o31(:,1),100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)));
+% legend(inst(x))
+figure
+j=0;
+for x=[10:12,15]
+j=j+1;
+    [m,s]=grpstats([za,100*(o31(:,x)-o32(:,x))./o31(:,x)],fix(za/5)*5);
+subplot(2,2,j);
+%gscatter(za,100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)))
+h=plot(m(:,1),m(:,2:end),'-','LineWidth',3)
+hold on
 title(inst(x))
+
+plot(za,100*(o31(:,x)-o32(:,x))./o31(:,x),'x')
+%legend('off')
+xlabel('sza')
+ylabel(' (o_3 set1 - o_3 set2 )/ o_3 set1 ');
+
+grid
+set(gca,'Xlim',[20,80])
+%set(gca,'Ylim',[-5,5])
+end
+suptitle(' % Data Set 1 - Data Set 2 / Data Set 1')
 %set(gca,'Xlim',[20,80])
+%%
+% PANDORA
+
+%x=10:13;
+% f2=figure;
+% gscatter(o31(:,1),100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)));
+% legend(inst(x))
+figure
+j=0;
+for x=[8:9]
+j=j+1;
+    [m,s]=grpstats([za,100*(o31(:,x)-o32(:,x))./o31(:,x)],fix(za/5)*5);
+subplot(2,1,j);
+%gscatter(za,100*(o31(:,x)-o32(:,x))./o31(:,x),diaj(o31(:,1)))
+h=plot(m(:,1),m(:,2:end),'-','LineWidth',3)
+hold on
+title(inst(x))
+
+plot(za,100*(o31(:,x)-o32(:,x))./o31(:,x),'x')
+%legend('off')
+xlabel('sza')
+ylabel(' (o_3 set1 - o_3 set2 )/ o_3 set1 ');
+
+grid
+set(gca,'Xlim',[20,80])
+%set(gca,'Ylim',[-5,5])
+end
+suptitle(' % Data Set 1 - Data Set 2 / Data Set 1')
+%set(gca,'Xlim',[20,80])
+
 %%
 for x=1:15
 [m,s]=grpstats([za,100*(o31(:,x)-o32(:,x))./o31(:,x)],fix(za/5)*5);
