@@ -1,0 +1,87 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{\tt #1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{https://doi.org/\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{https://doi.org/\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Bernhard et~al.(2005)Bernhard, Evans, Labow, and
+  Oltmans}]{Bernhard2005}
+Bernhard, G., Evans, R.~D., Labow, G.~J., and Oltmans, S.~J.: Bias in Dobson
+  total ozone measurements at high latitudes due to approximations in
+  calculations of ozone absorption coefficients and air mass, Journal of
+  Geophysical Research: Atmospheres, 110, n/a--n/a, \doi{10.1029/2004JD005559},
+  \urlprefix\url{http://dx.doi.org/10.1029/2004JD005559}, d10305, 2005.
+
+\bibitem[{Brion et~al.(1993)Brion, Chakir, Daumont, Malicet, and
+  Parisse}]{brion_high-resolution_1993}
+Brion, J., Chakir, A., Daumont, D., Malicet, J., and Parisse, C.:
+  High-resolution laboratory absorption cross section of {O}3. {Temperature}
+  effect, Chem. Phys. Lett., 213, 610--612, \doi{10.1016/0009-2614(93)89169-I},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/000926149389169I},
+  1993.
+
+\bibitem[{Daumont et~al.(1992)Daumont, Brion, Charbonnier, and
+  Malicet}]{daumont_ozone_1992}
+Daumont, Brion, J., Charbonnier, J., and Malicet, J.: Ozone {UV} spectroscopy
+  {I}: {Absorption} cross-sections at room temperature, Journal of Atmospheric
+  Chemistry, 15, 145--155, \doi{10.1007/BF00053756}, 1992.
+
+\bibitem[{Gorshelev et~al.(2012)Gorshelev, Serdyuchenko, Weber, and
+  Burrows}]{gorshelev_high_2012}
+Gorshelev, V., Serdyuchenko, A., Weber, M., and Burrows, J.~P.: High spectral
+  resolution ozone absorption cross-sections: {Part} {I}. {Measurements}, data
+  analysis and comparison around 293K., J. Quant. Spectrosc. Radiat. Transfer,
+  \urlprefix\url{http://www.iup.uni-bremen.de/UVSAT_material/manuscripts/serdyuchenko_o3x_part1_v1.1.pdf},
+  2012.
+
+\bibitem[{Gr\"{o}bner et~al.(1998)Gr\"{o}bner, Wardle, McElroy, and
+  Kerr}]{Grobner1998}
+Gr\"{o}bner, J., Wardle, D.~I., McElroy, C.~T., and Kerr, J.~B.: Investigation
+  of the wavelength accuracy of Brewer spectrophotometers, Appl. Opt., 37,
+  8352--8360, \doi{10.1364/AO.37.008352}, 1998.
+
+\bibitem[{Kerr(2002)}]{kerr2002new}
+Kerr, J.: New methodology for deriving total ozone and other atmospheric
+  variables from Brewer spectrophotometer direct sun spectra, Journal of
+  Geophysical Research: Atmospheres, 107, 2002.
+
+\bibitem[{{{Lamb, K and Asbridge, A.I. }}(1996)}]{sun_scan_ios}
+{{Lamb, K and Asbridge, A.I. }}: Brewer Technical Note No.96.01 Sun scans and
+  relationship to the wavelength calibration step number, Tech. rep.,
+  International Ozone Services, 1996.
+
+\bibitem[{Malicet et~al.(1995)Malicet, Daumont, Charbonnier, Parisse, Chakir,
+  and Brion}]{malicet_ozone_1995}
+Malicet, Daumont, D., Charbonnier, J., Parisse, C., Chakir, A., and Brion, J.:
+  Ozone {UV} spectroscopy. {II}. {Absorption} cross-sections and temperature
+  dependence, J. Atmos. Chem, 21, 263--273, \doi{10.1007/BF00696758}, 1995.
+
+\bibitem[{Orphal et~al.(2016)Orphal, Staehelin, Tamminen, Braathen, De~Backer,
+  Bais, Balis, Barbe, Bhartia, Birk et~al.}]{orphal2016absorption}
+Orphal, J., Staehelin, J., Tamminen, J., Braathen, G., De~Backer, M.-R., Bais,
+  A., Balis, D., Barbe, A., Bhartia, P.~K., Birk, M., et~al.: Absorption
+  cross-sections of ozone in the ultraviolet and visible spectral regions:
+  Status report 2015, Journal of Molecular Spectroscopy, 327, 105--121, 2016.
+
+\bibitem[{Savastiouk(2005)}]{savastiouk2005improvements}
+Savastiouk, V.: Improvements to the direct-sun ozone observations taken with
+  the Brewer spectrophotometer, 2005.
+
+\bibitem[{Serdyuchenko et~al.(2012)Serdyuchenko, Gorshelev, Weber, Chehade, and
+  Burrows}]{serdyuchenko_high_2012}
+Serdyuchenko, A., Gorshelev, V., Weber, M., Chehade, W., and Burrows, J.~P.:
+  High spectral resolution ozone absorption cross-sections: {Part} {II}.
+  {Temperature} dependence, J. Quant. Spectrosc. Radiat. Transfer, 2012.
+
+\bibitem[{Weber et~al.(2016)Weber, Gorshelev, and
+  Serdyuchenko}]{amt-9-4459-2016}
+Weber, M., Gorshelev, V., and Serdyuchenko, A.: Uncertainty budgets of major
+  ozone absorption cross sections used in UV remote sensing applications,
+  Atmospheric Measurement Techniques, 9, 4459--4470,
+  \doi{10.5194/amt-9-4459-2016},
+  \urlprefix\url{https://www.atmos-meas-tech.net/9/4459/2016/}, 2016.
+
+\end{thebibliography}
