@@ -1,1095 +1,0 @@
-DT =
-      2.9e-08
-j1a0 1077.31064 243 7 172 217 54 59 37rat 26.76098 27.14111 3017 88087.78
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-j3a0 868.4061 6 7 14 59 55 42 54rat 25.81065 26.09575 3085.6 593
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-Undefined function 'monitor_brewer_m' for input arguments of type 'double'.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 75)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',75,0)">line 75</a>)
-r=m(17:end,:)./monitor_brewer_m(m(17:end,:));
-
-opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',75,0)
-slit =
-     0
-slit =
-     2
-slit =
-     4
-slit =
-     4
-laser_o3
-DT =
-      2.9e-08
-j1a0 1077.31064 243 7 172 217 54 59 37rat 26.76098 27.14111 3017 88087.78
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-j3a0 868.4061 6 7 14 59 55 42 54rat 25.81065 26.09575 3085.6 593
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-slit =
-     0
-slit =
-     2
-slit =
-     4
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('load')" style="font-weight:bold">load</a>
-'LaserScan_310nm.txt' is not found in the current folder or on the MATLAB path, but exists in:
-    /Users/aredondas/DropBoxA/Dropbox/ATMOZ/PTB/ptb
-
-<a href = "matlab:cd '/Users/aredondas/DropBoxA/Dropbox/ATMOZ/PTB/ptb'">Change the MATLAB current folder</a> or <a href = "matlab:addpath '/Users/aredondas/DropBoxA/Dropbox/ATMOZ/PTB/ptb'">add its folder to the MATLAB path</a>.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 153)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',153,0)">line 153</a>)
-load LaserScan_310nm.txt;} 
-opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',153,0)
-opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',153,0)
-load laser_ptb/LaserScan_310nm.txt;
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (34) with properties:
-
-      Number: 34
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-f =
-    34
-Output argument "wl" (and maybe others) not assigned during call to "slitfit".
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 177)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',177,0)">line 177</a>)
-[cwv(1),fwhm(1)]=slitfit([opo(:,1),opo(:,2)],4,1,f);
-
-opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',177,0)
-opo(:,1)
-ans =
-       308.56
-        308.6
-       308.64
-       308.68
-       308.72
-       308.77
-        308.8
-       308.84
-       308.88
-       308.92
-       308.96
-          309
-       309.04
-       309.08
-       309.12
-       309.16
-        309.2
-       309.24
-       309.28
-       309.32
-       309.36
-        309.4
-       309.44
-       309.48
-       309.52
-       309.56
-        309.6
-       309.64
-       309.68
-       309.72
-       309.76
-        309.8
-       309.84
-       309.88
-       309.92
-       309.96
-          310
-       310.04
-       310.08
-       310.12
-       310.16
-        310.2
-       310.24
-       310.28
-       310.32
-       310.36
-        310.4
-       310.44
-       310.48
-       310.52
-       310.56
-        310.6
-       310.64
-       310.68
-       310.72
-       310.76
-        310.8
-       310.84
-       310.88
-       310.92
-       310.96
-          311
-       311.04
-       311.07
-       311.12
-       311.16
-        311.2
-       311.24
-       311.28
-       311.31
-       311.36
-        311.4
-       311.44
-       311.48
-       311.52
-       311.56
-        311.6
-opo(:,2)
-ans =
-           59
-        58.25
-        59.75
-        60.25
-         60.5
-           62
-           64
-           66
-           67
-         71.5
-        75.25
-        80.75
-         85.5
-        92.25
-        108.5
-       123.25
-       134.25
-       139.75
-       145.25
-        161.5
-        306.5
-       618.25
-          796
-         1042
-         1014
-       1634.2
-       2505.5
-       3346.2
-       4186.8
-       4850.2
-       5538.8
-         6497
-         7287
-         7875
-       8704.2
-       9567.2
-        10030
-        10379
-        10108
-        10107
-       9288.2
-         8491
-       7768.2
-         7004
-       6070.8
-       5416.2
-       4526.2
-       3709.5
-       2928.8
-         2096
-       1365.2
-         1057
-       961.75
-       843.75
-        782.5
-        797.5
-       531.75
-        236.5
-        144.5
-        136.5
-          126
-        116.5
-         97.5
-        83.75
-         82.5
-         77.5
-           71
-        66.75
-        68.25
-        65.75
-           63
-        61.25
-           59
-        60.25
-         58.5
-         59.5
-           58
-slit_fit([opo(:,1),opo(:,2)],4,1,f)
-ans =
-       310.06
-[cwv(1),fwhm(1)]=slit_fit([opo(:,1),opo(:,2)],4,1,f);
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (35) with properties:
-
-      Number: 35
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-f =
-    35
-
-  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	'}
-
- 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {' 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	'}
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (36) with properties:
-
-      Number: 36
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-f =
-    36
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-Undefined function 'wc' for input arguments of type 'double'.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 324)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',324,0)">line 324</a>)
-             y=trapezoid_brewer(x,wc(sn(j),i)/10,fw(sn(j),i)/10/2,.87);
-
-Undefined function 'monitor_brewer_c' for input arguments of type 'double'.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 258)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',258,0)">line 258</a>)
-   z1=c./monitor_brewer_c(c)';
-
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Subscripted assignment dimension mismatch.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 361)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',361,0)">line 361</a>)
-    o3abs(:,i)=-(o3x')*O3W'/log(10);
-
-o3x
-o3x =
-       5.9871        5.985       6.0022       6.0021
-       4.0992       4.1023       4.0875       4.0907
-       2.3158       2.3146       2.2962       2.3064
-         1.55       1.5571       1.5376       1.5588
-      0.86616      0.86903      0.85085      0.86164
-      0.67254      0.67216      0.67442      0.67642
-O3W
-O3W =
-            0            0           -1          0.5          2.2         -1.7
--(o3x')*O3W'
-ans =
-      0.77853
-      0.76691
-      0.80206
-      0.78127
--(o3x')*O3W'/log(10)
-ans =
-      0.33811
-      0.33306
-      0.34833
-       0.3393
-o3abs(:,i)=-(o3x')*O3W'/log(10)
-{Subscripted assignment dimension mismatch.} 
-o3abs
-o3abs =
-      0.34225
-      0.34089
-      0.33685
-close all
-clear all
-laser_o3
-DT =
-      2.9e-08
-j1a0 1077.31064 243 7 172 217 54 59 37rat 26.76098 27.14111 3017 88087.78
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-j3a0 868.4061 6 7 14 59 55 42 54rat 25.81065 26.09575 3085.6 593
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-slit =
-     0
-slit =
-     2
-slit =
-     4
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (7) with properties:
-
-      Number: 7
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-f =
-     7
-
-  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	'}
-
- 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {' 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	'}
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (8) with properties:
-
-      Number: 8
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-f =
-     8
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-{Undefined function or variable 'b'.
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('laser_o3', '/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m', 234)" style="font-weight:bold">laser_o3</a> (<a href="matlab: opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',234,0)">line 234</a>)
-d=squeeze(m(7,:,:));  dk=b(:);% dark} 
-opentoline('/Users/aredondas/CODE/rbcce.aemet.es/campaigns/atmoz/waveleng/laser_o3.m',234,0)
-laser_o3
-DT =
-      2.9e-08
-j1a0 1077.31064 243 7 172 217 54 59 37rat 26.76098 27.14111 3017 88087.78
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-j3a0 868.4061 6 7 14 59 55 42 54rat 25.81065 26.09575 3085.6 593
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-slit =
-     0
-slit =
-     2
-slit =
-     4
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (16) with properties:
-
-      Number: 16
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-f =
-    16
-
-  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	'}
-
- 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {' 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	'}
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (17) with properties:
-
-      Number: 17
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-f =
-    17
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 30
-                  Height: 20
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (1) with properties:
-
-      Number: 1
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-f =
-     1
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-f=figure
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (2) with properties:
-
-      Number: 2
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-%semilogy(brw(:,1),[brwc(:,2)/max(brwc(:,2)),brwl(:,2)/max(brwl(:,2))],'-o')
-h=plot(brw(:,1),[brwc(:,2)/max(brwc(:,2)),brwl(:,2)/max(brwl(:,2))],'-o')
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-title('Laser scan 310 nm');
-f =
-     2
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (3) with properties:
-
-      Number: 3
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-laser_o3
-DT =
-      2.9e-08
-j1a0 1077.31064 243 7 172 217 54 59 37rat 26.76098 27.14111 3017 88087.78
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-j3a0 868.4061 6 7 14 59 55 42 54rat 25.81065 26.09575 3085.6 593
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-DT =
-      2.9e-08
-slit =
-     0
-slit =
-     2
-slit =
-     4
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (10) with properties:
-
-      Number: 10
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-f =
-    10
-
-  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0592	  310.0533	  310.0615	  310.0559	    0.0059	    0.0000	    0.0082	    0.0026	'}
-
- 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	
-ans =
-  1×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {' 0.6347	 0.5788	 0.6385	 0.5564	 0.0559	 0.0000	 0.0596	-0.0224	'}
-f =
-    10
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2918  (0.2758, 0.3078)
-       x0 =       310.1  (310.1, 310.1)
-       ks =       2.779  (1.944, 3.614)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =       2.573  (2.069, 3.077)
-     General model:
-     f(x) = m*(exp(-((x0-x)*ks./(kl.*(x<x0)+kr.*(x>=x0))).^2)+2*exp(-(abs(x0-
-                    x)./(kl.*(x<x0)+kr.*(x>=x0))).^g))
-     Coefficients (with 95% confidence bounds):
-       m =      0.2475  (0.2115, 0.2835)
-       x0 =       310.1  (310.1, 310.2)
-       ks =       2.773  (0.6227, 4.924)
-       kl =         0.8  (fixed at bound)
-       kr =         0.5  (fixed at bound)
-       g =           3  (1.427, 4.573)
-
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0556	  310.0585	   -0.0059	   -0.0030	
-  310.0561	  310.0560	   -0.0054	   -0.0055	
-  310.0615	  310.0559	    0.0000	   -0.0056	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  310.0561	  310.0560'}    {'  310.0556	  310.0585'}    {'  310.0561	  310.0560'}    {'  310.0615	  310.0559'}
-
-  0.6274	  0.5705	 -0.0111	 -0.0680	
-  2.3748	  6.3434	  1.7363	  5.7049	
-  0.8873	  0.8067	  0.2488	  0.1683	
-  0.6385	  0.5564	  0.0000	 -0.0821	
-ans =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'  0.6274	  0.5705'}    {'  2.3748	  6.3434'}    {'  0.8873	  0.8067'}    {'  0.6385	  0.5564'}
-f = 
-  <a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold">Figure</a> (11) with properties:
-
-      Number: 11
-        Name: ''
-       Color: [1 1 1]
-    Position: [1000 918 560 420]
-       Units: 'pixels'
-
-  Show <a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end">all properties</a>
-h = 
-  2×1 <a href="matlab:helpPopup matlab.graphics.chart.primitive.Line" style="font-weight:bold">Line</a> array:
-
-  Line
-  Line
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 30
-                  Height: 20
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 30
-                  Height: 20
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 30
-                  Height: 20
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-get(lx,'Position')
-ans =
-      0.22232      0.94643      0.57768     0.040476
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 15
-                  Height: 10
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-set(fx,'Tag','Laser_Brewer_ozone_mode')
-printfiles_report(fx,'figures','Width',15,'Height',10,'FontMode','fix','FontSize',18)
-Error en printfiles_report: FontMode must be 'scaled' or 'fixed'.
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 15
-                  Height: 10
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fix'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-set(lx,'Position',[0.22232      0.94643      0.57768     0.040476]);
-set(fx,'Tag','Laser_Brewer_ozone_mode')
-printfiles_report(fx,'figures','Width',15,'Height',10,'FontMode','fixed','FontSize',18)
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 15
-                  Height: 10
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'fixed'
-                FontSize: 18
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      0.20888      0.18925
-ans =
-     -0.53904     -0.52369     -0.53606      -0.5377
-ans = 
-  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
-
-                  Format: 'eps'
-                 Preview: 'tiff'
-                   Width: 15
-                  Height: 10
-                  Bounds: 'loose'
-                   Color: 'cmyk'
-              Resolution: 300
-                LockAxes: 1
-                FontMode: 'scaled'
-                FontSize: 0.9
-    DefaultFixedFontSize: 14
-             FontSizeMin: 5
-             FontSizeMax: 18
-                LineMode: 'fixed'
-               Linewidth: 3
-            FontEncoding: 'latin1'
-            SeparateText: 0
-label_o3x =
-  1×7 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'Brw'}    {'B&P'}    {'DMB'}    {'SGW'}    {'SGQ'}    {'SG1'}    {'BPB'}
-color_s =
-  1×4 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-    {'rx-'}    {'bo'}    {'k:'}    {'g.'}
-ans =
-      0.02811     0.028478     0.025487     0.024264
-ans =
-    -0.078969    -0.070546    -0.068862    -0.071365
-ans =
-    -0.030622    -0.022777   -0.0088743   -0.0075307
-ans =
-     -0.44926     -0.44147     -0.42864     -0.42851
-ans =
-      0.12298      0.18183      
