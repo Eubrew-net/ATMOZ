@@ -10,8 +10,8 @@
 
 
 %% 2-column papers and discussion papers
-\documentclass[acp, manuscript]{copernicus}
-%\documentclass[acp]{copernicus} % final format
+%\documentclass[acp, manuscript]{copernicus}
+\documentclass[acp]{copernicus} % final format
 
 %% \usepackage commands included in the copernicus.cls:
 %\usepackage[german, english]{babel}
@@ -76,19 +76,19 @@
 
 \begin{abstract}
 
-In this contribution we present the wavelength calibration of the traveling reference Brewer of the RBCC-E  \url{http://rbcce.aemet.es}  at PTB in Braunschweig, Germany. The wavelength calibration is needed for the calculation of the ozone absorption coefficients used by the Brewer ozone algorithm. In order to validate the standard procedure for determining Brewer’s wavelength scale, a calibration has been performed by using a tunable laser source at PTB in the framework of the EMRP project ENV59 ATMOZ "Traceability for the total column ozone". Here we compare these results to those of the standard procedure for the wavelength calibration of the Brewer instrument. Such a comparison allows validating the standard methodology used for measuring the ozone absorption coefficient with respect to several assumptions. The results of the laser-based calibrations reproduces those obtained by the standard operational methodology and shows that there is a underestimation of 0.8\%  due the use of the parametrized slit functions. 
+In this contribution we present the wavelength calibration of the traveling reference Brewer of the Regional Brewer Calibration Center (RBCC-E)  at PTB in Braunschweig, Germany. The wavelength calibration is needed for the calculation of the ozone absorption coefficients used by the Brewer ozone algorithm. In order to validate the standard procedure for determining Brewer’s wavelength scale, a calibration has been performed by using a tuneable laser source at PTB in the framework of the EMRP project ENV59 ATMOZ "Traceability for the total column ozone". Here we compare these results to those of the standard procedure for the wavelength calibration of the Brewer instrument. Such a comparison allows validating the standard methodology used for measuring the ozone absorption coefficient with respect to several assumptions. The results of the laser-based calibrations reproduces those obtained by the standard operational methodology and shows that there is a underestimation of 0.8\%  due the use of the parametrized slit functions. 
 \end{abstract}
 
 \copyrightstatement{TEXT}
 
 \section{Background}
 
-The wavelength calibration is needed for calculation of the ozone absorption coefficient used by the Brewer ozone retrieval algorithm. The Brewer spectrophotometer has two operating  modes. In the ozone mode, used for the total ozone column measurements, the diffraction grating stays at a fixed position while the six operational wavelengths are selected by a rotating slit mask.  The scanning mode is used to perform spectral irradiance measurements in the ultraviolet (UV) spectral range. In this mode, the slits are fixed and the spectral scan is carried out by turning the diffraction grating. The usual wavelength calibration procedure is performed in the scanning mode by analyzing recorded emission lines of the spectral discharge lamps, wich are usually mercury (Hg), cadmium (Cd) , and zinc (Zn). Using the spectral lines provided in Table \ref{tab:dsp_lines} allows determining the central wavelengths and the corresponding FWHM (full width at half maximum) of the slit functions as well as the relation between the positions of the grating  and the corresponding instrument wavelengths (dispersion relation) required to determine the operational wavelengths used for the ozone determination. To obtain the ozone absorption coefficients, the instrumental slit functions are convolved whit the Bass \& Paur ozone absorption cross-section data.
-The use of the of the tunable laser  source allow us to:
+The wavelength calibration is needed for calculation of the ozone absorption coefficient used by the Brewer ozone retrieval algorithm. The Brewer spectrophotometer has two operating  modes. In the ozone mode, used for the total ozone column measurements, the diffraction grating stays at a fixed position while the six operational wavelengths are selected by a rotating slit mask.  The scanning mode is used to perform spectral irradiance measurements in the ultraviolet (UV) spectral range. In this mode, the slits are fixed and the spectral scan is carried out by turning the diffraction grating. The usual wavelength calibration procedure is performed in the scanning mode by analyzing recorded emission lines of the spectral discharge lamps, which are usually mercury (Hg), cadmium (Cd) , and zinc (Zn). Using the spectral lines provided in Table \ref{tab:dsp_lines} allows determining the central wavelengths and the corresponding FWHM (full width at half maximum) of the slit functions as well as the relation between the positions of the grating  and the corresponding instrument wavelengths (dispersion relation) required to determine the operational wavelengths used for the ozone determination. To obtain the ozone absorption coefficients, the instrumental slit functions are convoluted whit the Bass \& Paur ozone absorption cross-section data.
+The use of the of the tuneable laser  source allow us to:
 \begin{itemize}
 
     \item Calculate the ozone absorption coefficients directly in the ozone mode. The normal ozone absorption coefficient determination uses the scan of the spectral lines in the scanning mode so that a dispersion relation is used to convert grating positions in micrometer steps to wavelengths assuming a quadratic relation. Scanning directly with the laser around the ozone operational wavelengths in the ozone mode we can determine the instrumental slit functions directly and weight them with the ozone absorption cross-sections without need for the assumptions of the slit functions and the dispersion relations used in the normal operational procedure.
-    \item Calculate the dispersion relation based on regularly spaced reference spectral lines provided by the tunable laser instead of the irregularly distributed  emission lines of the  Hg, Cd and Zn spectral lamps. 
+    \item Calculate the dispersion relation based on regularly spaced reference spectral lines provided by the tuneable laser instead of the irregularly distributed  emission lines of the  Hg, Cd and Zn spectral lamps. 
 \end{itemize}
 
 %The objective of this work is  to validate the standard procedure for the brewer spectrophotometer, For that we compare  to do that we perform 3 experiments, the standard procedure described on secion 2, the experiments results obtained with the laser , using the brewer on ozone mode (the lases scans ) and finally using the laser
@@ -105,7 +105,7 @@ While Brewer is measuring in ozone mode and in aerosol mode, the laser wavelengt
 %(ozone and aerosol). 
 
 
-\item  Dispersion measurements using tunable laser (Brewer scanning): while the laser is emitting at a fixed wavelength, the Brewer will scan ±2\unit{nm} around this wavelength in scanning mode by moving the grating and using the 6 slits. This Brewer scan is carried out at wavelengths ranging from 290 \unit{nm} to 365 $\unit{nm}$ with an increment of 5$\unit{nm}$.  The results allow us to estimate the dispersion approximation error due to the lack of spectral lines at the end of spectral range of the Brewer spectrophotometer and due tothe fact that that the emission lines of the used lamps are not equally spaced.
+\item  Dispersion measurements using tuneable laser (Brewer scanning): while the laser is emitting at a fixed wavelength, the Brewer will scan ±2\unit{nm} around this wavelength in scanning mode by moving the grating and using the 6 slits. This Brewer scan is carried out at wavelengths ranging from 290 \unit{nm} to 365 $\unit{nm}$ with an increment of 5$\unit{nm}$.  The results allow us to estimate the dispersion approximation error due to the lack of spectral lines at the end of spectral range of the Brewer spectrophotometer and due to the fact that that the emission lines of the used lamps are not equally spaced.
 
 %\item 
 \end{enumerate}
@@ -120,7 +120,7 @@ While Brewer is measuring in ozone mode and in aerosol mode, the laser wavelengt
 \label{sec:calibration}
 
 
-The Brewer instrument measures the irradiance of direct sunlight at six nominal wavelengths ($\lambda$) in the UV range (303.2, 306.3, 310.1, 313.5, 316.8, and 320.1~\unit{nm}), each spectral band covering a bandwidth of 0.5~\unit{nm} (resolution power $\lambda/\delta\lambda$ of around 600). The spectral resolution is achieved by a holographic grating in combination with a slit mask that selects the channel to be analyzed by a photomultiplier. The longest four wavelengths are used for the ozone calculation. Based on the Lambert-Beer law, the total ozone column in the Brewer algorithm can be expressed as:
+The Brewer instrument measures the irradiance of direct sunlight at six nominal wavelengths ($\lambda$) in the UV range (303.2, 306.3, 310.1, 313.5, 316.8, and 320.1~\unit{nm}), each spectral band covering a bandwidth of 0.5~\unit{nm} (resolution power $\lambda/\delta\lambda$ of around 600). The spectral resolution is achieved by a holographic grating in combination with a slit mask that selects the channel to be analyzed by a photomultiplier (PMT). The longest four wavelengths are used for the ozone calculation. Based on the Lambert-Beer law, the total ozone column in the Brewer algorithm can be expressed as:
 
 \begin{equation}
 	\label{eq:ozone}
@@ -216,7 +216,7 @@ The dispersion relation, which provides the  relation between the micrometer ste
 
 \subsection{Instrumental setup}
 
-For scanning the bandpass functions of the Brewer instrument, an upgraded PLACOS setup \citet{Nevas2009} featuring a tunable pulsed laser system based on an Optical Parametric Oscillator (OPO) was used at Physikalisch-Technische Bundesanstalt (PTB) in Braunschweig  (Figure \ref{fig:opo}). The new OPO system generates 3-6 ns pulses at 1 kHz repetition rate in the spectral range from 210 \unit{nm} to 2600 \unit{nm}. The laser wavelengths were monitored during the measurements by a wavemeter (laser spectrum analyzer) and a high-resolution spectrometer with an uncertainty of 0.01 nm. The laser beam was guided into the direct port of the Brewer spectrophotometer. A fraction of the beam was directed to a monitor photodiode in order to account for the ouput power changes of the laser beam. The photocurrent of the silicon photodiode was measured by a charge meter.
+For scanning the bandpass functions of the Brewer instrument, an upgraded PLACOS setup \citet{Nevas2009} featuring a tuneable pulsed laser system based on an Optical Parametric Oscillator (OPO) was used at Physikalisch-Technische Bundesanstalt (PTB) in Braunschweig  (Figure \ref{fig:opo}). The new OPO system generates 3-6 ns pulses at 1 kHz repetition rate in the spectral range from 210 \unit{nm} to 2600 \unit{nm}. The laser wavelengths were monitored during the measurements by a wavemeter (laser spectrum analyzer) and a high-resolution spectrometer with an uncertainty of 0.01 nm. The laser beam was guided into the direct port of the Brewer spectrophotometer. A fraction of the beam was directed to a monitor photodiode in order to account for the ouput power changes of the laser beam. The photocurrent of the silicon photodiode was measured by a charge meter.
 
 
 % monitor description
@@ -234,7 +234,7 @@ The Brewer detector system, which is based on a photomultiplier tube (PMT), resp
 
 The ratios of the measured Brewer counts to the recorded monitor photodiode signals are shown in figure  \ref{fig:no}. The non-linearity is evident in the figure together with hysteresis region near $10^4$  Brewer counts/seconds. The correction is not reliable  around $10^3$ counts/seconds and lower than 100 counts/seconds. As we can control the power of the laser beam, it is possible to work on the “flat regions” of the non-linearity characteristics and apply the determined correction. This correction does not affect the calculated central wavelength of the slit functions, though, it does affect the determined FWHM values (Figure \ref{fig:slitcor}) if the correction is not applied.
 
-The nonlinearity correction is not reliable for signals lower than 100 counts/seconds. Also we observed (Figure \ref{fig:laser_log}) that the recorder dark signal values (measurements performed with the blocked slit \#0) were highest immediately after exposing the PMT to the laser light. The dark signal of the PMT was then gradually fast decreasing with time after the excitation, which may cause the signal values obtained for slit \#1 (measured immediately after slit \#0) be higher than for the other slits measured afterwards.
+The nonlinearity correction is not reliable for signals lower than 100 counts/seconds. Also we observed (Figure \ref{fig:laser_log}) that the recorder dark signal values (measurements performed with the blocked slit \#1) were highest immediately after exposing the PMT to the laser light. The dark signal of the PMT was then gradually fast decreasing with time after the excitation, which may cause the signal values obtained for slit \#1 (measured immediately after slit \#0) be higher than for the other slits measured afterwards.
 
 \subsubsection{Slit parametrization }
 
@@ -248,9 +248,9 @@ Using the measured slit functions, the calculated effective ozone cross sections
 
 \section{Comparison }
 
-The experiment allows us to validate the Brewer standard methodology used to perform the wavelength calibration. For this purpose, we compare laser-based wavelength calibration results to those yielded by the standard operative method based on scanning the spectral lamps in case of both the quadratic and the cubic fit to the dispertion relation.
+The experiment allows us to validate the Brewer standard methodology used to perform the wavelength calibration. For this purpose, we compare laser-based wavelength calibration results to those yielded by the standard operative method based on scanning the spectral lamps in case of both the quadratic and the cubic fit to the dispersion relation.
 
-Figure \ref{fig:cw_comp} shows discrepancies between the central wavelengths calculated by the quadratic and the qubic fits to be bigger than 0.1 A for wavelength adove 320 \unit{nm} and much bigger near 350 nm. This is  also indicated by the systematic residuals of the quadratic fit that are much larger than for the cubic fit (see figures 9 and 10). This indicates that the quadratic fit is only valid in the ozone range (310-320 nm). The comparison of the calculated FWHMs (Figure \ref{fig:cw_comp} ) shows a different pattern with a difference of 0.1A between the direct and the scanning methods in the ozone range and with a smaller difference between the quadratic and the cubic fits.  
+Figure \ref{fig:cw_comp} shows discrepancies between the central wavelengths calculated by the quadratic and the cubic fits to be bigger than 0.1 A for wavelength adove 320 \unit{nm} and much bigger near 350 nm. This is  also indicated by the systematic residuals of the quadratic fit that are much larger than for the cubic fit (see figures 9 and 10). This indicates that the quadratic fit is only valid in the ozone range (310-320 nm). The comparison of the calculated FWHMs (Figure \ref{fig:cw_comp} ) shows a different pattern with a difference of 0.1A between the direct and the scanning methods in the ozone range and with a smaller difference between the quadratic and the cubic fits.  
 
 The differences to the directly calculated ozone absorption coefficients are summarized for the six measurements in table \ref{tab:o3abs_sum}, taking as a reference the direct measurements. The quadratic fits result in bigger differences of around 1\% whereas in the case of the cubic fits the differences decrease to 0.3\% and  0.1\%  when the laser or the discharge lamps are used, respectively.   
 
@@ -433,12 +433,14 @@ SDK  & 0.3392       & 0.3422    \\
      & brw\_scan & ptb\_scan & opo\_quad & opo\_cubic & lamp\_quad & lamp\_cubic \\
 \middlehline
 SGW   & 0.3409    & 0.3368    & 0.3442    & 0.342      & 0.3446     & 0.3412      \\
-ratio & 1         & 0.9881    & 1.0096    & 1.0033     & 1.0108     & 1.001      
+ratio & 1         & 0.9881    & 1.0096    & 1.0033     & 1.0108     & 1.001      \\
 \bottomhline
 \end{tabular}
+
 \belowtable{} % Table Footnotes
 \label{tab:o3abs_sum}
 \end{table*}
+
 
 %\appendix
 %\section{}    %% Appendix A
