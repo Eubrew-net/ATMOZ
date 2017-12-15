@@ -105,16 +105,44 @@ set(fw,'Tag','fwhm_comparison')
 printfiles_report(fw,'figures','Width',12,'Height',12)
 
 
+
+
 %%
 cw=figure
 dwl=matadd(squeeze(opo(:,3,:)),-wl);dwl(:,1)=wl; dwl=sortrows(dwl,1);
 h=ploty(dwl);
+
+set(h(1),'Marker','.')
+set(h(2),'Marker','o')
+set(h(3),'Marker','x')
+set(h(4),'Marker','+')
 legend(label2(2:end));
 grid
 xlabel('wavelength')
 ylabel('wavelength (A)')
-title('Central Wavelength')
+title('Central wavelengh difference')
 legend(label2(2:end));
+hline([-0.1,0.1])
+vline(BWN(3:end)*10)
+set(h(1),'LineStyle','-')
+set(h(2),'LineStyle',':')
+set(h(3),'LineStyle','-.')
+set(h(4),'LineStyle','--')
+figure(fw)
+set(fw,'Tag','central_comparison')
+printfiles_report(fw,'figures','Width',12,'Height',12)
+
+
+%%
+cw=figure
+dwl=matadd(squeeze(opo(:,3,:)),-wl);dwl(:,1)=wl; dwl=sortrows(dwl,1);
+yyaxis left
+h=ploty(dwl);
+
+grid
+xlabel('wavelength')
+ylabel('wavelength (A)')
+title('Central Wavelength')
 hline([-0.1,0.1])
 vline(BWN(3:end)*10)
 set(h(1),'LineStyle','-')
@@ -123,12 +151,32 @@ set(h(3),'LineStyle','-.')
 set(h(4),'LineStyle','--')
 
 
-set(h(1),'Marker','.')
-set(h(2),'Marker','o')
-set(h(3),'Marker','x')
-set(h(4),'Marker','+')
-set(cw,'Tag','central_comparison')
+set(h(1),'Marker','.','Color','b')
+set(h(2),'Marker','o','Color','r')
+set(h(3),'Marker','x','Color','k')
+set(h(4),'Marker','+','Color','g')
+
+yyaxis right
+h1=ploty(fdwl);
+set(h1(1),'Marker','.')
+set(h1(2),'Marker','o')
+set(h1(3),'Marker','x')
+set(h1(4),'Marker','+')
+set(h1(1),'LineStyle','-')
+set(h1(2),'LineStyle',':')
+set(h1(3),'LineStyle','-.')
+set(h1(4),'LineStyle','--')
+
+legend(h,label2(2:end),'Orientation','Horizontal');
+hline([-0.1,0,0.1],'b')
+
+set(cw,'Tag','c_comparison')
 printfiles_report(cw,'figures','Width',12,'Height',12)
+
+%%
+
+
+
 %% FWHK
 
 f=figure

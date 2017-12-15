@@ -113,7 +113,29 @@ Direct dispersion measurements (laser scanning). While Brewer is measuring in th
 
 
 
-
+\begin{table}[t]
+\caption{Emission lines of the discharge lamps used for Brewer calibration}
+\begin{tabular}{lll}
+\tophline
+Lamp           & Line (nm) & Slits \\
+\middlehline
+Mercury (Hg)   & 289.36    & 0–1   \\
+Hg             & 296.728   & 0–3   \\
+Zinc (Zn)      & 301.836   & 0–5   \\
+Zn             & 303.578   & 0–5   \\
+Cd (multiplet) & 308.082   & 0-5   \\
+Cd             & 313.3167  & 0–5   \\
+Cd             & 326.1055  & 0–5   \\
+Zn             & 328.233   & 0–5   \\
+Hg             & 334.148   & 0–5   \\
+Cd             & 340.3652  & 0–5   \\
+Cd             & 349.995   & 4–5   \\
+Cd (multiplet) & 361.163   & 5     \\
+\bottomhline
+\end{tabular}
+\belowtable{} % Table Footnotes
+\label{tab:dsp_lines}
+\end{table}
 
 
 
@@ -206,7 +228,11 @@ Under these assumptions, the ozone effective absorption is essentially obtained 
 
 The Brewer spectrophotometer is constructed based either on a single or a double monochromatoror of modified Ebert–Fastie type, generally referered to as single or double Brewer, respectively. The first monochromator disperses the incoming radiation onto six exit slits. In the case of the double Brewer , the six exit slits  (intermediate slits) of the first monochromator are the entrance slits to a second monochromator that is used in subtractive mode. The wavelength is selected by choosing one of the six exit slit (ozone mode) or rotating the grating (scanning mode). The rotation of the grating is managed by a drive mechanism consisting of a motor-driven micrometer linked to an arm that rotates the grating. The smallest wavelength increment corresponding to one stepper motor step varies steadily from approximately 8.0 pm to 7.0 pm ( 0.0080 \unit{nm} ) \citet{Grobner1998}. 
 
-The dispersion relation, which provides the  relation between the micrometer steps and the monochromator set wavelengths, is determined by scanning the emission lines as described in section 1. The line scans are carried out with with an increment of 10 motor steps (~0.7A). From the results, the central position and the FWHM of the slit function are calculated in  motor steps assuming an isosceles triangle. The both sides of the peak are  fitted to a straight line taking only the function values above 20\%  and bellow 80\% of the normalized peak. The central point is calculated by the intersection point and the FWHM is the width of the triangle (Figure \ref{fig:laser_dsp} ). Finally, the dispersion relation is calculated using a quadratic polynomial or the cubic approximation \citep{Grobner1998}. This relation is used to transform the previously determined central positions and FWHMs of the slit functions in micrometer steps to a wavelength scale.
+The dispersion relation, which provides the  relation between the micrometer steps and the monochromator set wavelengths, is determined by scanning the emission lines as described in section 1. The line scans are carried out with with an increment of 10 motor steps (~0.7A). From the results, the central position and the FWHM of the slit function are calculated in  motor steps assuming an isosceles triangle. The both sides of the peak are  fitted to a straight line taking only the function values above 20\%  and bellow 80\% of the normalized peak. The central point is calculated by the intersection point and the FWHM is the width of the triangle (Figure \ref{fig:laser_dsp} ). Finally, the dispersion relation is calculated using a quadratic polynomial or the spline cubic approximation. This relation is used to transform the previously determined central positions and FWHMs of the slit functions in micrometer steps to a wavelength scale.
+
+
+The cubic method of \citeauthor{Grobner1998}  use the optical design of the brewer to transfer line measures from one slit to the other slits reducing the number of free parameters to adjust compared with the quadratic method. However  there is a systematic difference on the calculation of the ozone absorption coefficient between the two methods. Both methods generally agree if only the brewer ozone spectral range is used \citep{redondas_regional_2012}.
+
 
 
 % mercury test
@@ -256,11 +282,24 @@ The Brewer detector system, which is based on a PMT, responds non-linearly to pu
 
 
 The ratios of the measured Brewer counts to the recorded monitor photodiode signals are shown in figure  \ref{fig:no}. The non-linearity is evident in the figure together with hysteresis region near $10^4$  Brewer counts/seconds. The correction is not reliable  around $10^3$ counts/seconds and lower than 100 counts/seconds. As we can control the power of the laser beam, it is possible to work on the “flat regions” of the non-linearity characteristics and apply the determined correction. This correction does not affect the calculated central wavelength of the slit functions, though, it does affect the determined FWHM values (Figure \ref{fig:slitcor}) if the correction is not applied.
+
+
+
+
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{figures/General_Corrected_vs_uncorrected.eps}
 \caption{Measured slit function of the 310 nm slit (slit \#4): uncorrected counts/second (black) and non-linearly-corrected values (dark blue). The central wavelength determination is not affected by the nonlinearity but the FWHM is bigger if the correction is not applied. The hysteresis is evident from the asymmetry of the function at the low values region of the plot. As the method uses the normalised values only between 0.2 and 0.8, the hysteresis has no effect on the calculations.}
 \label{fig:slitcor}
 \end{figure}
+
+
+%
+\begin{figure}[t]
+\includegraphics[width=8.3cm]{figures/General_laser_log.eps}
+\caption{Brewer measurements in the ozone mode while the laser wavelength is changed every 0.1 nm . The blue curve corresponds to the dark counts obtained from the measurements of slit 1.}
+\label{fig:laser_log}
+\end{figure}
+
 Fron the Figure \ref{fig:laser_log} we can see that correction is not reliable for signals lower than 100 counts/seconds. Also we observed that the recorder dark signal values (measurements performed with the blocked slit \#1) were highest immediately after exposing the PMT to the laser light. The dark signal of the PMT was then gradually fast decreasing with time after the excitation, which may cause the signal values obtained for slit \#1 (measured immediately after slit \#0) be higher than for the other slits measured afterwards.
 
 \subsubsection{Slit parametrization }
@@ -269,19 +308,82 @@ The Brewer algorithms assume trapezoidal slits functions cut at 0.87 of the heig
 
 Among the available data sets there are versions of Bass and Paur~(1985) cross-sections denoted as Brewer operational (Brw), IGACO quadratic coefficient (B\&P), the cross-sections of  Daumont Brion Malicet (DBM) (\citet{ daumont_ozone_1992}, \citet{brion_high-resolution_1993}, and \citet{malicet_ozone_1995} ), and the newly recommended data set for ozone ground-based calculation by Serdyuchenco, Groshelev, Weber (SGW) \citep{serdyuchenko_high_2012,gorshelev_high_2012,amt-9-4459-2016}. 
 
+%%
+\begin{figure}[t]
+\includegraphics[width=12cm]{figures/General_Laser_Brewer_ozone_mode.eps}
+\caption{ Plot of the parametrized (thick lines, left axis) and the measured slit functions (dots, lexft axis) as well as the different ozone cross sections in \unit{cm^{-1}}(right axis) used for the Brewer effective ozone absorption coefficient calculation.}
+\label{fig:param}
+\end{figure}
+
 
 Using the measured slit functions, the calculated effective ozone cross sections are $~0.9\%$ higher compared to those obtained by using the parametrized Brewer slits in the standard procedure (Table \ref{tab:slit_param}) independently of the cross sections used.
+
+%%
+\begin{table}[t]
+\caption{Ozone absorption coefficient in atm $cm^{-1}$ calculated using four absorption cross sections.}
+\begin{tabular}{lll}
+\tophline
+     & Parametrized & Measured \\
+\middlehline
+BRW  & 0.3381       & 0.3407   \\
+B\&P & 0.3330       & 0.3360    \\
+DMB  & 0.3483       & 0.3514   \\
+SDK  & 0.3392       & 0.3422    \\
+\bottomhline
+\end{tabular}
+\belowtable{} % Table Footnotes
+\label{tab:slit_param}
+\end{table}
+
 
 
 \section{Comparison }
 
 The experiment allows us to validate the Brewer standard methodology used to perform the wavelength calibration. For this purpose, we compare laser-based wavelength calibration results to those yielded by the standard operative method based on scanning the spectral lamps in case of both the quadratic and the cubic fit to the dispersion relation.
 
-Figure \ref{fig:cw_comp} shows discrepancies between the central wavelengths calculated by the quadratic and the cubic fits to be bigger than 0.1 \AA for wavelength above 320 \unit{nm} and much bigger near 350 nm. This is  also indicated by a systematic shape of the residuals of the quadratic fit that are much larger than for the cubic fit (see figures 9 and 10). This indicates that the quadratic fit is only valid in the ozone range (310-320 nm). The comparison of the calculated FWHMs (Figure \ref{fig:cw_comp} ) shows a different pattern with a difference of 0.1\AA between the direct and the scanning methods in the ozone range and with a smaller difference between the quadratic and the cubic fits.  
+Figure \ref{fig:cw_comp} shows discrepancies between the central wavelengths calculated by the quadratic and the cubic fits to be bigger than 0.1 \AA for wavelength above 320 \unit{nm} and much bigger near 350 nm. This is  also indicated by a systematic shape of the residuals of the quadratic fit that are much larger than for the cubic fit (see figures 9 and 10). This indicates that the quadratic fit is only valid in the ozone range (310-320 nm). The comparison of the calculated FWHMs (Figure \ref{fig:fwhm_comp} ) shows a different pattern with a difference of 0.1 \AA between the direct and the scanning methods in the ozone range and with a smaller difference between the quadratic and the cubic fits.
+
+\begin{figure}[t]
+\includegraphics[width=8.3cm]{figures/General_002_central_comparison.png}
+\caption{Differences between the central wavelengths determinated directly and by the scanning methods: with the laser wavelengths in equally spaced grid every 5\unit{nm} and lines of the discharge lamps; in both cases quadratic and cubic fitting are used.}
+\label{fig:cw_comp}
+\end{figure}
+
+
+
+\begin{figure}[t]
+\includegraphics[width=8.3cm]{figures/General_002_fwhm_comparison.png}
+\caption{Differences between the FWHMs determinated directly and by the scanning methods: with the laser wavelengths in equally spaced grid every 5nm and lines of the discharge lamps; in both cases quadratic and cubic fitting are used.}
+\label{fig:fwhm_comp}
+\end{figure}
+
 
 The differences to the directly calculated ozone absorption coefficients are summarized for the six measurements in table \ref{tab:o3abs_sum}, taking as a reference the direct measurements. The quadratic fits result in bigger differences of around 1\% whereas in the case of the cubic fits the differences decrease to 0.3\% and  0.1\%  when the laser or the discharge lamps are used, respectively.   
 
 
+\begin{table*}[t]
+\caption{Ozone absorption coefficient in atm $cm^-1$ calculated using  four absorption cross sections }
+\begin{tabular}{lllllll}
+\tophline
+     & brw\_scan^1  & opo\_quad^2 & opo\_cubic^3 & lamp\_quad^4 & lamp\_cubic^5 \\
+\middlehline
+SGW   & 0.3409     & 0.3442    & 0.342      & 0.3446     & 0.3412      \\
+ratio & 1         & 0.9881  & 1.0033     & 1.0108     & 1.001      \\
+\bottomhline
+\end{tabular}
+
+\belowtable{  
+\begin{enumerate}
+
+    \item Laser wavelength scanned @ fixed Brewer grating position 
+    \item Brewer grating position. changed @ fixed laser wavelength, dispersion approx.  by a quadratic function 
+    \item Brewer grating pos. changed @ fixed laser wavelength, dispersion approx.  by a cubic function 
+    \item Brewer grating pos. changed @ fixed lamp emission wavelength, dispersion approx.  by a quadratic function 
+    \item Brewer grating pos. changed @ fixed lamp emission wavelength,   dispersion approx.  by a cubic function  % Table Footnotes
+\end{enumerate}
+}
+\label{tab:o3abs_sum}
+\end{table*}
 
 
 \conclusions{}
@@ -315,62 +417,35 @@ The differences to the directly calculated ozone absorption coefficients are sum
 %\end{figure}
 
 %%f
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_Corrected_vs_uncorrected.eps}
-\caption{Measured slit function of the 310 nm slit (slit \#4): uncorrected counts/second (black) and non-linearly-corrected values (dark blue). The central wavelength determination is not affected by the nonlinearity but the FWHM is bigger if the correction is not applied. The hysteresis is evident from the asymmetry of the function at the low values region of the plot. As the method uses the normalised values only between 0.2 and 0.8, the hysteresis has no effect on the calculations.}
-\label{fig:slitcor}
-\end{figure}
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{figures/General_Corrected_vs_uncorrected.eps}
+%\caption{Measured slit function of the 310 nm slit (slit \#4): uncorrected counts/second (black) and non-linearly-corrected values (dark blue). The central wavelength determination is not affected by the nonlinearity but the FWHM is bigger if the correction is not applied. The hysteresis is evident from the asymmetry of the function at the low values region of the plot. As the method uses the normalised values only between 0.2 and 0.8, the hysteresis has no effect on the calculations.}
+%\label{fig:slitcor}
+%\end{figure}
 
 %
 
 
 %
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_Laser_Brewer_ozone_mode.eps}
-\caption{ Plot of the parametrized (thick lines, lext axis) and the measured slit functions (dots, lext axis) as well as the different ozone cross sections (right axis) used for the Brewer effective ozone absorption coefficient calculation.}
-\label{fig:param}
-\end{figure}
-
-
-%
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_laser_log.eps}
-\caption{Brewer measurements in the ozone mode while the laser wavelength is changed every 0.1 nm . The blue curve corresponds to the dark counts obtained from the measurements of slit 1.}
-\label{fig:laser_log}
-\end{figure}
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{figures/General_Laser_Brewer_ozone_mode.eps}
+%\caption{ Plot of the parametrized (thick lines, lext axis) and the measured slit functions (dots, lext axis) as well as the different ozone cross sections (right axis) used for the Brewer effective ozone absorption coefficient calculation.}
+%\label{fig:param}
+%\end{figure}
 
 
 
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{figures/General_DSP_QUAD_RES.eps}
+%\caption{ Residuals of the quadratic fit.}
+%\label{fig:dsp_residual_quad}
+%\end{figure}
 
-
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_central_comparison.eps}
-\caption{Differences between the central wavelengths determinated directly and by the scanning methods: with the laser wavelengths in equally spaced grid every 5\unit{nm} and lines of the discharge lamps; in both cases quadratic and cubic fitting are used.}
-\label{fig:cw_comp}
-\end{figure}
-
-
-
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_fwhm_comparison.eps}
-\caption{Differences between the FWHMs determinated directly and by the scanning methods: with the laser wavelengths in equally spaced grid every 5nm and lines of the discharge lamps; in both cases quadratic and cubic fitting are used.}
-\label{fig:fwhm_comp}
-\end{figure}
-
-
-
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_DSP_QUAD_RES.eps}
-\caption{ Residuals of the quadratic fit.}
-\label{fig:dsp_residual_quad}
-\end{figure}
-
-\clearpage
-\begin{figure}[t]
-\includegraphics[width=8.3cm]{figures/General_brewer_scan_cubic_residual.eps}
-\caption{ Residuals of the cubic fit.}
-\label{fig:dsp_residual_cubic}
-\end{figure}
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{figures/General_brewer_scan_cubic_residual.eps}
+%\caption{ Residuals of the cubic fit.}
+%\label{fig:dsp_residual_cubic}
+%\end{figure}
 
 %\subsection{HEADING}
 %TEXT
@@ -395,64 +470,51 @@ The differences to the directly calculated ozone absorption coefficients are sum
 
 %\clearpage
 
-\begin{table}[t]
-\caption{Emission lines of the discharge lamps used for Brewer calibration}
-\begin{tabular}{lll}
-\tophline
-Lamp           & Line (nm) & Slits \\
-\middlehline
-Mercury (Hg)   & 289.36    & 0–1   \\
-Hg             & 296.728   & 0–3   \\
-Zinc (Zn)      & 301.836   & 0–5   \\
-Zn             & 303.578   & 0–5   \\
-Cd (multiplet) & 308.082   & 0-5   \\
-Cd             & 313.3167  & 0–5   \\
-Cd             & 326.1055  & 0–5   \\
-Zn             & 328.233   & 0–5   \\
-Hg             & 334.148   & 0–5   \\
-Cd             & 340.3652  & 0–5   \\
-Cd             & 349.995   & 4–5   \\
-Cd (multiplet) & 361.163   & 5     \\
-\bottomhline
-\end{tabular}
-\belowtable{} % Table Footnotes
-\label{tab:dsp_lines}
-\end{table}
+%\begin{table}[t]
+%\caption{Emission lines of the discharge lamps used for Brewer calibration}
+%\begin{tabular}{lll}
+%\tophline
+%Lamp           & Line (nm) & Slits \\
+%\middlehline
+%Mercury (Hg)   & 289.36    & 0–1   \\
+%Hg             & 296.728   & 0–3   \\
+%Zinc (Zn)      & 301.836   & 0–5   \\
+%Zn             & 303.578   & 0–5   \\
+%Cd (multiplet) & 308.082   & 0-5   \\
+%Cd             & 313.3167  & 0–5   \\
+%Cd             & 326.1055  & 0–5   \\
+%Zn             & 328.233   & 0–5   \\
+%Hg             & 334.148   & 0–5   \\
+%Cd             & 340.3652  & 0–5   \\
+%Cd             & 349.995   & 4–5   \\
+%Cd (multiplet) & 361.163   & 5     \\
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\label{tab:dsp_lines}
+%\end{table}
 
 
-%\clearpage
-
-\begin{table}[t]
-\caption{Ozone absorption coefficient in atm $cm^-1$ calculated using four absorption cross sections.}
-\begin{tabular}{lll}
-\tophline
-     & Parametrized & Measured \\
-\middlehline
-BRW  & 0.3381       & 0.3407   \\
-B\&P & 0.3330       & 0.3360    \\
-DMB  & 0.3483       & 0.3514   \\
-SDK  & 0.3392       & 0.3422    \\
-\bottomhline
-\end{tabular}
-\belowtable{} % Table Footnotes
-\label{tab:slit_param}
-\end{table}
 
 
-\begin{table*}[t]
-\caption{Ozone absorption coefficient in atm $cm^-1$ calculated using  four absorption cross sections (????!!)}
-\begin{tabular}{lllllll}
-\tophline
-     & brw\_scan & ptb\_scan & opo\_quad & opo\_cubic & lamp\_quad & lamp\_cubic \\
-\middlehline
-SGW   & 0.3409    & 0.3368    & 0.3442    & 0.342      & 0.3446     & 0.3412      \\
-ratio & 1         & 0.9881    & 1.0096    & 1.0033     & 1.0108     & 1.001      \\
-\bottomhline
-\end{tabular}
+%\begin{table}[t]
+%\caption{Ozone absorption coefficient in atm $cm^{-1}$ calculated using four absorption cross sections.}
+%\begin{tabular}{lll}
+%\tophline
+%     & Parametrized & Measured \\
+%\middlehline
+%BRW  & 0.3381       & 0.3407   \\
+%B\&P & 0.3330       & 0.3360    \\
+%DMB  & 0.3483       & 0.3514   \\
+%SDK  & 0.3392       & 0.3422    \\
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\label{tab:slit_param}
+%\end{table}
 
-\belowtable{} % Table Footnotes
-\label{tab:o3abs_sum}
-\end{table*}
+
+
 
 
 %\appendix
