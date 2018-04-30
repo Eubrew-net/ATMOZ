@@ -32,6 +32,24 @@ label={'laser brw o3','brw laser q','brw laser c','brw lamp q','brw lamp c'};
 label2={'brewer scan','laser quadratic','laser cubic','lamp quadratic','lamps cubic'}
 laserscan=lscan;
 %%
+
+
+
+
+O3W=[   0   0.00   -1.00    0.50    2.20   -1.70];
+
+ozone_slits=laserscan(1:6,:)
+o3abs_ls=-ozone_slits(:,[6:7,end])'*O3W'/log(10)
+
+%% save
+for i=1:size(label)
+ eval([label{i},' = opo(:,:,',num2str(i),');'])
+ eval(['save ',label{i},' ',label{i},' -ascii '])
+end
+
+
+
+%%
 f2=figure
 plot(laserscan(:,4),laserscan(:,5),'x')
 hold on
@@ -90,11 +108,11 @@ set(h(3),'Marker','x')
 set(h(4),'Marker','+')
 legend(label2(2:end));
 grid
-xlabel('wavelength')
-ylabel('wavelength (A)')
-title('FWHM')
+xlabel('wavelength [A]')
+ylabel('wavelength [A]')
+title('Full Width Half Maximun')
 legend(label2(2:end));
-hline([-0.1,0.1])
+hline([-0.1,0.1],'k-')
 vline(BWN(3:end)*10)
 set(h(1),'LineStyle','-')
 set(h(2),'LineStyle',':')
@@ -118,19 +136,19 @@ set(h(3),'Marker','x')
 set(h(4),'Marker','+')
 legend(label2(2:end));
 grid
-xlabel('wavelength')
-ylabel('wavelength (A)')
-title('Central wavelengh difference')
-legend(label2(2:end));
-hline([-0.1,0.1])
+xlabel('wavelength [A] ')
+ylabel('wavelength [A]')
+title('Central wavelength difference')
+legend(label2(2:end),'Location','South') %,'Orientation','Horizontal');
+hline([-0.1,0.1],'-k')
 vline(BWN(3:end)*10)
 set(h(1),'LineStyle','-')
 set(h(2),'LineStyle',':')
 set(h(3),'LineStyle','-.')
 set(h(4),'LineStyle','--')
-figure(fw)
-set(fw,'Tag','central_comparison')
-printfiles_report(fw,'figures','Width',12,'Height',12)
+figure(cw)
+set(cw,'Tag','central_comparison')
+printfiles_report(cw,'figures','Width',12,'Height',12)
 
 
 %%
@@ -170,7 +188,7 @@ set(h1(4),'LineStyle','--')
 legend(h,label2(2:end),'Orientation','Horizontal');
 hline([-0.1,0,0.1],'b')
 
-set(cw,'Tag','c_comparison')
+set(cw,'Tag','cwfwhm_comparison')
 printfiles_report(cw,'figures','Width',12,'Height',12)
 
 %%
@@ -216,18 +234,3 @@ ylabel('Angstrom')
 xlabel('wavelength')
 title([' FWHM wavelength diff'])
 
-%%
-
-
-
-
-O3W=[   0   0.00   -1.00    0.50    2.20   -1.70];
-
-ozone_slits=laserscan(1:6,:)
-o3abs_ls=-ozone_slits(:,[6:7,end])'*O3W'/log(10)
-
-%% save
-for i=1:size(label)
- eval([label{i},' = opo(:,:,',num2str(i),');'])
- eval(['save ',label{i},' ',label{i},' -ascii '])
-end

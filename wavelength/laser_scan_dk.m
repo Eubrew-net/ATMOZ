@@ -91,10 +91,13 @@ for i=1:6
 %figure
 %subplot(2,3,i)
 axes(ha(i));
-h{i}=semilogyy(sl([15,6:12],:,j_o3(i))')
+xplot=sl([15,6:12],:,j_o3(i))';
+xplot(:,1)=xplot(:,1)/10;
+h{i}=semilogyy(xplot);
+title('');
 %legend(mmcellstr(sprintf('slit #%d |',[0:6]')));
 grid on
-if i>3 xlabel('wavelength (A)'); end
+if i>3 xlabel('wavelength (nm)'); end
 if mod(i,3)==1 ylabel('Brewer raw counts'); end
 set(h{i}(2),'LineWidth',2,'Marker','x');
 set(ha(i),'Ytick',[10         100        1000       10000]);
@@ -205,8 +208,8 @@ for i=1:length(mic_)
     [ix,ij]=max(x1(:,2));
     tmax(i,j)=t1(ij);
     x2=x1(ij-34:ij+34,:);  % some errors on the file
-    plot(x2(:,1),x2(:,2)/max(x2(:,2)));
-    [wv(i,j),fwhm(i,j)]=slit_fit(x2,0,1,fg(i));
+    plot(x2(:,1)/10,x2(:,2)/max(x2(:,2)));
+    [wv(i,j),fwhm(i,j)]=slit_fit(x2/10,0,1,fg(i));
     
     [wv_(i,j),fwhm_(i,j)]=slit_fit(x2,1,0,fg(i));
     o3xs_m(i,j,:)=xcs_cal(x2,o3_set);
@@ -214,12 +217,14 @@ for i=1:length(mic_)
     n=n+1;
     hold on
     %title(datestr(tmax(i,j)));
-    title([datestr(tmax(i,j),'HH:MM'),sprintf(' wv  %.1f  fwhm %.1f',wv(i,j),fwhm(i,j))]);
-    line=[tmax(i,j),mic_(i),j-1,wv(i,j),fwhm(i,j),o3xs_m(i,j,4),o3xs_p(i,j,4)]
+    %title([datestr(tmax(i,j),'T HH:MM'),sprintf(' wv= %.2f  fwhm= %.2f',wv(i,j),fwhm(i,j))]);
+    %title([sprintf(' wv= %.2fnm fwhm= %.2fnm',wv(i,j),fwhm(i,j))]);
+    
+    line=[tmax(i,j),mic_(i),j-1,wv(i,j)/10,fwhm(i,j)/10,o3xs_m(i,j,4),o3xs_p(i,j,4)];
     l=[l;line];
     box on;
     grid on;
-    xlabel('wavelength')
+    xlabel('wavelength (nm)')
     axis('tight')
     set(gca,'Ylim',[0,1.2]);
    end
@@ -228,8 +233,8 @@ end
 %    
 
 set(fg(1),'Tag','Laser_scan_dsp')
-printfiles_report(fg(1),'figures','Width',20,'Height',12)
-
+printfiles_report(fg(1),'figures','Width',18,'Height',12,'LineWidth',2)
+figure(fg(1))
 
 
 %%
@@ -348,7 +353,7 @@ save lscan lscan
 O3W=[   0   0.00   -1.00    0.50    2.20   -1.70];
 
 ozone_slits=sortrows([laserscan(1:6,:),ptb_scan(1:6,:)],3)
-o3abs=-ozone_slits(:,[6:7,end])'*O3W'/log(10)
+o3abs=-ozone_slits(:,[4:7,end])'*O3W'/log(10)
 
 printmatrix(ozone_slits,5)
 printmatrix(o3abs,5)

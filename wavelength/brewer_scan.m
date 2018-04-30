@@ -125,7 +125,7 @@ for i=1:length(C)
      slits=C(i,2);
      lnes=wb(i);
      
-     figure
+     fx(i)=figure
      s=a(IC==i,:);
      mic=s(:,10);
      [u,iu]=unique(mic,'legacy');
@@ -134,8 +134,10 @@ for i=1:length(C)
      % only up & down values
      scans{lnes,slits+1}=s(f,:);
      scan_analyzed=s(f,([10,16]));
+     yyaxis left;
+     %plot(s(f,10),s(f,16)/max(s(f,16)),'o',s(f,10),s(f,15)/max(s(f,15)),'x');
+     plot(s(f,10),s(f,16),'o');
      
-     mmplotyy(s(f,10),s(f,16),'o',s(f,15),'x')
      hold on
     try
      [dsp_arrU(lnes,slits+1),dsp_arrD(lnes,slits+1),tempfw,resup(lnes,slits+1)]=dsp_brewer(scan_analyzed(:,:),ln,0.2,0.8,1);
@@ -145,7 +147,14 @@ for i=1:length(C)
     catch
         %ploty(scans{lnes,slits+1}(2:end-1,[10,8]),'-x')
     end
-     title({filename, [num2str(ln),' nm  slit=',num2str(slits),' line=',num2str(lnes)]}); 
+     %title({filename, [num2str(ln),' nm  slit=',num2str(slits),' line=',num2str(lnes)]}); 
+     yyaxis right
+     hold on
+     plot(s(f,10),s(f,15)/max(s(f,15)),':d');
+     yyaxis left
+     ylabel('counts/second');
+     set(fx(i),'Tag',[num2str(ln),'_',num2str(slits),'_',num2str(lnes)])
+     title({[num2str(ln),' nm  slit=',num2str(slits),' line=',num2str(lnes)]}); 
 
                 temp(daycnt,:)=[dsp_arrU(lnes,slits+1),dsp_arrD(lnes,slits+1)];
                 tempb(daycnt,:)=tempfw;

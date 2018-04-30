@@ -310,15 +310,18 @@ fwhm(n_samples,6)=0;
 
 for i=1  %:n_samples
     fx=figure;
-    hold all;
+    %hold all;
+    %ha = tight_subplot(2,3,[.2 .2],[.1 .1],[.1 .1])
     o3x=NaN*zeros(6,4);
     o3x2=o3x;
+    o3x1=o3x;
     %figure(2);
     hold all;
     for j=1:6  %slit
         sn=[1,3:7]; % slit number
          %figure
          subplot(2,3,j);hold all;
+         %axes(ha(j));
          l=[];
          for k=1:4  %o3abs
              ka=~isnan(o3_set(:,k+1));
@@ -326,10 +329,11 @@ for i=1  %:n_samples
              cs=o3_set(ka,k+1);  % o3xs
              %sintetic 
              y=trapezoid_brewer(x,wc(sn(j),i)/10,fw(sn(j),i)/10/2,.87);
-             
+             y0=trapezoid_brewer(x,wc(sn(j),i)/10,fw(sn(j),i)/10/2,1);
              %wv(i,j)=dsp_summ(i,3+j)/10;
              %fwhm(i,j)=dsp_summ(i,9+j)/10;
              o3x(j,k)=trapz(x,cs.*y)./trapz(x,y);
+             o3x1(j,k)=trapz(x,cs.*y0)./trapz(x,y0);
              %% measured
              % slit interpolated to cross section resolution
              y1=interp1(s(:,1),s(:,j+1),x*10);
@@ -337,14 +341,17 @@ for i=1  %:n_samples
              ki=all(~isnan(c)')';
              c=c(ki,:);
              o3x2(j,k)=trapz(c(:,1),c(:,2).*c(:,3))./trapz(c(:,1),c(:,2));
+             
              yyaxis left
-             plot(x,y,'-x',c(:,1),c(:,2),':',s(:,1)/10,s(:,j+1),'o')
+             plot(x,y,'b-x',x,y0,'k:.',c(:,1),c(:,2),'r:',s(:,1)/10,s(:,j+1),'ro')
              set(gca,'XLim',wc(sn(j),1)/10+[-1,1]);
              hold all
+             if mod(j,3)==1 ylabel('normalized'); end
              yyaxis right
              hold all
              l(k)=plot(x,cs,color_s{k});
-             %ylabel('cm -1')
+             if mod(j,3)==0 ylabel('(atm cm)^-1'); end
+             if j>3 xlabel(' wavelength (nm)'); end
              box on;
     end
     if j==1
@@ -361,9 +368,11 @@ for i=1  %:n_samples
     o3x_sum(:,:,2)=o3x2;
     
     o3x(isnan(o3x))=0;
+    o3x1(isnan(o3x1))=0;
     o3x2(isnan(o3x2))=0;
     
     o3abs(:,i)=-(o3x')*O3W'/log(10);
+    o3abs1(:,i)=-(o3x1')*O3W'/log(10);
     o3abs2(:,i)=-(o3x2')*O3W'/log(10);
     o3abs(o3abs(:,i)==0,i)=NaN;
     %suptitle([sprintf(' %s Brw %d o3abs=','PTB '),num2str(o3abs(:,i)')]);
@@ -372,7 +381,10 @@ end
 
 set(lx,'Position',[0.22232      0.94643      0.57768     0.040476]);
 set(fx,'Tag','Laser_Brewer_ozone_mode')
-printfiles_report(fx,'figures','Width',20,'Height',15)
+printfiles_report(fx,'figures','Width',20,'Height',15,'LineWidth',1)
 
 %figure
 %plot(100*(o3abs-o3abs2)./o3abs)
+
+
+table_abs=round([o3abs,o3abs1,o3abs2],4);
