@@ -1,4 +1,4 @@
-Hola%% Import data from text file.
+%% Import data from text file.
 % Script for importing data from the following text file:
 %
 %    /Users/alberto/Downloads/OD12270_284with header064.csv
