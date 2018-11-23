@@ -37,6 +37,7 @@ PAIR={'C','D','A','CD','AD'};
  
  A1=[0.833,0.374,1.806,0.459,1.432];
  B1=[0.109,0.104,0.114,0.005,0.010];
+ BA=[0.131,0.278,0.063,0.011,0.007];
  i=0:2;
  orx=[8,13,18,21,24];
  
@@ -53,10 +54,18 @@ PAIR={'C','D','A','CD','AD'};
  o3d= matmul(A1,nu);
  x=(N/100-RC)./o3d;
  
+ 
+ %%
+ plot(x,xf,'.'); % double pair ?
+ 
+ 
  plot(m,100*(x-xf)./xf); % double pair ?
  legend(PAIR)
+ %% Double pair manual
+ % Xad= (NA/mua -ND/mud)-BA(3)*p/po (mc+md)/nua+nub)
  
- 
+ xad=(N(:,3)/100./nu(:,3) - N(:,2)/100./nu(:,3))-BA(5)*((m(:,3)+m(:,2))./(nu(:,3)+nu(:,2)));
+ plot((xad-xf(:,end))./xf(:,end))
  %%
  
  figure
