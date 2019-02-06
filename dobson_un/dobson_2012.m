@@ -12,9 +12,9 @@
  %% try to reproduce dobson calculations
  PAIR={'C','D','A'};
  % pairs-> mu,m,R,N,O3
- % C pair 4-8
- % D pair 9-13
- % A pair 14-18
+ % C pair 3-7
+ % D pair 8-12
+ % A pair 13-17
  %  Komhyr 1983
  %A1=[0.800,0.360,1.748];
  %B1=[0.110,0.104,0.116];
@@ -53,11 +53,20 @@
 %  
 
  % single pair A
+ % Na - Nd
  L=-dobson(:,12)+dobson(:,17);
+ % Nd
  N=dobson(:,17);
+ % mu a
  nu=dobson(:,14);
+ % m a
  m=dobson(:,15);
+ 
+% por que 0.116??? si es beta(a) - beta(d) seria 0.01. Por que m y no
+% m(a)-m(b)??
  RC=0.116*m*770/1013;
+ 
+ % no faltaria dividir por alfa(a)-alfa(d)? por que mu y no mu(a)-mu(d)?
  P=(L-RC)./nu;
  figure
  plot(1./nu,P)

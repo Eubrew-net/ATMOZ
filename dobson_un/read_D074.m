@@ -1,16 +1,18 @@
-fpath='data_set_1/D074';
+addpath(genpath('../matlab'))
+fpath='dobson_data';
 l=dir(fullfile(fpath,'*.074'));
 %/* Date Type Time_C RC NC Ozone_C Time_D RD ND Ozone_D Time_A RA NA Ozone_A Time_AD MU_AD SZA_AD Ozone_AD Time_CD MU_CD SZA_CD Ozone_CD  */
 %14.09.2016 DS 8:00:00 165.6 122.7 281.9 8:01:00 104.6  71.9 290.2 8:02:00 278.4 223.3 282.3 8:01:30 3.749  75.3 280.1 8:00:30 3.798  75.5 275.4 
 dobson=[];
 for i=1:length(l)
-   t=readtable(fullfile(fpath,l(i).name),'filetype','text');
+   t=readtable(fullfile(fpath,l(i).name),'filetype','text','DatetimeType','datetime');
    tim=3:4:19;
    tq=t(:,1:22);
    %tq=t;
-   tq{:,[1,2,tim]}=num2cell(NaN);
+   tq{:,tim}=NaN;
+   tq{:,[1,2]}=NaN;
    
-   dob=cell2mat(table2cell(tq));
+   dob=cell2mat(table2cell(tq(:,3:end)));
    for i=tim
      tx=([t{:,1},t{:,i}]);
      t(:,i)=cellstr(join(tx));
