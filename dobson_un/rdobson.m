@@ -30,11 +30,13 @@ for ii=1:length(inst)
     %er_cd{n_inst} = D064_orig(:,{'Time','Date','M_CD','Mu_CD','O3_CD'});
 
     t_set_1{ii}=  [table2array(er_ad{n_inst}(:,2:end));  table2array(er_cd{n_inst}(:,2:end))];
+    t_set_ad{ii}=  [table2array(er_ad{n_inst}(:,2:end))];
     
     ploty(t_set_1{ii}(:,[2,4]),plt{ii})
     
 end
 
 total_set=cell2mat(t_set_1');
+dobson_ad=cell2mat(t_set_ad');
 
 

@@ -41,9 +41,26 @@ D074_orig.O3_AD=D074_orig.O3_AD/1000;
 D074_orig.O3_CD=D074_orig.O3_CD/1000;
 
 
+% The symbol m appearing in equations (3) to (9) represents the equivalent 
+% path length of sunlight or moonlight through the earth's atmosphere 
+% allowing for refraction and curvature of the earth. Values of m vs. 
+% Cosine(Zenith Angle) (Bemporad, 1907) are tabulated in Annex G. 
+% Values of m may also be determined from the following polynomial
+% approximation to the values of Bemporad (Hiltner and Hardie, 1962):
+% m = Sec(Z)?0.0018167*[Sec(Z)?1]?0.002875*[Sec(Z)?1]2 ?0.0008083*[Sec(Z)?1]3
+
+Sec_Z=sec(deg2rad(D074_orig.SZA_AD));
+D074_orig.M_AD=Sec_Z-0.0018167*(Sec_Z-1)-0.002875*(Sec_Z-1).^2-0.0008083*(Sec_Z-1).^3;
+
+Sec_Z=sec(deg2rad(D074_orig.SZA_CD));
+D074_orig.M_CD=Sec_Z-0.0018167*(Sec_Z-1)-0.002875*(Sec_Z-1).^2-0.0008083*(Sec_Z-1).^3;
+
+
+
+
 % error analysis 
-er_ad{n_inst} = D074_orig(:,{'Time','Date','SZA_AD','MU_AD','O3_AD'});
-er_cd{n_inst} = D074_orig(:,{'Time','Date','SZA_CD','MU_CD','O3_CD'});
+er_ad{n_inst} = D074_orig(:,{'Time','Date','M_AD','MU_AD','O3_AD'});
+er_cd{n_inst} = D074_orig(:,{'Time','Date','M_CD','MU_CD','O3_CD'});
 % t = dobson(:,2);
 % m = dobson(:,23);
 % mu = dobson(:,22);

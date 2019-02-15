@@ -39,11 +39,16 @@ CD=D074_orig(:,{'Time','T_CD','MU_CD','O3_CD'});
 D074_orig.O3_AD=D074_orig.O3_AD/1000;
 D074_orig.O3_CD=D074_orig.O3_CD/1000;
 
+Sec_Z=sec(deg2rad(D074_orig.SZA_AD));
+D074_orig.M_AD=Sec_Z-0.0018167*(Sec_Z-1)-0.002875*(Sec_Z-1).^2-0.0008083*(Sec_Z-1).^3;
+
+Sec_Z=sec(deg2rad(D074_orig.SZA_CD));
+D074_orig.M_CD=Sec_Z-0.0018167*(Sec_Z-1)-0.002875*(Sec_Z-1).^2-0.0008083*(Sec_Z-1).^3;
 
 
 % error analysis 
-er_ad{n_inst} = D074_orig(:,{'Time','Date','SZA_AD','MU_AD','O3_AD'});
-er_cd{n_inst} = D074_orig(:,{'Time','Date','SZA_CD','MU_CD','O3_CD'});
+er_ad{n_inst} = D074_orig(:,{'Time','Date','M_AD','MU_AD','O3_AD'});
+er_cd{n_inst} = D074_orig(:,{'Time','Date','M_CD','MU_CD','O3_CD'});
 % t = dobson(:,2);
 % m = dobson(:,23);
 % mu = dobson(:,22);
