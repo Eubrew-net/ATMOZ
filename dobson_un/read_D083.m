@@ -26,6 +26,19 @@ writetable(D083_orig,'Atmoz_o3_set1.xls','Sheet','D083');
 D083_orig.Time=date_time(D083_orig.Date);
 AD=D083_orig(:,{'Time','Date','M_AD','O3_AD'});
 CD=D083_orig(:,{'Time','Date','M_CD','O3_CD'});
+
+
+% error analysis 
+er_ad{n_inst} = D083_orig(:,{'Time','Date','M_AD','Mu_AD','O3_AD'});
+er_cd{n_inst} = D083_orig(:,{'Time','Date','M_CD','Mu_CD','O3_CD'});
+% t = dobson(:,2);
+% m = dobson(:,23);
+% mu = dobson(:,22);
+% Omega = dobson(:,24);
+
+
+
+
 AD.O3_AD=1000*AD.O3_AD;
 AD.O3_STD=zeros(size(AD.O3_AD));
 x1=AD(AD.M_AD<3.0,{'Time','Date','O3_AD','O3_STD','M_AD'});
