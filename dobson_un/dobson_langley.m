@@ -143,221 +143,221 @@ PAIR={'C','D','A','CD','AD'};
 
 
 
-%%
+% %
 %   DAY LANGLEY PLOT (Brewer ETC ?)
-grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
-d=unique(grp{1}); 
-days=d(~isnan(d));
-n=0;B_TABLE=[];B_STABLE=[];
-
-for dj=days'
-    %disp(dj)
-    n=n+1;
-    jd=find(grp{1}==dj);
-     grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
-   figure;
-   for i=1:5
-    subplot(2,3,i)
-    
-    gscatter(nu(jd,i), (N(jd,i)+RC(jd,i)),grp{2}(jd),...
-        '','','','off','airm','N-R');
-    title(PAIR{i});
-    box on;
-    % only am
-    jam=jd(grp{2}(jd)==0 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
-    jpm=jd(grp{2}(jd)==1 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
-    plot(nu(jam,i),N(jam,i)/100-RC(jam,i),'rx',...
-         nu(jpm,i),N(jpm,i)/100-RC(jpm,i),'c+')
-    [B(n,i,1,1:2),BINT1,RAM] = linregress((N(jam,i)/100-RC(jam,i)),nu(jam,i)) ;
-    %refline(BINT(:,1))
-    %refline(BINT(:,2))
-    
-    [B(n,i,2,1:2),BINT2,RPM] = linregress((N(jpm,i)/100-RC(jpm,i)),nu(jpm,i)) ;
-    %plot(nu(jam,i),RAM,'rx',nu(jpm,i),RPM,'c+')
-    title(PAIR(i))
-   end
-   subplot(2,3,6);
-   %plot(nu(jd,i),[xf(jd,:)]);legend(PAIR,-1);
-   plot(dobson(jam,2),dobson(jam,end),'r',dobson(jpm,2),dobson(jpm,end),'b');
-   
-   set(gca,'Ylim',[0,0.1]);title('AOD 340 nm'); axis('tight');datetick('x','keeplimits');
-   suptitle(sprintf('Day %d',dj));
-   
-   
-   BETC=[[days(n)+.25,B(n,:,1,2),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
-       ;[days(n)+.75,B(n,:,2,2)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
-   BETC(BETC==0)=NaN;
-   B_TABLE=[B_TABLE;BETC];
-   SETC=[[days(n)+.25,B(n,:,1,1),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
-       ;[days(n)+.75,B(n,:,2,1)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
-   SETC(SETC==0)=NaN;
-   B_STABLE=[B_STABLE;SETC];
-   
-   
-end
-
-
-
-%% ETC
-
-figure;
-BTABLE=B_TABLE;
-BTABLE(:,2:end-3)=100*B_TABLE(:,2:end-3);
-BTABLE=[BTABLE(:,1:6),BTABLE(:,2)-BTABLE(:,3),BTABLE(:,4)-BTABLE(:,3),BTABLE(:,7:end)]
-ploty(BTABLE(1:end-1,1:end-3));
-hline(nanmean(BTABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(BTABLE(1:end-1,2:end-3))')))
-legend([PAIR,'C-D','A-D'],-1)
-title(' 100*ETC    (N/100- R) vs nu');
-xlabel('day of the year');
-  
-
-displaytable(BTABLE,{'Day',PAIR{:},'C-D','A-D','Nobs','AOD 340','AOD340 std'},6,'.2f') 
-
-%% SLOPE
-figure;
-ploty(B_STABLE(1:end-1,1:end-3));
-hline(nanmean(B_STABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(B_STABLE(1:end-1,2:end-3))')))
-legend(PAIR,-1)
-title(' SLOPE  P(N/100- R) vs nu');
-xlabel('day of the year');
-%printmatrix(B_STABLE);
-
-%B_STABLE(:,2:end-3)=100*B_STABLE(:,2:end-3);
-displaytable(B_STABLE,{'Day',PAIR{:},'Nobs','AOD 340','AOD340 std'},6,'.2f') 
-%% Dobson langley 1/nu
-figure
-G=[];
-for i=1:5
- %subplot(3,2,i) 
- figure
- grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
- 
- [dd{i},ds{i},dn{i},dg{i}]=grpstats(dobson,grp);
- js=nu(:,i)>=1.2 & nu(:,i)<=2.4;
- %gscatter(1./nu(:,i),(N(:,i)/100+RC(:,i))./nu(:,i),grp,'','o+');
- box on;
- title(PAIR(i));
- hold on;
- plot(1./nu(js,i),(N(js,i)/100-RC(js,i))./nu(js,i),'p')
-
- [h,G(i,:)]=robust_line;
-end
-
-
-%% DAY PLOT
-grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
-d=unique(grp{1}); 
-days=d(~isnan(d));
-D=[];n=0; C_TABLE=[];C_STABLE=[];
-for dj=days'
-    %disp(dj)
-    jd=find(grp{1}==dj );
-    
-    n=n+1;
-   figure;
-   for i=1:5
-    subplot(2,3,i)
-    
-       % only am
-    jam=jd(grp{2}(jd)==0 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
-    jpm=jd(grp{2}(jd)==1 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
-    
-    [D(n,i,1,1:2),DINT,R] = linregress((N(jam,i)/100+RC(jam,i))./nu(jam,i),1./nu(jam,i)) ;
-    refline(DINT(:,1))
-    refline(DINT(:,2))
-    
-    [D(n,i,2,1:2),DINT,R] = linregress((N(jpm,i)/100+RC(jpm,i))./nu(jpm,i),1./nu(jpm,i)) ;
-    refline(DINT(:,1))
-    refline(DINT(:,2))
-    if(D(n,i,2,1)==0)D(n,i,2,1:2)=[NaN,NaN];end
-    plot(1./nu(jam),(N(jam,i)/100+RC(jam,i))./nu(jam,i),'bo',...
-         1./nu(jpm),(N(jpm,i)/100+RC(jpm,i))./nu(jpm,i),'r+');
-    title(PAIR{i});
-    box on;
-    axis('tight');
-
-    
-    
-    
-   end
-   subplot(2,3,6);
-   %plot(1./nu(jd,i),[x(jd,:)]);legend(PAIR,3);
-   %suptitle(sprintf('Day %d',dj));
-   plot(dobson(jam,2),dobson(jam,end),'r',dobson(jpm,2),dobson(jpm,end),'b');
-  
-   set(gca,'Ylim',[0,0.1]);title('AOD 340 nm'); axis('tight');datetick('keeplimits','keeplimits');
-   suptitle(sprintf(' Langley P vs 1/nu Day %d',dj));
-   
-   
-   DETC=[[days(n)+.25,D(n,:,1,2),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
-       ;[days(n)+.75,D(n,:,2,2)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
-   C_TABLE=[C_TABLE;DETC];
-   
-   SETC=[[days(n)+.25,D(n,:,1,1),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
-       ;[days(n)+.75,D(n,:,2,1)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
-   C_STABLE=[C_STABLE;SETC];
-   
-end
-
-
-%%
-figure;
-ploty(C_TABLE(1:end-1,1:end-3));
-hline(nanmean(C_TABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(C_TABLE(1:end-1,2:end-3))')))
-legend(PAIR,-1)
-title(' ETC P vs 1/nu');
-xlabel('day of the year');
-  
-printmatrix(C_TABLE);
-
-%%
-figure;
-plot(C_STABLE(1:end-1,1),C_STABLE(1:end-1,2:end-3)*100);
-hline(nanmean(C_STABLE(1:end-1,2:end-3))*100,'',cellstr(num2str(100*nanmean(C_STABLE(1:end-1,2:end-3))')))
-legend(PAIR,-1)
-title(' SLOPE P vs 1/nu');
-xlabel('day of the year');
-
-
-
-%%
-dobson_res; 
-figure
-PAIR={'C','D','A','CD','AD','C-D','A-D'};
-CSTABLE=[C_STABLE(:,1),100*C_STABLE(:,2:6),100*(C_STABLE(:,2)-C_STABLE(:,3)),...
-          100*(C_STABLE(:,4)-C_STABLE(:,3)),C_STABLE(:,7:end)]
-%Brewer      
-displaytable(CSTABLE,{'Day',PAIR{:},'Nobs','AOD 340','AOD340 std'},6,'.2f')  
-%Dobson
-displaytable(dobson_izo(:,1:end-1),{'Day',PAIR{:}},6,'.2f')  
-CSTABLE(end-4,:)=[];     
-[di,bj]=ismember(dobson_izo(:,1),CSTABLE(:,1));
-
-aux=[CSTABLE(bj(di),1:end-3),dobson_izo(di,2:end-1)];
-aux(:,2:8)=-aux(:,2:8);
-displaytable([CSTABLE(bj(di),1:end-3),dobson_izo(di,2:end-1)],{'Day',PAIR{:},PAIR{:}},6,'.2f')  
-     
-for p=2:8
-   
-figure;
-plot(dobson_izo(1:end-1,1),-dobson_izo(1:end-1,p),'r');
-hold on;
-plot(CSTABLE(:,1),CSTABLE(:,p),'b');
-legend('RDCC','RBCC')
-
-hline(mean(-dobson_izo(2:end,p)),'r',num2str(mean(dobson_izo(:,p))));
-hline(nanmean(CSTABLE(:,p)),'b',...
-    num2str(nanmean(CSTABLE(:,p))));
+% grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
+% d=unique(grp{1}); 
+% days=d(~isnan(d));
+% n=0;B_TABLE=[];B_STABLE=[];
+% 
+% for dj=days'
+%     disp(dj)
+%     n=n+1;
+%     jd=find(grp{1}==dj);
+%      grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
+%    figure;
+%    for i=1:5
+%     subplot(2,3,i)
+%     
+%     gscatter(nu(jd,i), (N(jd,i)+RC(jd,i)),grp{2}(jd),...
+%         '','','','off','airm','N-R');
+%     title(PAIR{i});
+%     box on;
+%     only am
+%     jam=jd(grp{2}(jd)==0 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
+%     jpm=jd(grp{2}(jd)==1 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
+%     plot(nu(jam,i),N(jam,i)/100-RC(jam,i),'rx',...
+%          nu(jpm,i),N(jpm,i)/100-RC(jpm,i),'c+')
+%     [B(n,i,1,1:2),BINT1,RAM] = linregress((N(jam,i)/100-RC(jam,i)),nu(jam,i)) ;
+%     refline(BINT(:,1))
+%     refline(BINT(:,2))
+%     
+%     [B(n,i,2,1:2),BINT2,RPM] = linregress((N(jpm,i)/100-RC(jpm,i)),nu(jpm,i)) ;
+%     plot(nu(jam,i),RAM,'rx',nu(jpm,i),RPM,'c+')
+%     title(PAIR(i))
+%    end
+%    subplot(2,3,6);
+%    plot(nu(jd,i),[xf(jd,:)]);legend(PAIR,-1);
+%    plot(dobson(jam,2),dobson(jam,end),'r',dobson(jpm,2),dobson(jpm,end),'b');
+%    
+%    set(gca,'Ylim',[0,0.1]);title('AOD 340 nm'); axis('tight');datetick('x','keeplimits');
+%    suptitle(sprintf('Day %d',dj));
+%    
+%    
+%    BETC=[[days(n)+.25,B(n,:,1,2),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
+%        ;[days(n)+.75,B(n,:,2,2)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
+%    BETC(BETC==0)=NaN;
+%    B_TABLE=[B_TABLE;BETC];
+%    SETC=[[days(n)+.25,B(n,:,1,1),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
+%        ;[days(n)+.75,B(n,:,2,1)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
+%    SETC(SETC==0)=NaN;
+%    B_STABLE=[B_STABLE;SETC];
+%    
+%    
+% end
+% 
+% 
+% 
+% % ETC
+% 
+% figure;
+% BTABLE=B_TABLE;
+% BTABLE(:,2:end-3)=100*B_TABLE(:,2:end-3);
+% BTABLE=[BTABLE(:,1:6),BTABLE(:,2)-BTABLE(:,3),BTABLE(:,4)-BTABLE(:,3),BTABLE(:,7:end)]
+% ploty(BTABLE(1:end-1,1:end-3));
+% hline(nanmean(BTABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(BTABLE(1:end-1,2:end-3))')))
+% legend([PAIR,'C-D','A-D'],-1)
+% title(' 100*ETC    (N/100- R) vs nu');
+% xlabel('day of the year');
+%   
+% 
+% displaytable(BTABLE,{'Day',PAIR{:},'C-D','A-D','Nobs','AOD 340','AOD340 std'},6,'.2f') 
+% 
+% % SLOPE
+% figure;
+% ploty(B_STABLE(1:end-1,1:end-3));
+% hline(nanmean(B_STABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(B_STABLE(1:end-1,2:end-3))')))
+% legend(PAIR,-1)
+% title(' SLOPE  P(N/100- R) vs nu');
+% xlabel('day of the year');
+% printmatrix(B_STABLE);
+% 
+% B_STABLE(:,2:end-3)=100*B_STABLE(:,2:end-3);
+% displaytable(B_STABLE,{'Day',PAIR{:},'Nobs','AOD 340','AOD340 std'},6,'.2f') 
+% % Dobson langley 1/nu
+% figure
+% G=[];
+% for i=1:5
+%  subplot(3,2,i) 
+%  figure
+%  grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
+%  
+%  [dd{i},ds{i},dn{i},dg{i}]=grpstats(dobson,grp);
+%  js=nu(:,i)>=1.2 & nu(:,i)<=2.4;
+%  gscatter(1./nu(:,i),(N(:,i)/100+RC(:,i))./nu(:,i),grp,'','o+');
+%  box on;
+%  title(PAIR(i));
+%  hold on;
+%  plot(1./nu(js,i),(N(js,i)/100-RC(js,i))./nu(js,i),'p')
+% 
+%  [h,G(i,:)]=robust_line;
+% end
+% 
+% 
+% % DAY PLOT
+% grp={diaj(dobson(:,2)),24*(dobson(:,2)-fix(dobson(:,2)))>13};
+% d=unique(grp{1}); 
+% days=d(~isnan(d));
+% D=[];n=0; C_TABLE=[];C_STABLE=[];
+% for dj=days'
+%     disp(dj)
+%     jd=find(grp{1}==dj );
+%     
+%     n=n+1;
+%    figure;
+%    for i=1:5
+%     subplot(2,3,i)
+%     
+%        only am
+%     jam=jd(grp{2}(jd)==0 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
+%     jpm=jd(grp{2}(jd)==1 & nu(jd,i)>=1.2 & nu(jd,i)<=2.4 );
+%     
+%     [D(n,i,1,1:2),DINT,R] = linregress((N(jam,i)/100+RC(jam,i))./nu(jam,i),1./nu(jam,i)) ;
+%     refline(DINT(:,1))
+%     refline(DINT(:,2))
+%     
+%     [D(n,i,2,1:2),DINT,R] = linregress((N(jpm,i)/100+RC(jpm,i))./nu(jpm,i),1./nu(jpm,i)) ;
+%     refline(DINT(:,1))
+%     refline(DINT(:,2))
+%     if(D(n,i,2,1)==0)D(n,i,2,1:2)=[NaN,NaN];end
+%     plot(1./nu(jam),(N(jam,i)/100+RC(jam,i))./nu(jam,i),'bo',...
+%          1./nu(jpm),(N(jpm,i)/100+RC(jpm,i))./nu(jpm,i),'r+');
+%     title(PAIR{i});
+%     box on;
+%     axis('tight');
+% 
+%     
+%     
+%     
+%    end
+%    subplot(2,3,6);
+%    plot(1./nu(jd,i),[x(jd,:)]);legend(PAIR,3);
+%    suptitle(sprintf('Day %d',dj));
+%    plot(dobson(jam,2),dobson(jam,end),'r',dobson(jpm,2),dobson(jpm,end),'b');
+%   
+%    set(gca,'Ylim',[0,0.1]);title('AOD 340 nm'); axis('tight');datetick('keeplimits','keeplimits');
+%    suptitle(sprintf(' Langley P vs 1/nu Day %d',dj));
+%    
+%    
+%    DETC=[[days(n)+.25,D(n,:,1,2),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
+%        ;[days(n)+.75,D(n,:,2,2)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
+%    C_TABLE=[C_TABLE;DETC];
+%    
+%    SETC=[[days(n)+.25,D(n,:,1,1),length(jam),nanmean(dobson(jam,end)),nanstd(dobson(jam,end))]...
+%        ;[days(n)+.75,D(n,:,2,1)],length(jpm),nanmean(dobson(jpm,end)),nanstd(dobson(jpm,end))];
+%    C_STABLE=[C_STABLE;SETC];
+%    
+% end
+% 
+% 
+% %
+% figure;
+% ploty(C_TABLE(1:end-1,1:end-3));
+% hline(nanmean(C_TABLE(1:end-1,2:end-3)),'',cellstr(num2str(nanmean(C_TABLE(1:end-1,2:end-3))')))
+% legend(PAIR,-1)
+% title(' ETC P vs 1/nu');
+% xlabel('day of the year');
+%   
+% printmatrix(C_TABLE);
+% 
+% %
+% figure;
+% plot(C_STABLE(1:end-1,1),C_STABLE(1:end-1,2:end-3)*100);
+% hline(nanmean(C_STABLE(1:end-1,2:end-3))*100,'',cellstr(num2str(100*nanmean(C_STABLE(1:end-1,2:end-3))')))
+% legend(PAIR,-1)
+% title(' SLOPE P vs 1/nu');
+% xlabel('day of the year');
 
 
-title({[ PAIR{p-1}, ' P vs 1/nu Slope*100']  ,...
-    sprintf('RDCC  %f    RBCC  %f',...
-          mean(-dobson_izo(2:end,p)),... 
-          nanmean(CSTABLE(:,p)))});
-end
 
-%%
-
+% %
+% dobson_res; 
+% figure
+% PAIR={'C','D','A','CD','AD','C-D','A-D'};
+% CSTABLE=[C_STABLE(:,1),100*C_STABLE(:,2:6),100*(C_STABLE(:,2)-C_STABLE(:,3)),...
+%           100*(C_STABLE(:,4)-C_STABLE(:,3)),C_STABLE(:,7:end)]
+% Brewer      
+% displaytable(CSTABLE,{'Day',PAIR{:},'Nobs','AOD 340','AOD340 std'},6,'.2f')  
+% Dobson
+% displaytable(dobson_izo(:,1:end-1),{'Day',PAIR{:}},6,'.2f')  
+% CSTABLE(end-4,:)=[];     
+% [di,bj]=ismember(dobson_izo(:,1),CSTABLE(:,1));
+% 
+% aux=[CSTABLE(bj(di),1:end-3),dobson_izo(di,2:end-1)];
+% aux(:,2:8)=-aux(:,2:8);
+% displaytable([CSTABLE(bj(di),1:end-3),dobson_izo(di,2:end-1)],{'Day',PAIR{:},PAIR{:}},6,'.2f')  
+%      
+% for p=2:8
+%    
+% figure;
+% plot(dobson_izo(1:end-1,1),-dobson_izo(1:end-1,p),'r');
+% hold on;
+% plot(CSTABLE(:,1),CSTABLE(:,p),'b');
+% legend('RDCC','RBCC')
+% 
+% hline(mean(-dobson_izo(2:end,p)),'r',num2str(mean(dobson_izo(:,p))));
+% hline(nanmean(CSTABLE(:,p)),'b',...
+%     num2str(nanmean(CSTABLE(:,p))));
+% 
+% 
+% title({[ PAIR{p-1}, ' P vs 1/nu Slope*100']  ,...
+%     sprintf('RDCC  %f    RBCC  %f',...
+%           mean(-dobson_izo(2:end,p)),... 
+%           nanmean(CSTABLE(:,p)))});
+% end
+% 
+% %
+% 
 % figure
 % %aod340=aod(:,[1,8]);
 % %j=ismember(aod340,diaj(aod(:,1)));
@@ -365,7 +365,7 @@ end
 % 
 % plot(days,D(:,:,2,2),'o',days,D(:,:,1,2),'+');
 % hline(nanmean([D(:,:,2,2),D(:,:,2,2)]),,num2str(round(nanmedian(DETC)*100)/100))
-%%
+% %
 % figure
 % for i=1:5
 %  %figure  
