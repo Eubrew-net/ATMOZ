@@ -1,6 +1,5 @@
 %% This script computes the Jacobian matrix for Lambert-Beer law for O3 determination
-%% Then, it computes the correlation matrix from the model to estimate the degrees of correlation
-%% Finally, it computes the final uncertainty by including all the uncertainty sources for Dobson instruments
+%% Then, it computes the correlation matrix
 
 
 clear all;
@@ -10,23 +9,20 @@ warning off;
 
 
 %% Loading instrument data
-% load Omega.mat; % Ozone values as given by Dobson measurements
-% load mu.mat; % mu vaues as given by Dobson measurements
-% load m.mat; % air mass values as given by Dobson meas.
+load Omega.mat; % Ozone values as given by Dobson measurements
+load mu.mat; % mu vaues as given by Dobson measurements
+load m.mat; % air mass values as given by Dobson meas.
 
-data_dobson = importdata('data_1.txt');
 
-Omega = data_dobson.data(:,3);
-mu = data_dobson.data(:,1);
-m = data_dobson.data(:,2);
+
 
 %% Initialization of variables
 
-%% differential cross sections as given by Dobson manual couple AD! Eventually adjust!
+%% differential cross sections as given by Dobson manual
 delta_alpha2 = 1.8;
 delta_alpha1 = 0.3636;
 
-%% Rayleigh differential cross sectino as given by Dobson manual couple AD! Eventually adjust!
+%% Rayleigh differential cross sectino as given by Dobson manual
 
 delta_beta2 = 0.114;
 delta_beta1 = 0.104;
@@ -53,7 +49,8 @@ Z_deg = Z_rad*180/pi;
 
 P0 = 1013; % atmospehric pressure in mbars
 
-P = 769.88; %0.830*1013.25; % staion pressure in mbars
+P = 7.6988; %0.830*1013.25; % staion pressure in mbars
+
 
 
 %m = air_mass_040_1; % airmass
@@ -96,6 +93,14 @@ J28 =  -mu.*Omega.*((delta_alpha2-delta_alpha1).*Omega.*dev_mu+(delta_beta2-delt
 
 %---------------------------------------------
 
+% J31 = J13;
+% J32 = J23;
+% J33 = ((delta_alpha2-delta_alpha1).*mu).^2;
+% J34 = -(m.*P./P0).^2;
+% J35 = (m.*P./P0).^2;
+% J36 = -m.*P./P0.*(delta_beta2-delta_beta1)./P0;
+% J37 = -m.*P./P0;
+% J38 = -m.*P./P0.*((delta_alpha2-delta_alpha1).*Omega.*dev_mu+(delta_beta2-delta_beta1).*P./P0.*dev_m+delta_delta.*(-sin(Z_rad)./cos(Z_rad).^2));
 
 J31 = J13;
 J32 = J23;
@@ -106,7 +111,7 @@ J36 = (delta_alpha2-delta_alpha1).*mu.*m.*(delta_beta2-delta_beta1)/P0;
 J37 = (delta_alpha2-delta_alpha1).*mu.*sec(Z_rad);
 J38 = (delta_alpha2-delta_alpha1).*mu.*((delta_alpha2-delta_alpha1).*Omega.*dev_mu+(delta_beta2-delta_beta1).*P./P0.*dev_m+delta_delta.*(-sin(Z_rad)./cos(Z_rad).^2));
 
-
+%-----------------------------------------------
 
 %-----------------------------------------------
 
@@ -213,70 +218,34 @@ end
 
     %% Now we compute the total uncertainty based on the input matrix provided by Ulf Kohler
     %% Relative uncertainties
-    
 
+    u_rel_alpha = 0.01;
+    u_rel_o3 = 0.01;
+    u_rel_temp = 0.01;
 
-
-
-    u_rel_alpha = 0.01; % wavelength adjustment and  bandwidth effect
-    u_rel_o3 = 0.01; % ozone absorption
-    u_rel_temp = 0.01; % temperature ozone layer
-    
     u_rel_combined_abs = sqrt(u_rel_alpha^2+u_rel_o3.^2+u_rel_temp^2);
-%---------------------------------------------------------
-    
 
-    u_rel_beta = 0.001; %atmospheric scattering
+    u_rel_beta = 0.0001;
+    
+    u_rel_P = 0;
+    
+    u_rel_aerosol = 0.0002;
 
-%----------------------------------------------------------
- 
+    u_rel_etc = sqrt(0.01^2+0.005^2+0.005^2);
 
-    u_rel_P = 0.0016; % relative Atmospheric relative uncertainty
-    
-%----------------------------------------------------------
-    
-    u_rel_aerosol = 0.002; %particle scattering
- 
-%----------------------------------------------------------
+    u_rel_mu = 0.01;
 
-    u_rel_etc = sqrt(0.01^2+0.005^2+0.005^2+0.01^2); %direct intercomparison, Langley method for abs. cal. of reference, spectral stability and
-                                              %relative optical path through the ozone layer
+    u_rel_wedge = 0.005;
 
-%-------------------------------------------------------
-
-
-    u_rel_wedge = 0.005; %wedge calibration
+    u_rel_straylight = sqrt(0.01^2+0.001^2);
     
-%--------------------------------------------------------    
-
-
-    u_rel_straylight = sqrt(0.01^2+0.001^2); %stray light (internal and external)
+    u_rel_y = sqrt(u_rel_etc.^2+u_rel_wedge.^2);
     
+    u_rel_Z = 0;
     
-%-------------------------------------------------------
+    u_rel_interference_instruments = 0.001;
     
-    u_rel_y = sqrt(u_rel_etc.^2+u_rel_wedge.^2); % uncertainty readings
-    
-%-------------------------------------------------------
-    
-    u_rel_Z = 0.00005; % uncertainty Zenith angle
-    
-%------------------------------------------------------
-    
-    u_rel_interference_atmopsheric_cost = 0.001; %interference with other atmospheric constituents
-    
-%------------------------------------------------------
-
-    
-    u_rel_operat_impre = 0.01; %operational precision
-
-    
-    %%-----------------------------
-    
-%% Here we compute the expression of the TOC uncertainty, as function of all the other uncertainties contributions and degrees of correlations.
-%% In order to do this, we need to compute all the sensitivity coefficients. 
-
-% Sensitivity coefficients
+    u_rel_operat_impre = 0.01;
     
     dy_da1 = mu.*Omega;
     
@@ -293,10 +262,6 @@ end
     dy_da7 = sec(Z_rad);
     
     dy_da8 = (((delta_alpha2-delta_alpha1).*Omega.*dev_mu+(delta_beta2-delta_beta1).*P./P0.*dev_m+delta_delta.*(-sin(Z_rad)./cos(Z_rad).^2)));
-    
- %%------------------------------------------------------------------------------------------------------------------------------------------
- 
- %% Coefficients of the second order equation to solve
     
     A1 = dy_da3.^2;
 
@@ -326,16 +291,10 @@ end
             u_rel_Z.*u_rel_beta.*dy_da8.*dy_da4.*rho(:,8,4)+u_rel_Z.*u_rel_beta.*dy_da8.*dy_da5.*rho(:,8,5)+...
             u_rel_Z.*u_rel_P.*dy_da8.*dy_da6.*rho(:,8,6)+u_rel_Z.*u_rel_aerosol.*dy_da8.*dy_da7.*rho(:,8,7))-u_rel_y.^2;
         
-%----------------------------------------------------------------------------------------------------------------------------------
-
-%% Two solutions
-        
    u_toc_final_1 = abs((-A2+sqrt(A2.^2-4.*A1.*A3))./(2.*A1));
    u_toc_final_2 = abs((-A2-sqrt(A2.^2-4.*A1.*A3))./(2.*A1));
    
-%% Final result   
-   
-   u_toc_final__combined = sqrt(u_toc_final_2.^2+u_rel_interference_atmopsheric_cost.^2+u_rel_operat_impre.^2); 
+   u_toc_final__combined = sqrt(u_toc_final_2.^2+u_rel_interference_instruments.^2+u_rel_operat_impre.^2)  ; 
  
 
 %% outputs
@@ -343,17 +302,13 @@ end
 
 figure(20)
 plot(Z_deg,u_toc_final__combined./Omega.*100);
-ylabel('relative TOC uncertainty %');
+ylabel('relative TOC uncertainty');
 xlabel('Zenith angle')
 
 figure(21)
-plot(Z_deg,Omega.*1000);
+plot(Z_deg,Omega);
 hold on;
-plot(Z_deg,u_toc_final__combined.*1000,'r');
-xlabel('Zenith angle');
-
-figure(22)
-plot(Z_deg,u_toc_final__combined.*1000,'r');
+plot(Z_deg,u_toc_final__combined,'r');
 xlabel('Zenith angle');
 
 
